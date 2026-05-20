@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skydy Study Hub</title>
+    <link rel="stylesheet" href="/main/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Modak&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+        .container{
+            display: flex;
+            height: 100vh;
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(15, 9, 9, 0.601);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg-slider"></div>
+    <div id="loading-screen">
+            <img src="images/logo.png" alt="Skydy Logo" class="loader-logo">
+    </div>
+    <script>
+        // This is a completely isolated failsafe. It ignores any errors in your main script!
+        setTimeout(() => {
+            const loader = document.getElementById('loading-screen');
+            if (loader) {
+                loader.style.opacity = '0'; // Fade it out
+                setTimeout(() => loader.style.display = 'none', 600); // Delete it completely
+            }
+        }, 2000); // 2000 milliseconds = 2 seconds. It will disappear after 2 seconds guaranteed!
+    </script>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="menu-icon">☰</div>
+            <ul class="nav-links">
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="index.html">Home</a>
+                    <div class="curve-bottom"></div>
+                </li>
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="book.html">Spaces &amp; Rates</a>
+                    <div class="curve-bottom"></div>
+                </li>
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="contact.html">Contact Us</a>
+                    <div class="curve-bottom"></div>
+                </li>
+            </ul>
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Skydy Logo" class="footer-logo">
+                </a> 
+            </div>
+        </nav>
+
+        <main class="main-content">
+                <div class="focus-pod-card space-card" 
+                    data-title="FOCUS POD" 
+                    data-price="₱299/day" 
+                    data-desc="This is a quiet, distraction-free pod perfect for deep work and studying. Includes high-speed Wi-Fi and ergonomic seating.">
+                    <div class="book-now-card">
+                        <div>
+                            <p class="book-now-text">Book Now</p>
+                        </div>
+                    </div>
+                    <img src="images/focus pod.png" alt="table" class="table-image">
+                    <p class="booking-spaces-title">FOCUS POD</p>
+                    <p class="booking-space-price">299/day</p>
+                    <p class="learn-more-text">Read more</p>
+                    <div class="map-container"></div>
+                </div>
+
+            <div class="power-bar-card space-card"
+                data-title= "POWER BAR" 
+                data-price= "₱280/day" 
+                data-desc= "This is a quiet, distraction-free pod perfect for deep work and studying. Includes high-speed Wi-Fi and ergonomic seating.">
+                <div class="book-now-card">
+                    <div>
+                        <p class="book-now-text">Book Now</p>
+                    </div>
+                </div>
+                <img src="images/power_bar.png" alt="table" class="table-image">
+                <p class="booking-spaces-title">POWER BAR</p>
+                <p class="booking-space-price">280/day</p>
+                <p class="learn-more-text">Read more</p>
+                <div class="map-container"></div>
+            </div>
+
+            <div class="design-dock-card space-card"
+                data-title= "DESIGN DOCK" 
+                data-price= "₱249/day" 
+                data-desc= "This is a quiet, distraction-free pod perfect for deep work and studying. Includes high-speed Wi-Fi and ergonomic seating.">
+                <div class="book-now-card">
+                    <div>
+                        <p class="book-now-text">Book Now</p>
+                    </div>
+                </div>
+                <img src="images/design_dock.png" alt="table" class="table-image">
+                <p class="booking-spaces-title">DESIGN DOCK</p>
+                <p class="booking-space-price">249/day</p>
+                <p class="learn-more-text">Read more</p>
+                <div class="map-container"></div>
+            </div>
+
+            <div class="think-spot-card space-card"
+                data-title= "THINK SPOT" 
+                data-price= "₱199/day" 
+                data-desc= "This is a quiet, distraction-free pod perfect for deep work and studying. Includes high-speed Wi-Fi and ergonomic seating.">
+                <div class="book-now-card">
+                    <div>
+                        <p class="book-now-text">Book Now</p>
+                    </div>
+                </div>
+                <img src="images/think_spot.png" alt="table" class="table-image">
+                <p class="booking-spaces-title">THINK SPOT</p>
+                <p class="booking-space-price">199/day</p>
+                <p class="learn-more-text">Read more</p>
+                <div class="map-container"></div>
+            </div>
+
+            <div class="collab-nook-card space-card"
+                data-title= "COLLAB NOOK" 
+                data-price= "₱269/day" 
+                data-desc= "This is a quiet, distraction-free pod perfect for deep work and studying. Includes high-speed Wi-Fi and ergonomic seating.">
+                <div class="book-now-card">
+                    <div>
+                        <p class="book-now-text">Book Now</p>
+                    </div>
+                </div>
+                <img src="images\temp-table.png" alt="table" class="table-image">
+                <p class="booking-spaces-title">COLLAB NOOK</p>
+                <p class="booking-space-price">269/day</p>
+                <p class="learn-more-text">Read more</p>
+                <div class="map-container"></div>
+            </div>
+
+            <div class="flow-row-card space-card"
+                data-title= "FLOW ROW" 
+                data-price= "₱249/day" 
+                data-desc= "This is a quiet, distraction-free pod perfect for deep work and studying. Includes high-speed Wi-Fi and ergonomic seating.">
+                <div class="book-now-card">
+                    <div>
+                        <p class="book-now-text">Book Now</p>
+                    </div>
+                </div>
+                <img src="images\temp-table.png" alt="table" class="table-image">
+                <p class="booking-spaces-title">FLOW ROW</p>
+                <p class="booking-space-price">249/day</p>
+                <p class="learn-more-text">Read more</p>
+                <div class="map-container"></div>
+            </div>
+
+            <div class="sky-pod-card space-card"
+                data-title= "SKY POD" 
+                data-price= "₱1,120/day" 
+                data-desc= "This is a quiet, distraction-free pod perfect for deep work and studying. Includes high-speed Wi-Fi and ergonomic seating.">
+                <div class="book-now-card">
+                    <div>
+                        <p class="book-now-text">Book Now</p>
+                    </div>
+                </div>
+                <img src="images/sky_pod.png" alt="table" class="table-image">
+                <p class="booking-spaces-title">SKY POD</p>
+                <p class="booking-space-price">1,120/day</p>
+                <p class="learn-more-text">Read more</p>
+                <div class="map-container"></div>
+            </div>
+
+            <div class="sky-circle-card space-card"
+                data-title= "SKY CIRCLE" 
+                data-price= "₱1,600/day" 
+                data-desc= "This is a quiet, distraction-free pod perfect for deep work and studying. Includes high-speed Wi-Fi and ergonomic seating.">
+                <div class="book-now-card">
+                    <div>
+                        <p class="book-now-text">Book Now</p>
+                    </div>
+                </div>
+                <img src="images\temp-table.png" alt="table" class="table-image">
+                <p class="booking-spaces-title">SKY CIRCLE</p>
+                <p class="booking-space-price">1,600/day</p>
+                <p class="learn-more-text">Read more</p>
+                <div class="map-container"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="space-modal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-btn" id="close-modal">&times;</span>
+                <div class="modal-content-group">
+                    <h1 id="modal-title">TITLE</h1>
+                    <p id="modal-price">PRICE</p>
+                    <hr class="modal-divider">
+                <div id="modal-desc">DESCRIPTION</div>
+                <div class="info-card-book-now">
+                    <div>
+                        <p class="info-card-book-now-text">Book Now</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
