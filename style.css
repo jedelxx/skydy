@@ -276,7 +276,7 @@ body {
 .booking-spaces-title{
     position: absolute;
     top: 20%;
-    left: 51%;
+    left: 52%;
     font-family: "Google Sans Flex";
     font-size: 30px;
     font-weight: 650;
@@ -289,7 +289,7 @@ body {
 .booking-space-price {
     position: absolute;
     top: 33%;
-    left: 51%;
+    left: 59%;
     font-family: "Google Sans Flex";
     font-size: 30px;
     font-weight: 500;
@@ -297,6 +297,98 @@ body {
     letter-spacing: 2px;
     color: rgb(8, 6, 4);
     text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.collabnook-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 51%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);   
+}
+
+.focuspod-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 54.5%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.powerbar-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 54.5%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.thinkspot-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 54.5%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.flowrow-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 55%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);  
+}
+
+.skycircle-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 56%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.skypod-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 59.5%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+
 }
 
 .book-now-card{   
@@ -491,12 +583,8 @@ body {
 
 .close-btn:hover { color: #e22232; }
 
-/* 1. THE WRAPPER: Move the whole block of text around */
 .modal-content-group {
     margin-top: 40%; 
-    
-    /* If you want to center all the text, uncomment the line below: */
-    /* text-align: center; */
 }
 
 #modal-title {
@@ -528,7 +616,6 @@ body {
     line-height: 1.6; /* Makes paragraphs easier to read */
 }
 
-/* 6. STYLE THE INJECTED BULLET POINTS */
 #modal-desc ul {
     margin-top: 10px;
     margin-bottom: 15px;
