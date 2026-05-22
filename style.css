@@ -698,7 +698,7 @@ body {
 } */
 
 #back-arrow {
-    width: 70px;
+    width: 60px;
     height: auto;     
     margin-top: 25px;  
     margin-left: 25px; 
@@ -711,12 +711,16 @@ body {
 }
 
 .booking-calendar {
-    width: 350px;
-    background: white;
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    width: 500px;
+    height: 520px;
+    background: rgba(255, 255, 255, 0.91);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    font-family: 'Roboto', sans-serif;
+    font-family: "Google Sans Flex";
 }
 
 .calendar-header {
@@ -746,18 +750,16 @@ body {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
 .calendar-day:hover { background-color: #f9eb85; }
 
-/* The class we add when a user clicks a date! */
 .calendar-day.selected {
     background-color: #3b71ca;
     color: white;
     font-weight: bold;
 }
-
 
 @keyframes popIn {
     0% { transform: scale(0.9); opacity: 0; }
