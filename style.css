@@ -211,7 +211,7 @@ body {
     display: none;
 }
 
-.info-card-book-now::-webkit-scrollbar{
+.book-now-card::-webkit-scrollbar{
     display: none;
 }
 
@@ -409,10 +409,6 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.078); 
     cursor: pointer;
 }
-.book-now-card:hover{
-    background-color: #253e68;
-    color: #b3ccf6; 
-}
 
 .book-now-text{
     position: absolute;
@@ -420,6 +416,15 @@ body {
     top: 31%;
     left: 34%;
     font-weight: 650;
+    color: #0c1018c2;
+}
+
+.book-now-card:hover{
+    background-color: #253e68;
+}
+
+.book-now-card:hover .book-now-text {
+    color: #b3ccf6; 
 }
 
 .info-card-book-now{
@@ -692,6 +697,66 @@ body {
     margin-bottom: 10px;    
 } */
 
+#back-arrow {
+    width: 70px;
+    height: auto;     
+    margin-top: 25px;  
+    margin-left: 25px; 
+    transition: transform 0.2s ease;
+}
+
+#back-arrow:hover{
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+.booking-calendar {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 { margin: 0; font-size: 20px; color: #253e68; }
+.calendar-header button { border: none; background: none; font-size: 20px; cursor: pointer; }
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Creates 7 equal columns */
+    gap: 5px;
+    text-align: center;
+}
+
+.day-name { font-weight: bold; color: #666; font-size: 14px; margin-bottom: 10px; }
+
+.calendar-days {
+    display: contents; /* Allows the days to follow the 7-column grid */
+}
+
+.calendar-day {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.calendar-day:hover { background-color: #f9eb85; }
+
+/* The class we add when a user clicks a date! */
+.calendar-day.selected {
+    background-color: #3b71ca;
+    color: white;
+    font-weight: bold;
+}
 
 
 @keyframes popIn {
