@@ -761,6 +761,94 @@ body {
     font-weight: bold;
 }
 
+.booking-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 10px;  */
+    width: 100%;
+    margin-top: 50px;
+}
+
+.floor-plan-container {
+    top: 15%;
+    left: 40%;
+    width: 800px;
+    height: 520px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.floor-plan-header {
+    background-color: #3b71ca; 
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.floor-plan-map {
+    position: relative; /* Allows us to place seats exactly where we want them */
+    width: 100%;
+    height: 600px; /* Adjust if you need a taller map */
+    background-color: #fdf5d3; 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.seat {
+    position: absolute;
+    background-color: #eab308; 
+    border: 2px solid #a16207; 
+    cursor: pointer;
+    transition: all 0.2ms;
+}
+
+/* SEATS */
+.rect-seat {
+    width: 35px;
+    height: 25px;
+    border-radius: 8px; 
+}
+
+.round-seat {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; 
+}
+
+/* Seat Interaction States */
+.seat:hover:not(.unavailable) {
+    transform: scale(1.1); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.seat.selected {
+    background-color: #60a5fa; /* Turns light blue when clicked! */
+    border-color: #2563eb;
+}
+
+.seat.unavailable {
+    background-color: #d1d5db; /* Grayed out */
+    border-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+#selected-seat-text {
+    padding: 15px;
+    text-align: center;
+    margin: 0;
+    color: #333;
+    background: white;
+}
+
 @keyframes popIn {
     0% { transform: scale(0.9); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
