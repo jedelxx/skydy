@@ -713,10 +713,10 @@ body {
 .booking-calendar {
     position: absolute;
     top: 15%;
-    left: 8%;
+    left: 11%;
     width: 500px;
     height: 520px;
-    background: rgba(255, 255, 255, 0.91);
+    background: #f1eee5;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -730,7 +730,7 @@ body {
     margin-bottom: 20px;
 }
 
-.calendar-header h2 { margin: 0; font-size: 20px; color: #253e68; }
+.calendar-header h2 { margin: 2px; font-size: 20px; color: #253e68; }
 .calendar-header button { border: none; background: none; font-size: 20px; cursor: pointer; }
 
 .calendar-grid {
@@ -743,7 +743,7 @@ body {
 .day-name { font-weight: bold; color: #666; font-size: 14px; margin-bottom: 10px; }
 
 .calendar-days {
-    display: contents; /* Allows the days to follow the 7-column grid */
+    display: contents;
 }
 
 .calendar-day {
@@ -770,15 +770,17 @@ body {
     margin-top: 50px;
 }
 
+/* FLOOR MAP */
+
 .floor-plan-container {
     top: 15%;
-    left: 40%;
-    width: 800px;
+    left: 43%;
+    width: 700px;
     height: 520px;
     background: white;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    font-family: 'Roboto', sans-serif;
+    font-family: "Google Sans Flex";
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -786,19 +788,20 @@ body {
 }
 
 .floor-plan-header {
-    background-color: #3b71ca; 
-    color: white;
+    background-color: #f1eee5; 
+    color: #253e68;
     text-align: center;
     padding: 15px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
+    font-family: "Google Sans Flex";
 }
 
 .floor-plan-map {
     position: relative; /* Allows us to place seats exactly where we want them */
     width: 100%;
     height: 600px; /* Adjust if you need a taller map */
-    background-color: #fdf5d3; 
+    background-color: #f1eee5; 
     padding: 20px;
     box-sizing: border-box;
 }
@@ -808,45 +811,49 @@ body {
     background-color: #eab308; 
     border: 2px solid #a16207; 
     cursor: pointer;
-    transition: all 0.2ms;
+    transition: all 0.2ms ease;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #4a3304; 
 }
 
 /* SEATS */
-.rect-seat {
+.focus-pod-seat {
     width: 35px;
-    height: 25px;
-    border-radius: 8px; 
+    height: 35px;
+    border-radius: 12px; 
 }
 
-.round-seat {
-    width: 30px;
-    height: 30px;
+.sky-pod-seat{
+    width: 45px;
+    height: 45px;
+    border-radius: 12px; 
+}
+
+.think-spot-seat {
+    width: 40px;
+    height: 40px;
     border-radius: 50%; 
 }
 
+/* .power-bar-seat{
+
+} */
+
 /* Seat Interaction States */
-.seat:hover:not(.unavailable) {
+/* .seat:hover:not(.unavailable) {
     transform: scale(1.1); 
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.seat.selected {
-    background-color: #60a5fa; /* Turns light blue when clicked! */
-    border-color: #2563eb;
-}
+} */
 
 .seat.unavailable {
     background-color: #d1d5db; /* Grayed out */
     border-color: #9ca3af;
     cursor: not-allowed;
-}
-
-#selected-seat-text {
-    padding: 15px;
-    text-align: center;
-    margin: 0;
-    color: #333;
-    background: white;
 }
 
 @keyframes popIn {
