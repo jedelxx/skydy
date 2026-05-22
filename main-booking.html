@@ -19,13 +19,12 @@
 
 <body>
     <div id="bg-slider"></div>
-    
     <div id="loading-screen">
         <img src="images/logo.png" alt="Skydy Logo" class="loader-logo">
     </div>
     
     <div class="container">
-        <a href="index.html">
+        <a href="book.html">
             <img src="images/back-arrow.png" id="back-arrow" class="back-arrow">
         </a>
         
@@ -44,10 +43,19 @@
             </div>
             <p id="selected-date-text">Selected Date: None</p>
         </div>
+
+		<div class="floor-plan-container">
+            <div class="floor-plan-header">Pick Your Spot:</div>
+            
+            <div class="floor-plan-map" id="floor-map">
+                
+            </div>
+            
+            <p id="selected-seat-text">Selected Seat: None</p>
+        </div>
     </div>
 
     <script>
-        // --- Loading Screen ---
         setTimeout(() => {
             const loader = document.getElementById('loading-screen');
             if (loader) {
@@ -56,7 +64,6 @@
             }
         }, 2000);
 
-        // --- Background Slider ---
         const bgImages = [
             'url("images/wp.jpg")',
             'url("images/wp1.jpg")', 
@@ -130,6 +137,67 @@
             });
 
             renderCalendar();
+        }
+
+        const floorMap = document.getElementById('floor-map');
+
+        if (floorMap) {
+            const seatDatabase = [
+                // Top Booths
+                { id: 'B1', type: 'power-bar-seat', top: '10%', left: '35%', status: 'available' },
+                { id: 'B2', type: 'power-bar-seat', top: '10%', left: '45%', status: 'available' },
+                
+                // Think Spot
+                { id: 'TS1', type: 'think-spot-seat', top: '50%', left: '20%', status: 'available' },
+                { id: 'TS2', type: 'think-spot-seat', top: '60%', left: '15%', status: 'available' },
+                { id: 'TS3', type: 'think-spot-seat', top: '60%', left: '25%', status: 'available' },
+
+                // Sky Pod
+                { id: 'SP1', type: 'sky-pod-seat', top: '400px', left: '90%', status: 'available' },
+                { id: 'SP2', type: 'sky-pod-seat', top: '320px', left: '90%', status: 'available' },
+                
+                // Focus Pods
+                { id: 'FP1', type: 'focus-pod-seat', top: '300px', left: '48%', status: 'available' },
+                { id: 'FP2', type: 'focus-pod-seat', top: '337px', left: '48%', status: 'available' },
+                { id: 'FP3', type: 'focus-pod-seat', top: '373px', left: '48%', status: 'available' },
+                { id: 'FP4', type: 'focus-pod-seat', top: '410px', left: '48%', status: 'available' },
+                { id: 'FP5', type: 'focus-pod-seat', top: '300px', left: '56%', status: 'available' },
+                { id: 'FP6', type: 'focus-pod-seat', top: '337px', left: '56%', status: 'available' },
+                { id: 'FP7', type: 'focus-pod-seat', top: '373px', left: '56%', status: 'available' },
+                { id: 'FP8', type: 'focus-pod-seat', top: '410px', left: '56%', status: 'available' },
+                { id: 'FP9', type: 'focus-pod-seat', top: '337px', left: '64%', status: 'available' },
+                { id: 'FP10', type: 'focus-pod-seat', top: '373px', left: '64%', status: 'available' },
+                { id: 'FP11', type: 'focus-pod-seat', top: '410px', left: '64%', status: 'available' }
+            ];
+
+            seatDatabase.forEach(seatData => {
+                const seatElement = document.createElement('div');
+                
+                seatElement.className = `seat ${seatData.type}`;
+                if (seatData.status === 'unavailable') {
+                    seatElement.classList.add('unavailable');
+                }
+                
+                seatElement.style.top = seatData.top;
+                seatElement.style.left = seatData.left;
+                seatElement.textContent = seatData.id;
+
+                if (seatData.status === 'available') {
+                    seatElement.addEventListener('click', () => {
+                        // Find all seats and remove the blue color
+                        document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+                        
+                        // Make this specific seat blue
+                        seatElement.classList.add('selected');
+                        
+                        // Update the text at the bottom to say "Selected Seat: B1"
+                        // selectedSeatText.textContent = `Selected Seat: ${seatData.id}`;
+                    });
+                }
+
+                // Put the finished seat onto the map!
+                floorMap.appendChild(seatElement);
+            });
         }
     </script>
 </body>
