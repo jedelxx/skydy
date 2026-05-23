@@ -143,31 +143,85 @@
 
         if (floorMap) {
             const seatDatabase = [
+
+                // OTHERS
+                { id: 'Pantry', type: 'pantry', top: '5%', left: '26%'},
+                { id: 'Comfort Room', type: 'cr', top: '5%', left: '2%'}, 
+
+                // SKYLINE
+                { id: 'SL1', type: 'sky-line-room', top: '27%', left: '2%' },
+
                 // Top Booths
                 { id: 'B1', type: 'power-bar-seat', top: '10%', left: '35%', status: 'available' },
                 { id: 'B2', type: 'power-bar-seat', top: '10%', left: '45%', status: 'available' },
                 
                 // Think Spot
-                { id: 'TS1', type: 'think-spot-seat', top: '50%', left: '20%', status: 'available' },
-                { id: 'TS2', type: 'think-spot-seat', top: '60%', left: '15%', status: 'available' },
-                { id: 'TS3', type: 'think-spot-seat', top: '60%', left: '25%', status: 'available' },
+                { id: 'TS1', type: 'think-spot-seat', top: '48%', left: '26%', status: 'available' },
+                { id: 'TS2', type: 'think-spot-seat', top: '54%', left: '21%', status: 'available' },
+                { id: 'TS3', type: 'think-spot-seat', top: '56%', left: '28%', status: 'available' },
+
+                // Design Dock
+
+                { id: 'DD1', type: 'design-dock-seat', top: '65%', left: '13%', status: 'available'},
+                { id: 'DD2', type: 'design-dock-seat', top: '55%', left: '2%', status: 'available'},
+                { id: 'DD3', type: 'design-dock-seat', top: '45%', left: '2%', status: 'available'},
 
                 // Sky Pod
-                { id: 'SP1', type: 'sky-pod-seat', top: '400px', left: '90%', status: 'available' },
-                { id: 'SP2', type: 'sky-pod-seat', top: '320px', left: '90%', status: 'available' },
+                { id: 'SP1', type: 'sky-pod-seat', top: '465px', left: '90%', status: 'available' },
+                { id: 'SP2', type: 'sky-pod-seat', top: '385px', left: '90%', status: 'available' },
                 
                 // Focus Pods
-                { id: 'FP1', type: 'focus-pod-seat', top: '300px', left: '48%', status: 'available' },
-                { id: 'FP2', type: 'focus-pod-seat', top: '337px', left: '48%', status: 'available' },
-                { id: 'FP3', type: 'focus-pod-seat', top: '373px', left: '48%', status: 'available' },
-                { id: 'FP4', type: 'focus-pod-seat', top: '410px', left: '48%', status: 'available' },
-                { id: 'FP5', type: 'focus-pod-seat', top: '300px', left: '56%', status: 'available' },
-                { id: 'FP6', type: 'focus-pod-seat', top: '337px', left: '56%', status: 'available' },
-                { id: 'FP7', type: 'focus-pod-seat', top: '373px', left: '56%', status: 'available' },
-                { id: 'FP8', type: 'focus-pod-seat', top: '410px', left: '56%', status: 'available' },
-                { id: 'FP9', type: 'focus-pod-seat', top: '337px', left: '64%', status: 'available' },
-                { id: 'FP10', type: 'focus-pod-seat', top: '373px', left: '64%', status: 'available' },
-                { id: 'FP11', type: 'focus-pod-seat', top: '410px', left: '64%', status: 'available' }
+                { id: 'FP1', type: 'focus-pod-seat', top: '365px', left: '48%', status: 'available' },
+                { id: 'FP2', type: 'focus-pod-seat', top: '402px', left: '48%', status: 'available' },
+                { id: 'FP3', type: 'focus-pod-seat', top: '438px', left: '48%', status: 'available' },
+                { id: 'FP4', type: 'focus-pod-seat', top: '475px', left: '48%', status: 'available' },
+                { id: 'FP5', type: 'focus-pod-seat', top: '365px', left: '56%', status: 'available' },
+                { id: 'FP6', type: 'focus-pod-seat', top: '402px', left: '56%', status: 'available' },
+                { id: 'FP7', type: 'focus-pod-seat', top: '438px', left: '56%', status: 'available' },
+                { id: 'FP8', type: 'focus-pod-seat', top: '475px', left: '56%', status: 'available' },
+                { id: 'FP9', type: 'focus-pod-seat', top: '402px', left: '64%', status: 'available' },
+                { id: 'FP10', type: 'focus-pod-seat', top: '438px', left: '64%', status: 'available' },
+                { id: 'FP11', type: 'focus-pod-seat', top: '475px', left: '64%', status: 'available' },
+
+                { id: 'FP12', type: 'focus-pod-seat', top: '315px', left: '93%', status: 'available' },
+                { id: 'FP13', type: 'focus-pod-seat', top: '315px', left: '86.8%', status: 'available' },
+                { id: 'FP14', type: 'focus-pod-seat', top: '315px', left: '80.6%', status: 'available' },
+
+                { id: 'FP15', type: 'focus-pod-seat', top: '265px', left: '93%', status: 'available' },
+                { id: 'FP16', type: 'focus-pod-seat', top: '265px', left: '86.8%', status: 'available' },
+                { id: 'FP17', type: 'focus-pod-seat', top: '265px', left: '80.6%', status: 'available' },
+                { id: 'FP18', type: 'focus-pod-seat', top: '265px', left: '74.4%', status: 'available' },
+                { id: 'FP19', type: 'focus-pod-seat', top: '265px', left: '68.3%', status: 'available' },
+
+                { id: 'FP20', type: 'focus-pod-seat', top: '225px', left: '93%', status: 'available' },
+                { id: 'FP21', type: 'focus-pod-seat', top: '225px', left: '86.8%', status: 'available' },
+                { id: 'FP22', type: 'focus-pod-seat', top: '225px', left: '74.4%', status: 'available' },
+                { id: 'FP23', type: 'focus-pod-seat', top: '225px', left: '68.3%', status: 'available' },
+                { id: 'FP24', type: 'focus-pod-seat', top: '225px', left: '62.3%', status: 'available' },
+
+                { id: 'FP25', type: 'focus-pod-seat', top: '170px', left: '93%', status: 'available' },
+                { id: 'FP26', type: 'focus-pod-seat', top: '170px', left: '86.8%', status: 'available' },
+                { id: 'FP27', type: 'focus-pod-seat', top: '170px', left: '80.6%', status: 'available' },
+                { id: 'FP28', type: 'focus-pod-seat', top: '170px', left: '74.4%', status: 'available' },
+                { id: 'FP29', type: 'focus-pod-seat', top: '170px', left: '68.3%', status: 'available' },
+
+                { id: 'FP30', type: 'focus-pod-seat', top: '130px', left: '93%', status: 'available' },
+                { id: 'FP31', type: 'focus-pod-seat', top: '130px', left: '86.8%', status: 'available' },
+                { id: 'FP32', type: 'focus-pod-seat', top: '130px', left: '80.6%', status: 'available' },
+                { id: 'FP33', type: 'focus-pod-seat', top: '130px', left: '74.4%', status: 'available' },
+                { id: 'FP34', type: 'focus-pod-seat', top: '130px', left: '68.3%', status: 'available' },
+
+                // FLOW ROW
+                { id: 'FR1', type: 'flow-row-seat', top: '232px', left: '48.5%', status: 'available'},
+                { id: 'FR2', type: 'flow-row-seat', top: '270px', left: '48.5%', status: 'available'},
+                { id: 'FR3', type: 'flow-row-seat', top: '232px', left: '53%', status: 'available'},
+                { id: 'FR4', type: 'flow-row-seat', top: '270px', left: '53%', status: 'available'},
+
+                { id: 'FR5', type: 'flow-row-seat', top: '127px', left: '52%', status: 'available'},
+                { id: 'FR6', type: 'flow-row-seat', top: '165px', left: '52%', status: 'available'},
+                { id: 'FR7', type: 'flow-row-seat', top: '127px', left: '56.5%', status: 'available'},
+                { id: 'FR8', type: 'flow-row-seat', top: '165px', left: '56.5%', status: 'available'},
+
             ];
 
             seatDatabase.forEach(seatData => {
@@ -185,10 +239,10 @@
                 if (seatData.status === 'available') {
                     seatElement.addEventListener('click', () => {
                         // Find all seats and remove the blue color
-                        document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+                        // document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
                         
                         // Make this specific seat blue
-                        seatElement.classList.add('selected');
+                        // seatElement.classList.add('selected');
                         
                         // Update the text at the bottom to say "Selected Seat: B1"
                         // selectedSeatText.textContent = `Selected Seat: ${seatData.id}`;
