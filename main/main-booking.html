@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skydy Study Hub - Book</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Modak&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+        .container {
+            display: flex;
+            height: 100vh;
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(15, 9, 9, 0.601);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg-slider"></div>
+    <div id="loading-screen">
+        <img src="images/logo.png" alt="Skydy Logo" class="loader-logo">
+    </div>
+    
+    <div class="container">
+        <a href="book.html">
+            <img src="images/back-arrow.png" id="back-arrow" class="back-arrow">
+        </a>
+        
+        <div class="booking-calendar">
+            <div class="calendar-header">
+                <button id="prev-month">&lt;</button>
+                <h2 id="month-year">May 2026</h2>
+                <button id="next-month">&gt;</button>
+            </div>
+            <div class="calendar-grid">
+                <div class="day-name">Sun</div><div class="day-name">Mon</div>
+                <div class="day-name">Tue</div><div class="day-name">Wed</div>
+                <div class="day-name">Thu</div><div class="day-name">Fri</div>
+                <div class="day-name">Sat</div>
+                <div id="calendar-days" class="calendar-days"></div>
+            </div>
+            <p id="selected-date-text">Selected Date: None</p>
+        </div>
+
+		<div class="floor-plan-container">
+            <div class="floor-plan-header">Pick Your Spot:</div>
+            
+            <div class="floor-plan-map" id="floor-map">
+                
+            </div>
+            
+            <p id="selected-seat-text">Selected Seat: None</p>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            const loader = document.getElementById('loading-screen');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 600); 
+            }
+        }, 2000);
+
+        const bgImages = [
+            'url("images/wp.jpg")',
+            'url("images/wp1.jpg")', 
+            'url("images/wp2.jpg")',
+            'url("images/wp3.jpg")', 
+            'url("images/wp4.jpg")', 
+        ];
+        
+        const slider = document.getElementById('bg-slider');
+        if (slider) {
+            let currentImageIndex = 0;
+            slider.style.backgroundImage = bgImages[0];
+
+            setInterval(() => {
+                slider.style.opacity = 0;
+                setTimeout(() => {
+                    currentImageIndex = (currentImageIndex + 1) % bgImages.length; 
+                    slider.style.backgroundImage = bgImages[currentImageIndex];
+                    slider.style.opacity = 1; 
+                }, 1000); 
+            }, 6000);
+        }
+
+        const monthYearText = document.getElementById('month-year');
+        const calendarDays = document.getElementById('calendar-days');
+        const selectedDateText = document.getElementById('selected-date-text');
+
+        if (calendarDays) {
+            let currentDate = new Date(); 
+
+            function renderCalendar() {
+                calendarDays.innerHTML = ''; 
+                
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                
+                monthYearText.textContent = `${monthNames[month]} ${year}`;
+                
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyDiv = document.createElement('div');
+                    calendarDays.appendChild(emptyDiv);
+                }
+                
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('calendar-day');
+                    dayDiv.textContent = i;
+                    
+                    dayDiv.addEventListener('click', () => {
+                        document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                        dayDiv.classList.add('selected');
+                        selectedDateText.textContent = `Selected Date: ${monthNames[month]} ${i}, ${year}`;
+                    });
+                    
+                    calendarDays.appendChild(dayDiv);
+                }
+            }
+
+            document.getElementById('prev-month').addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+
+            document.getElementById('next-month').addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+
+            renderCalendar();
+        }
+
+        const floorMap = document.getElementById('floor-map');
+
+        if (floorMap) {
+            const seatDatabase = [
+
+                // OTHERS
+                { id: 'Pantry', type: 'pantry', top: '5%', left: '26%'},
+                { id: 'Comfort Room', type: 'cr', top: '5%', left: '2%'}, 
+
+                // SKYLINE
+                { id: 'SL1', type: 'sky-line-room', top: '27%', left: '2%' },
+
+                // Top Booths
+                { id: 'B1', type: 'power-bar-seat', top: '10%', left: '35%', status: 'available' },
+                { id: 'B2', type: 'power-bar-seat', top: '10%', left: '45%', status: 'available' },
+                
+                // Think Spot
+                { id: 'TS1', type: 'think-spot-seat', top: '48%', left: '26%', status: 'available' },
+                { id: 'TS2', type: 'think-spot-seat', top: '54%', left: '21%', status: 'available' },
+                { id: 'TS3', type: 'think-spot-seat', top: '56%', left: '28%', status: 'available' },
+
+                // Design Dock
+
+                { id: 'DD1', type: 'design-dock-seat', top: '65%', left: '13%', status: 'available'},
+                { id: 'DD2', type: 'design-dock-seat', top: '55%', left: '2%', status: 'available'},
+                { id: 'DD3', type: 'design-dock-seat', top: '45%', left: '2%', status: 'available'},
+
+                // Sky Pod
+                { id: 'SP1', type: 'sky-pod-seat', top: '465px', left: '90%', status: 'available' },
+                { id: 'SP2', type: 'sky-pod-seat', top: '385px', left: '90%', status: 'available' },
+                
+                // Focus Pods
+                { id: 'FP1', type: 'focus-pod-seat', top: '365px', left: '48%', status: 'available' },
+                { id: 'FP2', type: 'focus-pod-seat', top: '402px', left: '48%', status: 'available' },
+                { id: 'FP3', type: 'focus-pod-seat', top: '438px', left: '48%', status: 'available' },
+                { id: 'FP4', type: 'focus-pod-seat', top: '475px', left: '48%', status: 'available' },
+                { id: 'FP5', type: 'focus-pod-seat', top: '365px', left: '56%', status: 'available' },
+                { id: 'FP6', type: 'focus-pod-seat', top: '402px', left: '56%', status: 'available' },
+                { id: 'FP7', type: 'focus-pod-seat', top: '438px', left: '56%', status: 'available' },
+                { id: 'FP8', type: 'focus-pod-seat', top: '475px', left: '56%', status: 'available' },
+                { id: 'FP9', type: 'focus-pod-seat', top: '402px', left: '64%', status: 'available' },
+                { id: 'FP10', type: 'focus-pod-seat', top: '438px', left: '64%', status: 'available' },
+                { id: 'FP11', type: 'focus-pod-seat', top: '475px', left: '64%', status: 'available' },
+
+                { id: 'FP12', type: 'focus-pod-seat', top: '315px', left: '93%', status: 'available' },
+                { id: 'FP13', type: 'focus-pod-seat', top: '315px', left: '86.8%', status: 'available' },
+                { id: 'FP14', type: 'focus-pod-seat', top: '315px', left: '80.6%', status: 'available' },
+
+                { id: 'FP15', type: 'focus-pod-seat', top: '265px', left: '93%', status: 'available' },
+                { id: 'FP16', type: 'focus-pod-seat', top: '265px', left: '86.8%', status: 'available' },
+                { id: 'FP17', type: 'focus-pod-seat', top: '265px', left: '80.6%', status: 'available' },
+                { id: 'FP18', type: 'focus-pod-seat', top: '265px', left: '74.4%', status: 'available' },
+                { id: 'FP19', type: 'focus-pod-seat', top: '265px', left: '68.3%', status: 'available' },
+
+                { id: 'FP20', type: 'focus-pod-seat', top: '225px', left: '93%', status: 'available' },
+                { id: 'FP21', type: 'focus-pod-seat', top: '225px', left: '86.8%', status: 'available' },
+                { id: 'FP22', type: 'focus-pod-seat', top: '225px', left: '74.4%', status: 'available' },
+                { id: 'FP23', type: 'focus-pod-seat', top: '225px', left: '68.3%', status: 'available' },
+                { id: 'FP24', type: 'focus-pod-seat', top: '225px', left: '62.3%', status: 'available' },
+
+                { id: 'FP25', type: 'focus-pod-seat', top: '170px', left: '93%', status: 'available' },
+                { id: 'FP26', type: 'focus-pod-seat', top: '170px', left: '86.8%', status: 'available' },
+                { id: 'FP27', type: 'focus-pod-seat', top: '170px', left: '80.6%', status: 'available' },
+                { id: 'FP28', type: 'focus-pod-seat', top: '170px', left: '74.4%', status: 'available' },
+                { id: 'FP29', type: 'focus-pod-seat', top: '170px', left: '68.3%', status: 'available' },
+
+                { id: 'FP30', type: 'focus-pod-seat', top: '130px', left: '93%', status: 'available' },
+                { id: 'FP31', type: 'focus-pod-seat', top: '130px', left: '86.8%', status: 'available' },
+                { id: 'FP32', type: 'focus-pod-seat', top: '130px', left: '80.6%', status: 'available' },
+                { id: 'FP33', type: 'focus-pod-seat', top: '130px', left: '74.4%', status: 'available' },
+                { id: 'FP34', type: 'focus-pod-seat', top: '130px', left: '68.3%', status: 'available' },
+
+                // FLOW ROW
+                { id: 'FR1', type: 'flow-row-seat', top: '232px', left: '48.5%', status: 'available'},
+                { id: 'FR2', type: 'flow-row-seat', top: '270px', left: '48.5%', status: 'available'},
+                { id: 'FR3', type: 'flow-row-seat', top: '232px', left: '53%', status: 'available'},
+                { id: 'FR4', type: 'flow-row-seat', top: '270px', left: '53%', status: 'available'},
+
+                { id: 'FR5', type: 'flow-row-seat', top: '127px', left: '52%', status: 'available'},
+                { id: 'FR6', type: 'flow-row-seat', top: '165px', left: '52%', status: 'available'},
+                { id: 'FR7', type: 'flow-row-seat', top: '127px', left: '56.5%', status: 'available'},
+                { id: 'FR8', type: 'flow-row-seat', top: '165px', left: '56.5%', status: 'available'},
+
+            ];
+
+            seatDatabase.forEach(seatData => {
+                const seatElement = document.createElement('div');
+                
+                seatElement.className = `seat ${seatData.type}`;
+                if (seatData.status === 'unavailable') {
+                    seatElement.classList.add('unavailable');
+                }
+                
+                seatElement.style.top = seatData.top;
+                seatElement.style.left = seatData.left;
+                seatElement.textContent = seatData.id;
+
+                if (seatData.status === 'available') {
+                    seatElement.addEventListener('click', () => {
+                        // Find all seats and remove the blue color
+                        // document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+                        
+                        // Make this specific seat blue
+                        // seatElement.classList.add('selected');
+                        
+                        // Update the text at the bottom to say "Selected Seat: B1"
+                        // selectedSeatText.textContent = `Selected Seat: ${seatData.id}`;
+                    });
+                }
+
+                // Put the finished seat onto the map!
+                floorMap.appendChild(seatElement);
+            });
+        }
+    </script>
+</body>
+</html>

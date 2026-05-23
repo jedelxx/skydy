@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skydy Study Hub</title>
+    <link rel="stylesheet" href="/main/booking-popup.css">
+    <link rel="icon" type="image/png" href="/main/images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Modak&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+        .container{
+            display: flex;
+            height: 100vh;
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(15, 9, 9, 0.601);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="fp-backb">
+            <a href="/main/book.html">
+                <div>
+
+                </div>
+            </a>
+        </nav>
+    </div>
+
+
+
+<div id="bg-slider"></div>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="menu-icon">☰</div>
+            <ul class="nav-links">
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="/main/home.html">Home</a>
+                    <div class="curve-bottom"></div>
+                </li>
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="/main/book.html">Spaces &amp; Rates</a>
+                    <div class="curve-bottom"></div>
+                </li>
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="/main/contact.html">Contact Us</a>
+                    <div class="curve-bottom"></div>
+                </li>
+            </ul>
+            <div class="logo-container">
+                <a href="/main/home.html">
+                    <img src="images/logo.png" alt="Skydy Logo" class="footer-logo">
+                </a> 
+            </div>
+        </nav> 
+</body>
+
+<script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const sidebar = document.querySelector('.sidebar');
+    const navLinks = document.querySelector('.nav-links');
+    const logoContainer = document.querySelector('.logo-container');
+
+    menuIcon.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+    });
+
+    const bgImages = [
+    'url("/main/images/wp.jpg")',
+    'url("/main/images/wp1.jpg")', 
+    'url("/main/images/wp2.jpg")',
+    'url("/main/images/wp3.jpg")', 
+    'url("/main/images/wp4.jpg")', 
+];
+    
+    const slider = document.getElementById('bg-slider');
+    let currentImageIndex = 0;
+
+    slider.style.backgroundImage = bgImages[0];
+
+    setInterval(() => {
+        slider.style.opacity = 0;
+
+        setTimeout(() => {
+            currentImageIndex = (currentImageIndex + 1) % bgImages.length; 
+            slider.style.backgroundImage = bgImages[currentImageIndex];
+            slider.style.opacity = 1; 
+        }, 1000); 
+    }, 6000);
+</script>
+</html>
