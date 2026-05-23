@@ -713,6 +713,909 @@ body {
 .booking-calendar {
     position: absolute;
     top: 15%;
+    left: 16%;
+    width: 500px;
+    height: 520px;
+    background: #f1eee5;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: "Google Sans Flex";
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 { margin: 2px; font-size: 20px; color: #253e68; }
+.calendar-header button { border: none; background: none; font-size: 20px; cursor: pointer; }
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Creates 7 equal columns */
+    gap: 5px;
+    text-align: center;
+}
+
+.day-name { font-weight: bold; color: #666; font-size: 14px; margin-bottom: 10px; }
+
+.calendar-days {
+    display: contents;
+}
+
+.calendar-day {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calendar-day:hover { background-color: #f9eb85; }
+
+.calendar-day.selected {
+    background-color: #3b71ca;
+    color: white;
+    font-weight: bold;
+}
+
+.booking-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 10px;  */
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* FLOOR MAP */
+
+.floor-plan-container {
+    top: 11%;
+    left: 47%;
+    width: 650px;
+    height: 600px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: "Google Sans Flex";
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.floor-plan-header {
+    background-color: #f1eee5; 
+    color: #253e68;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Google Sans Flex";
+}
+
+.floor-plan-map {
+    position: relative; /* Allows us to place seats exactly where we want them */
+    width: 100%;
+    height: 600px; /* Adjust if you need a taller map */
+    background-color: #f1eee5; 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.seat {
+    position: absolute;
+    background-color: #eab308; 
+    border: 2px solid #a16207; 
+    cursor: pointer;
+    transition: all 0.2ms ease;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #4a3304; 
+}
+
+.pantry{
+    width: 60px;
+    height: 80px;
+    /* color: ; */
+}
+
+.cr{
+    width: 155px;
+    height: 80px;    
+}
+
+/* ROOMS */
+
+.sky-line-room{
+    width: 170px;
+    height: 80px;
+    border-radius: 12px;     
+}
+
+/* SEATS */
+.focus-pod-seat {
+    width: 35px;
+    height: 35px;
+    border-radius: 12px; 
+}
+
+.sky-pod-seat{
+    width: 45px;
+    height: 45px;
+    border-radius: 12px; 
+}
+
+.think-spot-seat {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+}
+
+/* .power-bar-seat{
+
+} */
+
+/* Seat Interaction States */
+/* .seat:hover:not(.unavailable) {
+    transform: scale(1.1); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+} */
+
+.design-dock-seat{
+    width: 55px;
+    height: 40px;
+    border-radius: 12%;   
+}
+
+.flow-row-seat{
+    width: 30px;
+    height: 38px;
+    border-radius: 12%;      
+}
+
+.seat.unavailable {
+    background-color: #d1d5db; /* Grayed out */
+    border-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes smoothLoad {
+    0% {
+        opacity: 0;
+        transform: scale(0.98) translateY(0px) 10ms ease;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) 10ms ease;
+    }
+}#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #11111161; /* Matches your dark body background */
+    z-index: 99999; /* Guarantees it is on top of absolutely everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s ease; /* Makes it fade out smoothly */
+}
+
+.element {
+  animation-name: bounceAnimation;
+  animation-duration: 0.9s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+
+.loader-logo {
+    width: 120px;
+    animation: bounceAnimation 0.9s ease infinite; 
+}
+
+@keyframes bounceAnimation {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+/* This class gets added by JavaScript to hide the screen */
+.fade-out-loader {
+    opacity: 0;
+    pointer-events: none; /* Stops the invisible box from blocking clicks */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: #111;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+#bg-slider {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1; 
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out; 
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+    animation: smoothLoad 0.4s;
+}
+
+.sidebar {
+    font-family: "Google Sans Flex";
+    width: 200px;
+    background-color: #3b71cab3;
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+    transition: width 0.3s ease;
+    overflow-x: hidden; 
+    white-space: nowrap; 
+    flex-shrink: 0; 
+}
+
+.menu-icon {
+    font-size: 30px;
+    padding: 0 20px;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 10px;
+    width: 60px;         
+    text-align: center;  
+    padding: 0;          
+    flex-shrink: 0;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 10px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 15vh;
+    transition: opacity 0.3s ease;
+  }
+
+.nav-links li {
+    position: relative;
+    padding: 4px 0;
+}
+
+.nav-links li a {
+    display: flex;
+    align-items: center;
+    padding: 13px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 40px 0 0 40px;
+    margin-left: 0;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    width: 200px;         
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-links li a:hover {
+    background-color: white;
+    margin-left: 15px;
+    color: #3b71ca;
+}
+
+.nav-links li a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 40px 0 0 40px;
+    background-color: transparent;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links li a:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-links li a:hover ~ .curve-top,
+.nav-links li:hover .curve-top {
+    opacity: 1;
+}
+
+.curve-top,
+.curve-bottom {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.curve-top {
+    top: -30px;
+    border-radius: 0 0 25px 0;
+    box-shadow: transparent;
+}
+
+.curve-bottom {
+    bottom: -30px;
+    border-radius: 0 25px 0 0;
+    box-shadow: transparent;
+}
+
+.nav-links li:hover .curve-top,
+.nav-links li:hover .curve-bottom {
+    opacity: 1;
+}
+
+.logo-container {
+    text-align: center;
+    z-index: 3;
+}
+
+.footer-logo {
+    width: 80px;
+    margin: 20px auto;
+    display: flex;
+    cursor: pointer;
+}
+
+.main-content::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-box::-webkit-scrollbar{
+    display: none;
+}
+
+.book-now-card::-webkit-scrollbar{
+    display: none;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    /* align-items: center; */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start; 
+    padding: 150px 40px 60px 40px;
+    gap: 60px;
+    background: transparent;
+    position: relative;
+    height: 100vh;           
+    overflow-y: auto; 
+    overflow-x: hidden;
+    scrollbar-width: none;
+    flex-shrink: 0;
+}
+
+/* SPACES & WORKSPACES */
+
+.focus-pod-card,
+.power-bar-card,
+.design-dock-card,
+.think-spot-card,
+.collab-nook-card,
+.flow-row-card,
+.sky-pod-card,
+.sky-circle-card {
+    width: 450px;           
+    height: 280px;      
+    min-width: 500px;     
+    background-color: #fffffbe7;
+    border-radius: 30px;
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+}
+
+.focus-pod-card:hover,
+.power-bar-card:hover,
+.design-dock-card:hover,
+.think-spot-card:hover,
+.collab-nook-card:hover,
+.flow-row-card:hover,
+.sky-pod-card:hover,
+.sky-circle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.table-image {
+    position: absolute;
+    top: 4%;
+    left: -5px;
+    height: 250px;
+    width: auto;
+}
+
+.booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 52%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.booking-space-price {
+    position: absolute;
+    top: 33%;
+    left: 59%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 500;
+    word-spacing: 1px; 
+    letter-spacing: 2px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.collabnook-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 51%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);   
+}
+
+.focuspod-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 54.5%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.powerbar-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 54.5%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.thinkspot-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 54.5%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.flowrow-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 55%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);  
+}
+
+.skycircle-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 56%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
+
+.skypod-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 59.5%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+
+}
+
+.book-now-card{   
+    width: 45%;           
+    height: 50px; 
+    top: 55%;  
+    left: 49%;   
+    background-color: #5586dbc2;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s ease;
+    position: absolute;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.078); 
+    cursor: pointer;
+}
+
+.book-now-text{
+    position: absolute;
+    font-family: "Google Sans Flex";
+    top: 31%;
+    left: 34%;
+    font-weight: 650;
+    color: #0c1018c2;
+}
+
+.book-now-card:hover{
+    background-color: #253e68;
+}
+
+.book-now-card:hover .book-now-text {
+    color: #b3ccf6; 
+}
+
+.info-card-book-now{
+    width: 20%;           
+    height: 55px; 
+    top: 67%;  
+    left: 75%;   
+    background-color: #5586dbc2;
+    border-radius: 20px;
+    overflow: hidden;
+    /* border: 5px solid #4b81ddc2; */
+    transition: all 0.1s ease;
+    position: absolute;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.098); 
+    cursor: pointer;
+}
+
+.info-card-book-now-text{
+    font-family: "Google Sans Flex";
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    font-weight: 600;   
+    color: #ddd;
+}
+
+.info-card-book-now:hover {
+    background-color: #f9eb85;
+}
+
+.info-card-book-now:hover p,
+.info-card-book-now:hover a,
+.info-card-book-now:hover .book-now-text {
+    color: rgb(8, 6, 4);
+    transition: 12ms ease-in-out;
+}
+
+.learn-more-text{
+    position: absolute;
+    font-family: "roboto";
+    top: 77%;
+    left: 65.5%;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4d4d4d;
+}
+
+
+.header {
+    font-family: "Roboto", sans-serif;
+    background-color: #3b71ca;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.map-container {
+    position: relative;
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Collapsed state */
+.sidebar.collapsed {
+    width: 60px;
+    background-color: rgba(59, 113, 202, 0.50);
+}
+
+.sidebar.collapsed .nav-links {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.collapsed .logo-container {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Smooth transition for everything */
+.sidebar {
+    transition: width 0.3s ease;
+}
+
+.nav-links {
+    transition: opacity 0.05s ease;
+}
+
+.logo-container {
+    transition: opacity 0.3s ease;
+}
+
+.hero-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+.text-group {
+    text-align: center; 
+}
+
+.tagline {
+    font-family: "Sour Gummy";
+    font-size: 110px;
+    font-weight: 1000;
+    word-spacing: -12px; 
+    letter-spacing: 1.5px;
+    color: rgba(255, 250, 250, 0.922);
+    line-height: 0.8;
+    text-align: center;
+    text-shadow: 2px 4px 45px rgba(0,0,0,0.4);
+    /* transition: all 0.3s ease; */
+}
+
+.location {
+    font-family: "Roboto";
+    font-size: 17px;
+    letter-spacing: 5px;
+    word-spacing: normal; 
+    color: white;
+    font-weight: normal;
+    font-variant: normal;
+    margin-top: 30px; 
+    /* transition: all 0.3s ease; */
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background-color: #fffffbf4;
+    width: 80%;
+    max-width: 1000px;
+    height: 90%;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 30px;
+    font-weight: bold ;
+    cursor: pointer;
+}
+
+.close-btn:hover { color: #e22232; }
+
+.modal-content-group {
+    margin-top: 40%; 
+}
+
+#modal-title {
+    font-family: 'Google Sans Flex'; /* Your custom font! */
+    font-size: 45px;
+    color: #111;
+    margin-bottom: 1px;
+    letter-spacing: 1px;
+}
+
+#modal-price {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3b71ca; /* Skydy Blue */
+    margin-bottom: 20px;
+}
+
+.modal-divider {
+    border: 0;
+    border-top: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+#modal-desc {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6; /* Makes paragraphs easier to read */
+}
+
+#modal-desc ul {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding-left: 20px; /* Pushes the bullets inward */
+}
+
+#modal-desc li {
+    margin-bottom: 8px; /* Spaces out the list items */
+}
+
+.bg-contact-container{
+    width: 100%;           
+    height: 100%; 
+    top: 40%; 
+    background: #ccccccbe;
+    /* transition: all 0.1s ease; */
+    position: absolute;
+    
+}
+.main-contact-container{
+    flex-shrink: 0; 
+    position: relative;
+    width: calc(300vh - 40vh); 
+    padding: 150vh 40px 60px 40px;         
+    height: 100%;      
+    max-width: 80%;     
+    background-color: #fffef5;
+    border-radius: 30px;
+    overflow: hidden;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+}
+
+.contact-us-text{
+    font-family: "Google Sans Flex";
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 8%;
+    text-align: center;
+}
+
+.gmaps{
+    position: absolute;
+    top: 6%;
+    left: 6%;
+}
+
+#contact-location-text{
+    font-family: "Google Sans Flex";
+    font-size: 20px;
+    position: absolute;
+    top: 19%;
+    left:50%;
+}
+
+#find-us-text{
+    font-family: "Google Sans Flex";
+    font-size: 35px;
+    font-weight: 500;
+    position: absolute;
+    top: 14%;
+    left:50%; 
+}
+
+/* .contact-divider{
+    border: 0;
+    border-top: 2px solid #0000005b;
+    margin-bottom: 10px;    
+} */
+
+#back-arrow {
+    width: 60px;
+    height: auto;     
+    margin-top: 25px;  
+    margin-left: 25px; 
+    transition: transform 0.2s ease;
+}
+
+#back-arrow:hover{
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+.booking-calendar {
+    position: absolute;
+    top: 15%;
     left: 11%;
     width: 500px;
     height: 520px;
