@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skydy Study Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Modak&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+        .container{
+            display: flex;
+            height: 100vh;
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(15, 9, 9, 0.601); 
+        }
+    </style>
+</head>    
+
+<body>
+    <div id="loading-screen">
+            <img src="images/logo.png" alt="Skydy Logo" class="loader-logo">
+    </div>
+<script>
+    // This is a completely isolated failsafe. It ignores any errors in your main script!
+    setTimeout(() => {
+        const loader = document.getElementById('loading-screen');
+        if (loader) {
+            loader.style.opacity = '0'; // Fade it out
+            setTimeout(() => loader.style.display = 'none', 600); // Delete it completely
+        }
+    }, 2000); // 2000 milliseconds = 2 seconds. It will disappear after 2 seconds guaranteed!
+</script>
+    <div id="bg-slider"></div>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="menu-icon">☰</div>
+            <ul class="nav-links">
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="index.html">Home</a>
+                    <div class="curve-bottom"></div>
+                </li>
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="book.html">Spaces &amp; Rates</a>
+                    <div class="curve-bottom"></div>
+                </li>
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="contact.html">Contact Us</a>
+                    <div class="curve-bottom"></div>
+                </li>
+            </ul>
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Skydy Logo" class="footer-logo">
+                </a>
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <div class="text-group">
+                <p class="tagline">Head in the skies,<br>mind on the grind.</p>
+                <p class="location">📍 3F RM101 Square, Ramon Magsaysay Blvd cor D. Ampil St., Sta. Mesa, Manila</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const sidebar = document.querySelector('.sidebar');
+        const navLinks = document.querySelector('.nav-links');
+        const logoContainer = document.querySelector('.logo-container');
+
+        menuIcon.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+
+        const bgImages = [
+        'url("images/wp.jpg")',
+        'url("images/wp1.jpg")', 
+        'url("images/wp2.jpg")',
+        'url("images/wp3.jpg")', 
+        'url("images/wp4.jpg")', 
+    ];
+    
+        const slider = document.getElementById('bg-slider');
+        let currentImageIndex = 0;
+
+        slider.style.backgroundImage = bgImages[0];
+
+        setInterval(() => {
+            slider.style.opacity = 0;
+
+            setTimeout(() => {
+                currentImageIndex = (currentImageIndex + 1) % bgImages.length; 
+                slider.style.backgroundImage = bgImages[currentImageIndex];
+                slider.style.opacity = 1; 
+            }, 1000); 
+        }, 6000);
+    </script>
+</body>
+</html>

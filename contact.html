@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skydy Study Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Modak&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+        .container{
+            display: flex;
+            height: 100vh;
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(15, 9, 9, 0.601);
+        }
+    </style>
+</head>    
+
+<body>
+    <div id="bg-slider"></div>
+    <div id="loading-screen">
+            <img src="images/logo.png" alt="Skydy Logo" class="loader-logo">
+    <script>
+        // This is a completely isolated failsafe. It ignores any errors in your main script!
+        setTimeout(() => {
+            const loader = document.getElementById('loading-screen');
+            if (loader) {
+                loader.style.opacity = '0'; // Fade it out
+                setTimeout(() => loader.style.display = 'none', 600); // Delete it completely
+            }
+        }, 2000); // 2000 milliseconds = 2 seconds. It will disappear after 2 seconds guaranteed!
+    </script>
+    </div>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="menu-icon">☰</div>
+            <ul class="nav-links">
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="index.html">Home</a>
+                    <div class="curve-bottom"></div>
+                </li>
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="book.html">Spaces &amp; Rates</a>
+                    <div class="curve-bottom"></div>
+                </li>
+                <li>
+                    <div class="curve-top"></div>
+                    <a href="contact.html">Contact Us</a>
+                    <div class="curve-bottom"></div>
+                </li>
+            </ul>
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Skydy Logo" class="footer-logo">
+                </a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <!-- <div class="bg-contact-container"></div> --> 
+            <div class="main-contact-container">
+                <a class="gmaps">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.4049707205845!2d121.00048927468531!3d14.601317877059962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c99eb3830baf%3A0x7a1086d3e3b5a3bd!2sSKYDY%20Hub%20and%20Coworking%20Space!5e1!3m2!1sen!2sph!4v1778854369482!5m2!1sen!2sph" 
+                        width="450" 
+                        height="350" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </a>
+            <div id="contact-location-text">3F RM101 Square, Ramon Magsaysay Blvd, cor D Ampil,<br>Santa Mesa, Manila, 1016 Metro Manila</div>
+            <div id="find-us-text">FIND US AT 👇</div>
+            <!-- <hr class="contact-divider"> -->
+            </div>
+            <div class="contact-us-text">Contact Us</div>
+        
+        </main>
+    </div>
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const sidebar = document.querySelector('.sidebar');
+        const navLinks = document.querySelector('.nav-links');
+        const logoContainer = document.querySelector('.logo-container');
+
+        menuIcon.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+
+        const bgImages = [
+        'url("images/wp.jpg")',
+        'url("images/wp1.jpg")', 
+        'url("images/wp2.jpg")',
+        'url("images/wp3.jpg")', 
+        'url("images/wp4.jpg")', 
+    ];
+    
+        const slider = document.getElementById('bg-slider');
+        let currentImageIndex = 0;
+
+        slider.style.backgroundImage = bgImages[0];
+
+        setInterval(() => {
+            slider.style.opacity = 0;
+
+            setTimeout(() => {
+                currentImageIndex = (currentImageIndex + 1) % bgImages.length; 
+                slider.style.backgroundImage = bgImages[currentImageIndex];
+                slider.style.opacity = 1; 
+            }, 1000); 
+        }, 6000);
+    </script>
+</body>
+</html>
