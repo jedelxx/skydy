@@ -284,10 +284,24 @@ body {
 
 .table-image {
     position: absolute;
-    top: 4%;
-    left: -5px;
-    height: 250px;
-    width: auto;
+    top: 5%;
+    left: 10px;          /* Pushes it slightly off the left wall */
+    width: 45%;          /* Tells the image to strictly take up the left half of the card */
+    height: 90%;         /* Keeps it safely inside the top and bottom edges */
+    object-fit: contain; /* THE MAGIC FIX: Keeps proportions perfect without squishing! */
+    transition: transform 0.4s ease;
+    animation: imageFadeIn 1s ease-out forwards;
+}
+
+@keyframes imageFadeIn {
+    0% { 
+        opacity: 0; 
+        transform: translateX(0); /* Starts slightly invisible and to the left */
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateX(0);     /* Glides smoothly into its final spot */
+    }
 }
 
 .booking-spaces-title{
