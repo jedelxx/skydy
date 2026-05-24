@@ -765,9 +765,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; 
     width: 100%;
     margin-top: 50px;
+    gap: 10px;
 }
 
 /* FLOOR MAP */
