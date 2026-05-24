@@ -63,11 +63,27 @@ body {
 
 .container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
     height: 100vh;
     backdrop-filter: blur(8px); 
     -webkit-backdrop-filter: blur(8px);
     animation: smoothLoad 0.4s;
 }
+
+/* .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+    animation: smoothLoad 0.4s;
+} */
 
 .sidebar {
     font-family: "Google Sans Flex";
@@ -698,11 +714,13 @@ body {
 } */
 
 #back-arrow {
+    position: absolute; /* Takes the arrow out of the layout flow */
+    top: 30px;
+    left: 30px;
     width: 60px;
     height: auto;     
-    margin-top: 25px;  
-    margin-left: 25px; 
     transition: transform 0.2s ease;
+    z-index: 100; /* Keeps it clickable above everything */
 }
 
 #back-arrow:hover{
@@ -711,16 +729,16 @@ body {
 }
 
 .booking-calendar {
-    position: absolute;
-    top: 15%;
-    left: 16%;
+    /* Notice there is NO position: absolute, top, or left here! */
     width: 450px;
+    max-width: 100%; 
     height: 520px;
     background: #f1eee5;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     font-family: "Google Sans Flex";
+    position: relative; /* Safe to use relative! */
 }
 
 .calendar-header {
@@ -763,19 +781,21 @@ body {
 
 .booking-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centers them horizontally */
+    align-items: center;     /* Centers them vertically */
     width: 100%;
-    margin-top: 50px;
+    height: 100vh;           /* Takes up the full height of the screen */
+    gap: 40px;               /* The unbreakable 40px wall between them */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* FLOOR MAP */
 
 .floor-plan-container {
-    top: 13%;
-    left: 50%;
-    width: 600px;
-    max-width: 500px;
+    /* Notice there is NO position: absolute, top, or left here! */
+    width: 700px;
+    max-width: 100%;
     height: 550px;
     background: #f1eee5;
     border-radius: 15px;
@@ -784,8 +804,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    position: relative;
-    /* gap: 40px; */
+    position: relative; /* Safe to use relative! */
 }
 
 .floor-plan-header {
