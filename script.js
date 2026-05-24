@@ -11,10 +11,8 @@ const hideLoadingScreen = () => {
     }
 };
 
-// 2. Try to hide it exactly when everything finishes loading (The perfect scenario)
 window.addEventListener('load', hideLoadingScreen);
 
-// 3. THE FAILSAFE: If 3.5 seconds pass, force it to hide no matter what! (The backup plan)
 setTimeout(hideLoadingScreen, 3500);
 
     const menuIcon = document.querySelector('.menu-icon');
@@ -87,3 +85,56 @@ window.addEventListener('click', (event) => {
         modal.style.display = 'none';
     }
 });
+
+const calendarDays = document.getElementById('calendar-days');
+
+// Only run the calendar math if the calendar actually exists on this page!
+if (calendarDays) {
+    const monthYearText = document.getElementById('month-year');
+    const selectedDateText = document.getElementById('selected-date-text');
+    let currentDate = new Date(); 
+
+    function renderCalendar() {
+        calendarDays.innerHTML = ''; 
+        
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
+        monthYearText.textContent = `${monthNames[month]} ${year}`;
+        
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        for (let i = 0; i < firstDay; i++) {
+            const emptyDiv = document.createElement('div');
+            calendarDays.appendChild(emptyDiv);
+        }
+        
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dayDiv = document.createElement('div');
+            dayDiv.classList.add('calendar-day');
+            dayDiv.textContent = i;
+            
+            dayDiv.addEventListener('click', () => {
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                dayDiv.classList.add('selected');
+                selectedDateText.textContent = `Selected Date: ${monthNames[month]} ${i}, ${year}`;
+            });
+            
+            calendarDays.appendChild(dayDiv);
+        }
+    }
+
+    document.getElementById('prev-month').addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
+
+    document.getElementById('next-month').addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
+
+    renderCalendar();
+}
