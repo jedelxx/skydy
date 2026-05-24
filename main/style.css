@@ -784,6 +784,7 @@ body {
     display: flex;
     flex-direction: column;
     position: absolute;
+    gap: 40px;
 }
 
 .floor-plan-header {
