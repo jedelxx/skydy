@@ -775,6 +775,7 @@ body {
     top: 13%;
     left: 50%;
     width: 600px;
+    max-width: 500px;
     height: 550px;
     background: #f1eee5;
     border-radius: 15px;
@@ -783,8 +784,8 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    gap: 40px;
+    position: relative;
+    /* gap: 40px; */
 }
 
 .floor-plan-header {
