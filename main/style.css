@@ -767,16 +767,15 @@ body {
     align-items: center;
     width: 100%;
     margin-top: 50px;
-    gap: 10px;
 }
 
 /* FLOOR MAP */
 
 .floor-plan-container {
-    top: 11%;
-    left: 47%;
-    width: 650px;
-    height: 600px;
+    top: 13%;
+    left: 50%;
+    width: 600px;
+    height: 550px;
     background: white;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
