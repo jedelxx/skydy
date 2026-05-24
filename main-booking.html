@@ -27,31 +27,32 @@
         <a href="book.html">
             <img src="images/back-arrow.png" id="back-arrow" class="back-arrow">
         </a>
-        
-        <div class="booking-calendar">
-            <div class="calendar-header">
-                <button id="prev-month">&lt;</button>
-                <h2 id="month-year">May 2026</h2>
-                <button id="next-month">&gt;</button>
+        <div class="booking-wrapper">
+            <div class="booking-calendar">
+                <div class="calendar-header">
+                    <button id="prev-month">&lt;</button>
+                    <h2 id="month-year">May 2026</h2>
+                    <button id="next-month">&gt;</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="day-name">Sun</div><div class="day-name">Mon</div>
+                    <div class="day-name">Tue</div><div class="day-name">Wed</div>
+                    <div class="day-name">Thu</div><div class="day-name">Fri</div>
+                    <div class="day-name">Sat</div>
+                    <div id="calendar-days" class="calendar-days"></div>
+                </div>
+                <p id="selected-date-text">Selected Date: None</p>
             </div>
-            <div class="calendar-grid">
-                <div class="day-name">Sun</div><div class="day-name">Mon</div>
-                <div class="day-name">Tue</div><div class="day-name">Wed</div>
-                <div class="day-name">Thu</div><div class="day-name">Fri</div>
-                <div class="day-name">Sat</div>
-                <div id="calendar-days" class="calendar-days"></div>
-            </div>
-            <p id="selected-date-text">Selected Date: None</p>
-        </div>
 
-		<div class="floor-plan-container">
-            <div class="floor-plan-header">Pick Your Spot:</div>
-            
-            <div class="floor-plan-map" id="floor-map">
+            <div class="floor-plan-container">
+                <div class="floor-plan-header">Pick Your Spot:</div>
                 
+                <div class="floor-plan-map" id="floor-map">
+                    
+                </div>
+                
+                <p id="selected-seat-text">Selected Seat: None</p>
             </div>
-            
-            <p id="selected-seat-text">Selected Seat: None</p>
         </div>
     </div>
 

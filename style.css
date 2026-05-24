@@ -61,18 +61,6 @@ body {
     transition: opacity 1s ease-in-out; 
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    width: 100%;
-    height: 100vh;
-    backdrop-filter: blur(8px); 
-    -webkit-backdrop-filter: blur(8px);
-    animation: smoothLoad 0.4s;
-}
-
 /* .container {
     display: flex;
     justify-content: center;
@@ -84,6 +72,15 @@ body {
     -webkit-backdrop-filter: blur(8px);
     animation: smoothLoad 0.4s;
 } */
+
+ .container {
+    display: flex;
+    height: 100vh;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: smoothLoad 0.4s;
+    overflow: hidden;
+} 
 
 .sidebar {
     font-family: "Google Sans Flex";
@@ -781,11 +778,11 @@ body {
 
 .booking-wrapper {
     display: flex;
-    justify-content: center; /* Centers them horizontally */
-    align-items: center;     /* Centers them vertically */
+    justify-content: center; /* This centers the calendar and map horizontally */
+    align-items: center;     /* This centers them vertically */
     width: 100%;
-    height: 100vh;           /* Takes up the full height of the screen */
-    gap: 40px;               /* The unbreakable 40px wall between them */
+    height: 100%;            /* Takes up the full height of the container */
+    gap: 40px;               
     padding: 20px;
     box-sizing: border-box;
 }
