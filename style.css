@@ -1340,7 +1340,9 @@ body {
     }
     
     .home-content-stack {
-        padding-top: 10px !important;
+        height: auto !important;
+        justify-content: flex-start !important; /* THE MAGIC FIX: Snaps it to the top */
+        padding-top: 20px !important;           /* Your precise spacing from the nav bar */
     }
 
     .slider-nav a {
