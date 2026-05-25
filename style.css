@@ -1216,36 +1216,6 @@ body {
     }
 
     .booking-wrapper {
-        flex-direction: column;      /* Stacks them vertically */
-        justify-content: flex-start; /* Starts from the top instead of the middle */
-        height: auto;                /* Removes the height lock so they don't squish */
-        padding-top: 100px;          /* Pushes the calendar down to protect the back button! */
-        padding-bottom: 50px;        /* Adds breathing room at the bottom of the page */
-    }
-
-    .container {
-        overflow-y: auto; /* Unlocks vertical scrolling */
-    }
-
-    .booking-calendar,
-    .floor-plan-container {
-        width: 100%;
-        max-width: 450px;
-        margin: 0 auto; /* Keeps them perfectly centered */
-    }
-
-    #back-arrow {
-        top: 20px;
-        left: 20px;
-        z-index: 1000;      /* Guarantees it is on top of everything */
-        position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
-    }
-
-    /* =========================================
-       BULLETPROOF MOBILE BOOKING LAYOUT
-    ========================================= */
-
-    .booking-wrapper {
         flex-direction: column !important; /* The !important tag FORCES them to stack */
         justify-content: flex-start !important; 
         height: auto !important;                
@@ -1254,16 +1224,21 @@ body {
         gap: 20px;                         /* Brings the map a little closer to the calendar */
     }
 
-    /* Unlocks the screen so you can scroll down to the map */
     .container {
         overflow-y: auto !important; 
     }
 
-    /* Forces both items to take up the full screen width without squishing */
     .booking-calendar,
     .floor-plan-container {
         width: 100% !important;
         max-width: 450px !important;
         margin: 0 auto !important; 
+    }
+
+    #back-arrow {
+        top: 20px;
+        left: 20px;
+        z-index: 1000;      /* Guarantees it is on top of everything */
+        position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
     }
 }
