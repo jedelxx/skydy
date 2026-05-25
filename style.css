@@ -411,7 +411,7 @@ body {
 .skypod-booking-spaces-title{
     position: absolute;
     top: 20%;
-    left: 59.5%;
+    left: 60%;
     font-family: "Google Sans Flex";
     font-size: 30px;
     font-weight: 650;
@@ -1213,6 +1213,6 @@ body {
 
     
     .learn-more-text {
-        left: 60%;
+        left: 62.5%;
     }
 }
