@@ -934,9 +934,45 @@ body {
     }
 }
 
-/* =========================================
-   RESPONSIVE DESIGN (Tablets & Phones)
-========================================= */
+/* --- DESKTOP PRICES --- */
+.skypod-booking-spaces-price {
+    position: absolute;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 500;
+    word-spacing: 1px; 
+    letter-spacing: 2px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+    top: 33%;             /* Desktop height */
+    left: 59%;            /* Desktop horizontal position */
+}
+
+.skycircle-booking-spaces-price {
+    position: absolute;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 500;
+    word-spacing: 1px; 
+    letter-spacing: 2px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+    top: 33%;             /* Desktop height */
+    left: 57%;            /* Desktop horizontal position */
+}
+
+.designdock-booking-spaces-title{
+    position: absolute;
+    top: 20%;
+    left: 53%;
+    font-family: "Google Sans Flex";
+    font-size: 30px;
+    font-weight: 650;
+    word-spacing: 0px; 
+    letter-spacing: -0.5px;
+    color: rgb(8, 6, 4);
+    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+}
 
 /* TABLETS (Screens smaller than 1024px) */
 @media (max-width: 1024px) {
@@ -1071,29 +1107,25 @@ body {
     #modal-title {
         font-size: 35px;
     }
-
-    /* Fix Space Card Text Overlaps on Mobile */
     
     /* 1. Group ALL title classes together to shrink them at once */
     .booking-spaces-title,
-    .collabnook-booking-spaces-title,
     .focuspod-booking-spaces-title,
     .powerbar-booking-spaces-title,
     .thinkspot-booking-spaces-title,
     .flowrow-booking-spaces-title,
-    .skycircle-booking-spaces-title,
-    .skypod-booking-spaces-title {
+    .skycircle-booking-spaces-title {
         font-size: 22px;       /* Shrink the title font */
         line-height: 1.1;      /* Keeps the two lines closer together */
-        top: 15%;              /* Nudges the title up slightly */
-        left: 48%;             /* Aligns it neatly next to the desk image */
+        top: 30%;              /* Nudges the title up slightly */
+        left: 56%;             /* Aligns it neatly next to the desk image */
     }
 
     /* 2. Shrink the price and push it safely below the title */
     .booking-space-price {
         font-size: 18px;       
         top: 38%;              /* Pushes it down so the title has room to breathe */
-        left: 48%;             
+        left: 62%;             
     }
 
     /* 3. Align the buttons and read more text to match */
@@ -1101,6 +1133,84 @@ body {
         left: 48%;
         width: 45%;
     }
+
+    .book-now-text {
+        font-family: "Google Sans Flex";
+        top: 31%;
+        left: 30%;
+        font-weight: 650;
+        color: #0c1018c2;
+    }   
+
+    .collabnook-booking-spaces-title{
+        position: absolute;
+        top: 30%;         
+        left: 53%; 
+        font-family: "Google Sans Flex";
+        font-size: 22px;
+        font-weight: 650;
+        word-spacing: 0px; 
+        letter-spacing: -0.5px;
+        color: rgb(8, 6, 4);
+        text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282); 
+        line-height: 1.1;  
+    }
+
+    .designdock-booking-spaces-title{
+        position: absolute;
+        top: 30%;         
+        left: 53%; 
+        font-family: "Google Sans Flex";
+        font-size: 22px;
+        font-weight: 650;
+        word-spacing: 0px; 
+        letter-spacing: -0.5px;
+        color: rgb(8, 6, 4);
+        text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282); 
+        line-height: 1.1;     
+    }
+
+    .skypod-booking-spaces-title{
+        position: absolute;
+        top: 30%;         
+        left: 59%; 
+        font-family: "Google Sans Flex";
+        font-size: 22px;
+        font-weight: 650;
+        word-spacing: 0px; 
+        letter-spacing: -0.5px;
+        color: rgb(8, 6, 4);
+        text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282); 
+        line-height: 1.1;   
+    }
+
+    .skycircle-booking-spaces-title{
+        position: absolute;
+        top: 30%;         
+        left: 56%; 
+        font-family: "Google Sans Flex";
+        font-size: 22px;
+        font-weight: 650;
+        word-spacing: 0px; 
+        letter-spacing: -0.5px;
+        color: rgb(8, 6, 4);
+        text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282); 
+        line-height: 1.1;     
+    }
+
+/* --- MOBILE PRICES (Inside the @media block) --- */
+    .skypod-booking-spaces-price {
+        font-size: 18px;       
+        top: 38%;             
+        left: 59%; 
+    }
+
+    .skycircle-booking-spaces-price {
+        font-size: 18px;       
+        top: 38%;             
+        left: 59%; 
+    }
+
     
     .learn-more-text {
         left: 60%;
