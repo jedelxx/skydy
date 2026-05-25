@@ -1241,4 +1241,26 @@ body {
         z-index: 1000;      /* Guarantees it is on top of everything */
         position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
     }
+
+    /* =========================================
+       MOBILE FLOOR MAP FIX
+    ========================================= */
+    
+    /* 1. Remove the fixed height to unlock the container */
+    .floor-plan-container {
+        height: auto !important;
+    }
+
+    /* 2. Force the map to keep its wide Desktop proportions */
+    .floor-plan-map {
+        height: auto !important;
+        aspect-ratio: 7 / 6 !important; /* Locks it to the exact desktop rectangle shape */
+        padding: 10px !important;       /* Slightly smaller padding for mobile */
+    }
+
+    /* 3. Magically shrink ALL seats, rooms, and text by 45% */
+    .seat, .pantry, .cr, .sky-line-room {
+        transform: scale(0.70) !important; 
+        transform-origin: top left !important; /* Keeps them anchored to their exact coordinates */
+    }
 }
