@@ -93,7 +93,7 @@
         </div>
     </div>
 
-   <script>
+<script>
         // 1. Sidebar Elements & Event Listener
         const menuIcon = document.querySelector('.menu-icon');
         const sidebar = document.querySelector('.sidebar');
@@ -107,14 +107,15 @@
         // 2. Static Background Image Setup
         document.getElementById('bg-slider').style.backgroundImage = 'url("images/wp.jpg")';
 
-        // 3. Carousel Core Engine Variables (THE RESTORED FIXES!)
+        // 3. Carousel Engine Variables
         const carousel = document.querySelector('.slider');
         const slides = document.querySelectorAll('.slider img');
         const dots = document.querySelectorAll('.slider-nav a');
         let currentSlideIndex = 0;
         let autoSlideTimer;
+        let isInternalScroll = false; // Prevents the timer and scroll engine from fighting
 
-        // 4. Dot Indicator Function
+        // 4. Pure Dot Illuminator
         function updateActiveDot(index) {
             dots.forEach((dot, i) => {
                 if (i === index) {
@@ -125,7 +126,22 @@
             });
         }
 
-        // 5. Auto Slide Timer Loop
+        // 5. Smart Scroll Spy Engine (THE FIX FOR SWIPING & MANUAL INTERACTION)
+        carousel.addEventListener('scroll', () => {
+            // If the script moved it automatically, don't rerun calculations
+            if (isInternalScroll) return; 
+
+            // Calculate which slide is currently filling the viewport box
+            const width = carousel.offsetWidth;
+            const newIndex = Math.round(carousel.scrollLeft / width);
+            
+            if (newIndex !== currentSlideIndex && newIndex >= 0 && newIndex < slides.length) {
+                currentSlideIndex = newIndex;
+                updateActiveDot(currentSlideIndex);
+            }
+        });
+
+        // 6. Auto Slide Timer Loop
         function startAutoSlide() {
             autoSlideTimer = setInterval(() => {
                 currentSlideIndex++;
@@ -133,19 +149,43 @@
                 if (currentSlideIndex >= slides.length) {
                     currentSlideIndex = 0; 
                 }
-                carousel.scrollLeft = slides[currentSlideIndex].offsetLeft;
                 
-                // Updates the illuminated dot to match the visible slide image
+                isInternalScroll = true;
+                carousel.scrollLeft = slides[currentSlideIndex].offsetLeft;
                 updateActiveDot(currentSlideIndex);
+                
+                // Release control back to user after the transition finish animation
+                setTimeout(() => { isInternalScroll = false; }, 600);
                 
             }, 3500); 
         }
 
-        // 6. Initialize Carousel on Page Load
+        // 7. Manual Click Handler For Dots (THE FIX FOR CLICKING DOTS)
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', (e) => {
+                // Prevent the default browser hashtag anchor behavior which jumps pages
+                e.preventDefault(); 
+                
+                clearInterval(autoSlideTimer); // Pause the auto slider when user clicks
+                
+                currentSlideIndex = index;
+                isInternalScroll = true;
+                
+                carousel.scrollLeft = slides[currentSlideIndex].offsetLeft;
+                updateActiveDot(currentSlideIndex);
+                
+                setTimeout(() => { 
+                    isInternalScroll = false; 
+                    startAutoSlide(); // Safely restart the cycle after they are done
+                }, 600);
+            });
+        });
+
+        // 8. Initialize Carousel on Page Load
         updateActiveDot(0);
         startAutoSlide();
 
-        // 7. Event Listeners for Pausing on User Interaction
+        // 9. Event Listeners for Pausing on Swipe/Hover
         const carouselContainer = document.querySelector('.slider-wrapper');
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
         carouselContainer.addEventListener('mouseleave', startAutoSlide);
