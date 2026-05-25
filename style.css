@@ -93,7 +93,7 @@ body {
     justify-content: space-between;
     position: relative;
     z-index: 10;
-    transition: width 0.3s ease;
+    transition: all 0.3s ease;
     overflow-x: hidden; 
     white-space: nowrap; 
     flex-shrink: 0; 
@@ -931,5 +931,84 @@ body {
     100% {
         opacity: 1;
         transform: scale(1) translateY(0) 10ms ease;
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Tablets & Phones)
+========================================= */
+
+/* TABLETS (Screens smaller than 1024px) */
+@media (max-width: 1024px) {
+    .tagline {
+        font-size: 80px;  /* Shrink the massive text */
+        word-spacing: 0px; 
+    }
+    .location {
+        font-size: 14px;
+        letter-spacing: 3px;
+        padding: 0 20px;
+    }
+}
+
+/* MOBILE PHONES (Screens smaller than 768px) */
+@media (max-width: 768px) {
+    /* 1. Stack the entire website top-to-bottom */
+    .container {
+        flex-direction: column;
+    }
+
+    /* 2. Turn the sidebar into a Top Navigation Bar */
+    .sidebar {
+        width: 100% !important; /* Force it to stretch across the top */
+        height: auto; 
+        position: relative; /* Sit normally at the very top of the page */
+        padding: 10px 0;
+        z-index: 999; /* Keep it above your space cards */
+    }
+
+    /* 3. When collapsed, shrink to just the hamburger menu height */
+    .sidebar.collapsed {
+        height: 60px; 
+        width: 100% !important;
+        overflow: hidden; /* This is what hides the links! */
+
+    }
+
+    /* 4. Move the Hamburger Icon to the right side of the screen */
+    .menu-icon {
+        width: 100%;
+        text-align: right; 
+        padding-right: 30px;
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
+
+    /* 5. Center the links nicely for a dropdown menu */
+    .nav-links {
+        padding-top: 10px;
+        align-items: center; /* Centers the buttons */
+    }
+
+    .nav-links li a {
+        width: 90%;
+        border-radius: 10px; /* Removes the side-tab curves */
+        align-items: center; /* Centers the text inside the button */
+    }
+
+    .nav-links li a:hover {
+        margin-left: 0; /* Stops the button from shifting sideways when tapped */
+    }
+
+    /* Hide the fancy side-curve decorations on mobile */
+    .curve-top, .curve-bottom {
+        display: none; 
+    }
+
+    /* 6. Center the main text/content safely below the new top bar */
+    .hero-section {
+        padding: 20px; 
+        justify-content: flex-start;
+        padding-top: 10vh; /* Pushes the "Head in the skies" text down slightly */
     }
 }
