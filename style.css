@@ -1215,4 +1215,33 @@ body {
     .learn-more-text {
         left: 62.5%;
     }
+
+    .booking-wrapper {
+        flex-direction: column;      /* Stacks them vertically */
+        justify-content: flex-start; /* Starts from the top instead of the middle */
+        height: auto;                /* Removes the height lock so they don't squish */
+        padding-top: 100px;          /* Pushes the calendar down to protect the back button! */
+        padding-bottom: 50px;        /* Adds breathing room at the bottom of the page */
+    }
+
+    /* 2. Let the user scroll down to the map */
+    .container {
+        overflow-y: auto; /* Unlocks vertical scrolling */
+    }
+
+    /* 3. Make sure the calendar and map fit the phone width */
+    .booking-calendar,
+    .floor-plan-container {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto; /* Keeps them perfectly centered */
+    }
+
+    /* 4. Upgrade the Back Button */
+    #back-arrow {
+        top: 20px;
+        left: 20px;
+        z-index: 1000;      /* Guarantees it is on top of everything */
+        position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
+    }
 }
