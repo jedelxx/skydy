@@ -116,6 +116,42 @@
                 slider.style.opacity = 1; 
             }, 1000); 
         }, 6000);
+
+        /* =========================================
+           CAROUSEL AUTO-SLIDER ENGINE
+        ========================================= */
+        const carousel = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slider img');
+        let currentSlideIndex = 0;
+        let autoSlideTimer;
+
+        function startAutoSlide() {
+            autoSlideTimer = setInterval(() => {
+                currentSlideIndex++;
+                
+                // If we reach the end, loop back to the first image
+                if (currentSlideIndex >= slides.length) {
+                    currentSlideIndex = 0; 
+                }
+                
+                // Because you have 'scroll-behavior: smooth' in your CSS, 
+                // this JavaScript command will make it glide beautifully!
+                carousel.scrollLeft = slides[currentSlideIndex].offsetLeft;
+                
+            }, 3500); // Changes image every 3.5 seconds
+        }
+
+        // Start the engine!
+        startAutoSlide();
+
+        // PREMIUM FEATURE: Pause the slider if the user hovers over it
+        const carouselContainer = document.querySelector('.slider-wrapper');
+        carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+        carouselContainer.addEventListener('mouseleave', startAutoSlide);
+        
+        // Pause if they touch/hold it on a mobile screen
+        carouselContainer.addEventListener('touchstart', () => clearInterval(autoSlideTimer));
+        carouselContainer.addEventListener('touchend', startAutoSlide);
     </script>
 </body>
 </html>
