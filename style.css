@@ -565,7 +565,7 @@ body {
 .hero-section::before {
     content: "";
     display: block;
-    width: 90%;                 /* Spans half the width of the screen */
+    width: 80%;                 /* Spans half the width of the screen */
     max-width: 1200px;           /* Prevents it from getting too long on giant monitors */
     height: 1px;                /* Keeps it very thin and delicate */   
     background-color: rgba(255, 255, 255, 0.3); /* A soft, slightly transparent white */
@@ -947,6 +947,7 @@ body {
     width: 100%;
     max-width: 60rem;
     margin: 0 auto;
+    margin-bottom: -2rem; 
 }
 
 .slider {
