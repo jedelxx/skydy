@@ -726,9 +726,9 @@ body {
 
 #back-arrow {
     position: absolute; /* Takes the arrow out of the layout flow */
-    top: 30px;
+    top: 27px;
     left: 30px;
-    width: 60px;
+    width: 55px;
     height: auto;     
     transition: transform 0.2s ease;
     z-index: 100; /* Keeps it clickable above everything */
@@ -1198,7 +1198,6 @@ body {
         line-height: 1.1;     
     }
 
-/* --- MOBILE PRICES (Inside the @media block) --- */
     .skypod-booking-spaces-price {
         font-size: 18px;       
         top: 38%;             
@@ -1224,12 +1223,10 @@ body {
         padding-bottom: 50px;        /* Adds breathing room at the bottom of the page */
     }
 
-    /* 2. Let the user scroll down to the map */
     .container {
         overflow-y: auto; /* Unlocks vertical scrolling */
     }
 
-    /* 3. Make sure the calendar and map fit the phone width */
     .booking-calendar,
     .floor-plan-container {
         width: 100%;
@@ -1237,11 +1234,36 @@ body {
         margin: 0 auto; /* Keeps them perfectly centered */
     }
 
-    /* 4. Upgrade the Back Button */
     #back-arrow {
         top: 20px;
         left: 20px;
         z-index: 1000;      /* Guarantees it is on top of everything */
         position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
+    }
+
+    /* =========================================
+       BULLETPROOF MOBILE BOOKING LAYOUT
+    ========================================= */
+
+    .booking-wrapper {
+        flex-direction: column !important; /* The !important tag FORCES them to stack */
+        justify-content: flex-start !important; 
+        height: auto !important;                
+        padding-top: 100px !important;     /* Keeps it below the back arrow */
+        padding-bottom: 50px;
+        gap: 20px;                         /* Brings the map a little closer to the calendar */
+    }
+
+    /* Unlocks the screen so you can scroll down to the map */
+    .container {
+        overflow-y: auto !important; 
+    }
+
+    /* Forces both items to take up the full screen width without squishing */
+    .booking-calendar,
+    .floor-plan-container {
+        width: 100% !important;
+        max-width: 450px !important;
+        margin: 0 auto !important; 
     }
 }
