@@ -1017,6 +1017,23 @@ body {
         gap: 20px; /* Reduces the huge gap between cards */
     }
 
+    /* 1. Scale the text dynamically and lock it to two lines */
+    .tagline {
+        font-size: 10vw;     /* Dynamically shrinks based on screen width! */
+        white-space: nowrap; /* FORBIDS the browser from adding extra line breaks */
+        line-height: 1.1; 
+        text-shadow: 2px 2px 20px rgba(0,0,0,0.8); 
+    }
+    
+    /* 2. Shrink the location text so it fits neatly below */
+    .location {
+        font-size: 3vw;      /* Dynamically shrinks */
+        letter-spacing: 1px;
+        margin-top: 20px;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+
     /* 2. Allow the cards to shrink and fit the phone screen */
     .focus-pod-card,
     .power-bar-card,
