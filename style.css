@@ -554,11 +554,22 @@ body {
 
 .hero-section {
     width: 100%;
-    padding-top: 3rem;       /* Adds just a tiny bit of breathing room */
+    padding-top: 5rem;       /* Adds just a tiny bit of breathing room */
+    padding-bottom: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;    
+}
+
+.hero-section::before {
+    content: "";
+    display: block;
+    width: 90%;                 /* Spans half the width of the screen */
+    max-width: 1200px;           /* Prevents it from getting too long on giant monitors */
+    height: 1px;                /* Keeps it very thin and delicate */   
+    background-color: rgba(255, 255, 255, 0.3); /* A soft, slightly transparent white */
+    margin-bottom: 35px;        /* The breathing room between the line and the tagline */
 }
 
 .text-group {
@@ -926,7 +937,7 @@ body {
 .slider-container {
     width: 100%;
     /* The first number is Top/Bottom padding, the second is Left/Right padding */
-    padding: 3rem 2rem 0 2rem; /* The "3rem" adds a nice cushion to the top! */
+    padding: 0rem 2rem 0 2rem; /* The "3rem" adds a nice cushion to the top! */
     display: flex;
     justify-content: center;
 }
@@ -988,13 +999,12 @@ body {
     flex: 1;                 /* Takes up the remaining space next to the sidebar */
     display: flex;
     flex-direction: column;  /* FORCES the vertical stack! */
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     height: 100vh;
     overflow-y: auto;        
-    padding-top: 40px; 
-
+    padding-top: 60px; 
 }
 
 @keyframes popIn {
@@ -1095,6 +1105,7 @@ body {
         margin-bottom: 0 !important;
         padding-top: 5px !important; 
         padding-right: 25px !important; 
+        padding-left: 15px !important;
     }
     /* 5. Center the links nicely for a dropdown menu */
     .nav-links {
