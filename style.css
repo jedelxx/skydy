@@ -228,6 +228,11 @@ body {
     display: none;
 }
 
+.home-content-stack::-webkit-scrollbar{
+    display: none;
+}
+
+
 .main-content {
     flex: 1;
     padding: 30px;
@@ -935,12 +940,12 @@ body {
 
 .slider {
     display: flex;
-    aspect-ratio: 16/9;
+    aspect-ratio: 21/9;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    border-radius: 8px; /* Slightly rounder edges look more premium! */
-    scrollbar-width: none; /* Firefox */
+    border-radius: 8px;
+    scrollbar-width: none; 
 }
 .slider::-webkit-scrollbar {
     display: none; 
@@ -1317,10 +1322,6 @@ body {
         position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
     }
 
-    /* =========================================
-       MOBILE FLOOR MAP FIX
-    ========================================= */
-    
     /* 1. Remove the fixed height to unlock the container */
     .floor-plan-container {
         height: auto !important;
@@ -1341,6 +1342,6 @@ body {
 
     .home-content-stack {
         height: auto;
-        padding-top: 60px; 
+        padding-top: 40px; 
     }
 }
