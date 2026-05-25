@@ -448,7 +448,49 @@ body {
     top: 31%;
     left: 34%;
     font-weight: 650;
-    color: #0c1018c2;
+    color: #0c1018;
+    text-decoration: none !important;
+}
+
+.hero-btn-group {
+    display: flex !important;
+    flex-direction: row !important;       /* STRICTLY forces side-by-side alignment */
+    justify-content: center !important;   /* Centers the pair under the tagline */
+    align-items: center !important;
+    gap: 20px !important;                 /* The gap between the buttons */
+    width: 100% !important;
+    margin-top: 30px !important;          /* Breathing room below location text */
+    margin-bottom: 10px !important;
+}
+
+.homepage-book-now-card,
+.homepage-contact-now-card {
+    display: inline-flex !important;      /* MAGIC FIX: Forces links to behave on a horizontal line */
+    justify-content: center !important;
+    align-items: center !important;
+    
+    width: 220px !important;
+    height: 55px !important;
+    min-height: 55px !important;
+    padding: 0 !important;
+    margin: 35px !important;                 /* Strips out any stray pushing margins */
+    
+    background-color: #F3EA6D;
+    color: #12141b !important;
+    font-family: "Google Sans Flex", sans-serif;
+    font-size: 18px;
+    font-weight: 650;
+    text-decoration: none !important; 
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.homepage-book-now-card:hover,
+.homepage-contact-now-card:hover {
+    background-color: #7e9ed5;
+    transform: translateY(-4px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); 
 }
 
 .book-now-card:hover{
@@ -481,6 +523,7 @@ body {
     font-weight: 600;   
     color: #ddd;
     margin: 0;
+    text-decoration: none;
 }
 
 .info-card-book-now:hover {
@@ -555,21 +598,11 @@ body {
 .hero-section {
     width: 100%;
     padding-top: 5rem;       /* Adds just a tiny bit of breathing room */
-    padding-bottom: 5rem;
+    padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;    
-}
-
-.hero-section::before {
-    content: "";
-    display: block;
-    width: 80%;                 /* Spans half the width of the screen */
-    max-width: 1200px;           /* Prevents it from getting too long on giant monitors */
-    height: 1px;                /* Keeps it very thin and delicate */   
-    background-color: rgba(255, 255, 255, 0.3); /* A soft, slightly transparent white */
-    margin-bottom: 35px;        /* The breathing room between the line and the tagline */
 }
 
 .text-group {
@@ -937,7 +970,7 @@ body {
 .slider-container {
     width: 100%;
     /* The first number is Top/Bottom padding, the second is Left/Right padding */
-    padding: 0rem 2rem 0 2rem; /* The "3rem" adds a nice cushion to the top! */
+    padding: 4rem 2rem 0 2rem; /* The "3rem" adds a nice cushion to the top! */
     display: flex;
     justify-content: center;
 }
@@ -946,8 +979,7 @@ body {
     position: relative;
     width: 100%;
     max-width: 60rem;
-    margin: 0 auto;
-    margin-bottom: -2rem; 
+    margin-bottom: 3rem auto;
 }
 
 .slider {
@@ -1152,11 +1184,11 @@ body {
         text-shadow: 2px 2px 20px rgba(0,0,0,0.8); 
     }
     
-    /* 2. Shrink the location text so it fits neatly below */
     .location {
-        font-size: 3vw;      /* Dynamically shrinks */
+        font-family: "Google Sans Flex";
+        font-size: 2vw;      /* Dynamically shrinks */
         letter-spacing: 1px;
-        margin-top: 20px;
+        margin-top: 15px;
         line-height: 1.5;
         padding: 0 10px;
     }
@@ -1363,7 +1395,7 @@ body {
     }
 
     .slider-container {
-        padding-top: 10px !important;
+        padding-top: 30px !important;
         padding-bottom: 0 !important;
     }
 
@@ -1375,5 +1407,15 @@ body {
         scroll-behavior: smooth;
         border-radius: 8px;
         scrollbar-width: none; 
-}
+    }
+    
+    .homepage-contact-now-card,
+    .homepage-book-now-card {
+        width: 180px !important;        /* Slightly narrower for mobile screens */
+        height: 48px !important;        /* Slightly sleeker height */
+        min-height: 48px !important;    
+        font-size: 16px !important;     /* Scale the text down just a hair */
+        margin-top: 4rem !important;    
+        margin-bottom: 1rem !important; 
+    }
 }
