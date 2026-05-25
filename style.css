@@ -945,13 +945,13 @@ body {
 .slider-wrapper {
     position: relative;
     width: 100%;
-    max-width: 80rem;
+    max-width: 60rem;
     margin: 0 auto;
 }
 
 .slider {
     display: flex;
-    aspect-ratio: 21/9;
+    aspect-ratio: 2.35/1;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
