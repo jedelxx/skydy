@@ -1035,7 +1035,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     overflow-y: auto;        
     padding-top: 60px; 
 }
@@ -1408,14 +1408,13 @@ body {
         border-radius: 8px;
         scrollbar-width: none; 
     }
-    
+
     .homepage-contact-now-card,
     .homepage-book-now-card {
-        width: 180px !important;        /* Slightly narrower for mobile screens */
-        height: 48px !important;        /* Slightly sleeker height */
+        width: 150px !important;        /* Tailored width so two columns fit across phone widths */
+        height: 48px !important;        
         min-height: 48px !important;    
-        font-size: 16px !important;     /* Scale the text down just a hair */
-        margin-top: 4rem !important;    
-        margin-bottom: 1rem !important; 
+        font-size: 15px !important;     
+        margin: 0 5px !important;       /* 0px Top/Bottom, 5px Left/Right to space them from each other */
     }
 }
