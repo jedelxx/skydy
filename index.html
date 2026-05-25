@@ -81,19 +81,20 @@
                         <img id="feature6" src="images/Pantry2.jpeg" alt="display-cb1"/>
                     </div>
                     <div class="slider-nav">
-                        <a href="#feature1"></a>
-                        <a href="#feature2"></a>
-                        <a href="#feature3"></a>
-                        <a href="#feature4"></a>
-                        <a href="#feature5"></a>
-                        <a href="#feature6"></a>
+                        <a href="#feature1" class="nav-dot"></a>
+                        <a href="#feature2" class="nav-dot"></a>
+                        <a href="#feature3" class="nav-dot"></a>
+                        <a href="#feature4" class="nav-dot"></a>
+                        <a href="#feature5" class="nav-dot"></a>
+                        <a href="#feature6" class="nav-dot"></a>
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
-    <script>
+   <script>
+        // 1. Sidebar Elements & Event Listener
         const menuIcon = document.querySelector('.menu-icon');
         const sidebar = document.querySelector('.sidebar');
         const navLinks = document.querySelector('.nav-links');
@@ -103,13 +104,28 @@
             sidebar.classList.toggle('collapsed');
         });
 
+        // 2. Static Background Image Setup
         document.getElementById('bg-slider').style.backgroundImage = 'url("images/wp.jpg")';
 
+        // 3. Carousel Core Engine Variables (THE RESTORED FIXES!)
         const carousel = document.querySelector('.slider');
         const slides = document.querySelectorAll('.slider img');
+        const dots = document.querySelectorAll('.slider-nav a');
         let currentSlideIndex = 0;
         let autoSlideTimer;
 
+        // 4. Dot Indicator Function
+        function updateActiveDot(index) {
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // 5. Auto Slide Timer Loop
         function startAutoSlide() {
             autoSlideTimer = setInterval(() => {
                 currentSlideIndex++;
@@ -119,11 +135,17 @@
                 }
                 carousel.scrollLeft = slides[currentSlideIndex].offsetLeft;
                 
+                // Updates the illuminated dot to match the visible slide image
+                updateActiveDot(currentSlideIndex);
+                
             }, 3500); 
         }
 
+        // 6. Initialize Carousel on Page Load
+        updateActiveDot(0);
         startAutoSlide();
 
+        // 7. Event Listeners for Pausing on User Interaction
         const carouselContainer = document.querySelector('.slider-wrapper');
         carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
         carouselContainer.addEventListener('mouseleave', startAutoSlide);

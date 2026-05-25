@@ -473,7 +473,7 @@ body {
     height: 55px !important;
     min-height: 55px !important;
     padding: 0 !important;
-    margin: 35px !important;                 /* Strips out any stray pushing margins */
+    margin: 150px 30px 0 30px;               
     
     background-color: #F3EA6D;
     color: #12141b !important;
@@ -979,7 +979,9 @@ body {
     position: relative;
     width: 100%;
     max-width: 60rem;
-    margin-bottom: 3rem auto;
+    margin-left: auto;       /* Centers the slider container horizontally */
+    margin-right: auto;      
+    margin-bottom: 60px;     /* Adds a solid, clean 60px gap right below the image slider */
 }
 
 .slider {
@@ -988,7 +990,7 @@ body {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    border-radius: 8px;
+    border-radius: 15px;
     scrollbar-width: none; 
 }
 .slider::-webkit-scrollbar {
@@ -1014,18 +1016,22 @@ body {
 }
 
 .slider-nav a {
-    width: 0.75rem; /* Made the dots slightly larger so they are easier to click */
+    width: 0.75rem; 
     height: 0.75rem;
     border-radius: 50%;
     background-color: #fff;
-    
-    /* 4. FIX: Removed the "rem" from opacity */
-    opacity: 0.5; 
-    transition: opacity ease 250ms;
+    opacity: 0.3;              /* Dimmed down slightly more so the active one POPS */
+    transition: all ease 250ms;
 }
 
 .slider-nav a:hover {
-    opacity: 1;
+    opacity: 0.7;
+}
+
+.slider-nav a.active {
+    opacity: 1 !important;
+    transform: scale(1.2);    /* Optional: slightly enlarges the active dot for a premium UI feel! */
+    background-color: #fff !important;
 }
 
 .home-content-stack {
@@ -1098,6 +1104,16 @@ body {
 
 /* TABLETS (Screens smaller than 1024px) */
 @media (max-width: 1024px) {
+    html, body, .container {
+        scrollbar-width: none !important; 
+        overflow-y: hidden !important;  
+    }
+    html::-webkit-scrollbar, 
+    body::-webkit-scrollbar,
+    .container::-webkit-scrollbar {
+        display: none !important;       
+    }
+
     .tagline {
         font-size: 80px;  /* Shrink the massive text */
         word-spacing: 0px; 
@@ -1111,7 +1127,17 @@ body {
 
 /* MOBILE PHONES (Screens smaller than 768px) */
 @media (max-width: 768px) {
-    /* 1. Stack the entire website top-to-bottom */
+
+    html, body, .container {
+        scrollbar-width: none !important; 
+        overflow-y: hidden !important;   
+    }
+    html::-webkit-scrollbar, 
+    body::-webkit-scrollbar,
+    .container::-webkit-scrollbar {
+        display: none !important;         /* Chrome, Safari, and Edge */
+    }
+
     .container {
         flex-direction: column;
     }
@@ -1178,7 +1204,7 @@ body {
 
     /* 1. Scale the text dynamically and lock it to two lines */
     .tagline {
-        font-size: 10vw;     /* Dynamically shrinks based on screen width! */
+        font-size: 8vw;     /* Dynamically shrinks based on screen width! */
         white-space: nowrap; /* FORBIDS the browser from adding extra line breaks */
         line-height: 0.85 !important; 
         text-shadow: 2px 2px 20px rgba(0,0,0,0.8); 
@@ -1186,7 +1212,7 @@ body {
     
     .location {
         font-family: "Google Sans Flex";
-        font-size: 2vw;      /* Dynamically shrinks */
+        font-size: 1.5vw;      /* Dynamically shrinks */
         letter-spacing: 1px;
         margin-top: 15px;
         line-height: 1.5;
@@ -1384,9 +1410,10 @@ body {
     }
     
     .home-content-stack {
-        height: auto !important;
-        justify-content: flex-start !important; /* THE MAGIC FIX: Snaps it to the top */
-        padding-top: 20px !important;           /* Your precise spacing from the nav bar */
+        height: calc(100vh - 60px) !important; /* Locks height to perfectly match the remaining screen view */
+        justify-content: flex-start !important;
+        overflow-y: hidden !important;    /* Removes any internal scroll wrapper lines */
+        padding-bottom: 10px !important;
     }
 
     .slider-nav a {
@@ -1395,13 +1422,12 @@ body {
     }
 
     .slider-container {
-        padding-top: 30px !important;
-        padding-bottom: 0 !important;
+        padding-bottom: 0px !important;
     }
 
     .slider {
         display: flex;
-        aspect-ratio: 16/9;
+        aspect-ratio: 4/3;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
@@ -1409,12 +1435,21 @@ body {
         scrollbar-width: none; 
     }
 
+    .hero-btn-group {
+        margin-top: 25px !important; 
+        margin-bottom: 20px !important;    
+    }
+
     .homepage-contact-now-card,
     .homepage-book-now-card {
-        width: 150px !important;        /* Tailored width so two columns fit across phone widths */
-        height: 48px !important;        
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+
+        width: 130px !important;        
+        height: 43px !important;       
         min-height: 48px !important;    
         font-size: 15px !important;     
-        margin: 0 5px !important;       /* 0px Top/Bottom, 5px Left/Right to space them from each other */
+        margin:50px 25px 0 25px !important; 
     }
 }
