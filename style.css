@@ -1048,4 +1048,61 @@ body {
         max-width: 400px;  /* Keeps them looking nice if the phone is turned sideways */
         margin: 0 auto;    /* Centers the card perfectly */
     }
+
+    /* 1. Stop the 'X' button from shrinking on mobile */
+    .close-btn {
+        font-size: 40px !important; /* Forces it to stay large and tappable */
+        top: 10px;
+        right: 20px;
+    }
+
+    /* 2. Give the modal a bit more breathing room on small screens */
+    .modal-box {
+        width: 90%; 
+        padding: 25px; 
+    }
+
+    /* 3. Reserve the top half of the modal for your future images */
+    .modal-content-group {
+        margin-top: 250px; /* Use a strict pixel size instead of percentages! */
+    }
+    
+    /* Optional: Scale the modal title down slightly so it doesn't wrap awkwardly */
+    #modal-title {
+        font-size: 35px;
+    }
+
+    /* Fix Space Card Text Overlaps on Mobile */
+    
+    /* 1. Group ALL title classes together to shrink them at once */
+    .booking-spaces-title,
+    .collabnook-booking-spaces-title,
+    .focuspod-booking-spaces-title,
+    .powerbar-booking-spaces-title,
+    .thinkspot-booking-spaces-title,
+    .flowrow-booking-spaces-title,
+    .skycircle-booking-spaces-title,
+    .skypod-booking-spaces-title {
+        font-size: 22px;       /* Shrink the title font */
+        line-height: 1.1;      /* Keeps the two lines closer together */
+        top: 15%;              /* Nudges the title up slightly */
+        left: 48%;             /* Aligns it neatly next to the desk image */
+    }
+
+    /* 2. Shrink the price and push it safely below the title */
+    .booking-space-price {
+        font-size: 18px;       
+        top: 38%;              /* Pushes it down so the title has room to breathe */
+        left: 48%;             
+    }
+
+    /* 3. Align the buttons and read more text to match */
+    .book-now-card {
+        left: 48%;
+        width: 45%;
+    }
+    
+    .learn-more-text {
+        left: 60%;
+    }
 }
