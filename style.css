@@ -980,7 +980,7 @@ body {
         width: 100%;
         text-align: right; 
         padding-right: 30px;
-        margin-bottom: 0;
+        margin-bottom:5px;
         margin-top: 5px;
     }
 
@@ -1010,5 +1010,25 @@ body {
         padding: 20px; 
         justify-content: flex-start;
         padding-top: 10vh; /* Pushes the "Head in the skies" text down slightly */
+    }
+    /* 1. Fix the main background area padding for mobile */
+    .main-content {
+        padding: 100px 15px 40px 15px; /* Shrinks the massive desktop padding */
+        gap: 20px; /* Reduces the huge gap between cards */
+    }
+
+    /* 2. Allow the cards to shrink and fit the phone screen */
+    .focus-pod-card,
+    .power-bar-card,
+    .design-dock-card,
+    .think-spot-card,
+    .collab-nook-card,
+    .flow-row-card,
+    .sky-pod-card,
+    .sky-circle-card {
+        width: 100%;       /* Tells the card to fill the available space */
+        min-width: 0;      /* THE MAGIC FIX: Overrides the 500px lock! */
+        max-width: 400px;  /* Keeps them looking nice if the phone is turned sideways */
+        margin: 0 auto;    /* Centers the card perfectly */
     }
 }
