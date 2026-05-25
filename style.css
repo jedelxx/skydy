@@ -1093,7 +1093,7 @@ body {
     .menu-icon {
         margin-top: 0 !important; 
         margin-bottom: 0 !important;
-        padding-top: 15px !important; 
+        padding-top: 5px !important; 
         padding-right: 25px !important; 
     }
     /* 5. Center the links nicely for a dropdown menu */
@@ -1352,4 +1352,14 @@ body {
         padding-top: 10px !important;
         padding-bottom: 0 !important;
     }
+
+    .slider {
+        display: flex;
+        aspect-ratio: 16/9;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        border-radius: 8px;
+        scrollbar-width: none; 
+}
 }
