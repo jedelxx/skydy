@@ -75,7 +75,7 @@ body {
 
  .container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     animation: smoothLoad 0.4s;
@@ -428,10 +428,10 @@ body {
 }
 
 .book-now-card{   
-    width: 45%;           
+    width: 40%;           
     height: 50px; 
     top: 55%;  
-    left: 49%;   
+    left: 51%;   
     background-color: #5586dbc2;
     border-radius: 20px;
     overflow: hidden;
@@ -446,7 +446,7 @@ body {
     position: absolute;
     font-family: "Google Sans Flex";
     top: 31%;
-    left: 34%;
+    left: 31%;
     font-weight: 650;
     color: #0c1018;
     text-decoration: none !important;
@@ -465,30 +465,33 @@ body {
 
 .homepage-book-now-card,
 .homepage-contact-now-card {
-    display: inline-flex !important;      /* MAGIC FIX: Forces links to behave on a horizontal line */
+    display: inline-flex !important;      
     justify-content: center !important;
     align-items: center !important;
     
-    width: 220px !important;
+    width: 190px !important;
     height: 55px !important;
     min-height: 55px !important;
     padding: 0 !important;
     margin: 100px 30px 0 30px;               
     
-    background-color: #F3EA6D;
-    color: #12141b !important;
+    background-color: #c4eeff2d;
+    border: 2px solid #feffed;
+    color: #fffeec !important;
     font-family: "Google Sans Flex", sans-serif;
     font-size: 18px;
     font-weight: 650;
     text-decoration: none !important; 
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.267);
     transition: all 0.3s ease;
 }
 
 .homepage-book-now-card:hover,
 .homepage-contact-now-card:hover {
-    background-color: #7e9ed5;
+    color: rgb(28, 28, 28) !important;
+    background-color: #fdfbd9;
+    border: none;
     transform: translateY(-4px); 
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); 
 }
@@ -501,22 +504,40 @@ body {
     color: #b3ccf6; 
 }
 
-.info-card-book-now {
-    width: 200px;
+.btn-arrow {
+    margin-left: 14px;
+    font-weight: bold; /* Keeps the arrow matching the thick text font weight */
+}
+
+/* .info-card-book-now {
+    width: 200px !important;
     max-width: 100%;
-    height: 55px; 
-    margin-top: 30px; 
+    height: 55px !important; 
     background-color: #5586dbc2;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.098); 
     cursor: pointer;
     transition: all 0.2s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    position: absolute !important;
+    top: 55%; 
+    left: 49%;
+    z-index: 100 !important;
+    
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-decoration: none !important;
+} */
 
-.info-card-book-now-text{
+/* .info-card-book-now .book-now-text {
+    position: static !important;
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: 650;
+    color: #0c1018 !important;
+    margin: 0 !important;
+} */
+
+/* .info-card-book-now-text{
     font-family: "Google Sans Flex";
     top: 35%;
     left: 30%;
@@ -524,10 +545,16 @@ body {
     color: #ddd;
     margin: 0;
     text-decoration: none;
-}
+} */
 
-.info-card-book-now:hover {
+/* .info-card-book-now:hover {
     background-color: #f9eb85;
+} */
+
+/* .info-card-book-now:hover {
+    background-color: #f9eb85;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .info-card-book-now:hover p,
@@ -535,13 +562,13 @@ body {
 .info-card-book-now:hover .book-now-text {
     color: rgb(8, 6, 4);
     transition: 12ms ease-in-out;
-}
+} */
 
 .learn-more-text{
     position: absolute;
     font-family: "roboto";
     top: 77%;
-    left: 65.5%;
+    left: 64.5%;
     font-size: 14px;
     font-weight: 500;
     color: #4d4d4d;
@@ -569,7 +596,7 @@ body {
 /* Collapsed state */
 .sidebar.collapsed {
     width: 60px;
-    background-color: rgba(59, 113, 202, 0.50);
+    background-color: rgba(59, 114, 202, 0.333);
 }
 
 .sidebar.collapsed .nav-links {
@@ -793,13 +820,16 @@ body {
     /* Notice there is NO position: absolute, top, or left here! */
     width: 450px;
     max-width: 100%; 
-    height: 520px;
     background: #f1eee5;
     padding: 20px;
+    padding-bottom: 30px !important;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     font-family: "Google Sans Flex";
     position: relative; /* Safe to use relative! */
+    height: auto !important; /* Lets the box grow perfectly to envelope the dropdown picker */
+    min-height: 520px;
+    padding-bottom: 40px !important;
 }
 
 .calendar-header {
@@ -827,7 +857,7 @@ body {
 
 .calendar-day {
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -835,7 +865,7 @@ body {
 .calendar-day:hover { background-color: #f9eb85; }
 
 .calendar-day.selected {
-    background-color: #3b71ca;
+    background-color: #3b72ca7a;
     color: white;
     font-weight: bold;
 }
@@ -843,7 +873,7 @@ body {
 .booking-wrapper {
     display: flex;
     justify-content: center; /* This centers the calendar and map horizontally */
-    align-items: center;     /* This centers them vertically */
+    align-items: flex-start;     /* This centers them vertically */
     width: 100%;
     height: 100%;            /* Takes up the full height of the container */
     gap: 40px;               
@@ -851,13 +881,49 @@ body {
     box-sizing: border-box;
 }
 
+.process-booking-button {
+    display: flex !important; /* Changed inline-flex to flex for reliable auto-centering */     
+    justify-content: center !important;
+    align-items: center !important;
+    
+    width: 250px !important;
+    height: 55px !important;
+    min-height: 55px !important;
+    padding: 0 !important;
+    
+    /* THE CENTERING ENGINE: Safely centers the button within your card wrapper 
+       without needing specific pixel offsets that clip on different screen widths */
+    margin: 35px auto 10px auto !important; 
+    
+    background-color: #6c93db !important; 
+    color: #ffffff !important; 
+    border: none !important; 
+    
+    font-family: "Google Sans Flex", sans-serif;
+    font-size: 16px; 
+    font-weight: 650;
+    text-decoration: none !important; 
+    word-spacing: 3px;
+    border-radius: 20px; 
+    box-shadow: 0 6px 20px rgba(108, 147, 219, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.process-booking-button:hover {
+    color: #1b1b1b !important; /* Keeps text white on hover action states */
+    background-color: #f9eb85 !important; /* Elegant deeper blue shift on hover */
+    transform: translateY(-3px); 
+    /* box-shadow: 0 10px 25px rgba(74, 114, 184, 0.45);  */
+}
+
+
 /* FLOOR MAP */
 
 .floor-plan-container {
-    /* Notice there is NO position: absolute, top, or left here! */
-    width: 700px;
-    max-width: 100%;
-    height: 550px;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
     background: #f1eee5;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -880,11 +946,13 @@ body {
 
 .floor-plan-map {
     position: relative; /* Allows us to place seats exactly where we want them */
-    width: 100%;
-    height: 600px; /* Adjust if you need a taller map */
+    width: 800px !important;
+    height: 550px !important; /* Adjust if you need a taller map */
     background-color: #f1eee5; 
-    padding: 20px;
-    box-sizing: border-box;
+    /* padding: 20px;
+    box-sizing: border-box; */
+    border-radius: 8px;
+    margin-top: 70px;
 }
 
 .seat {
@@ -901,71 +969,35 @@ body {
     color: #4a3304; 
 }
 
-.pantry{
-    width: 60px;
-    height: 80px;
-}
-
-.cr{
-    width: 155px;
-    height: 80px;    
-}
-
-/* ROOMS */
-
-.sky-line-room{
-    width: 170px;
-    height: 80px;
-    border-radius: 12px;     
-}
-
-/* SEATS */
-.focus-pod-seat {
-    width: 35px;
-    height: 35px;
-    border-radius: 12px; 
-}
-
-.sky-pod-seat{
-    width: 45px;
-    height: 45px;
-    border-radius: 12px; 
-}
-
-.think-spot-seat {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; 
-}
-
-/* .power-bar-seat{
-
-} */
-
-/* Seat Interaction States */
-/* .seat:hover:not(.unavailable) {
-    transform: scale(1.1); 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-} */
-
-.design-dock-seat{
-    width: 55px;
-    height: 40px;
-    border-radius: 12%;   
-}
-
-.flow-row-seat{
-    width: 30px;
-    height: 38px;
-    border-radius: 12%;      
-}
-
 .seat.unavailable {
-    background-color: #d1d5db; /* Grayed out */
-    border-color: #9ca3af;
+    background-color: #f3f4f6 !important; /* Base clean light-gray backdrop */
+    border-color: #9ca3af !important;      /* Clear visible container boundaries */
+    color: #6b7280 !important;             /* Keeps seat numbers readable but dimmed */
     cursor: not-allowed;
+    position: relative;
+    overflow: hidden;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 6px,
+        rgba(17, 17, 17, 0.15) 6px,   /* Soft, subtle dark line tint */
+        rgba(17, 17, 17, 0.15) 8px    /* Controls line thickness (2px wide lines) */
+    ) !important;
 }
 
+.pantry { width: 60px; height: 80px; }
+.cr { width: 190px; height: 80px; }
+.sky-line-room { width: 170px; height: 80px; border-radius: 12px; }
+.focus-pod-seat { width: 35px; height: 35px; border-radius: 12px; }
+.think-spot-seat { width: 40px; height: 40px; border-radius: 50%; }
+.design-dock-seat { width: 55px; height: 40px; border-radius: 12%; }
+.flow-row-seat { width: 30px; height: 38px; border-radius: 12%; }
+.power-bar-seat { width: 45px; height: 37px; border-radius: 12px; }
+.collab-nook-seat { width: 30px; height: 38px; border-radius: 12%; } /* bug */
+.sky-pod-room { width: 45px; height: 37px; border-radius: 12px; }
+.sky-circle-room { width: 40px; height: 40px; border-radius: 12px; }
+.sky-den-room { width: 30px; height: 38px; border-radius: 12%; } /* NEW SEAT -- PENDING */
+.sky-booth-room { width: 30px; height: 38px; border-radius: 12%; }/* NEW SEAT -- PENDING */
 
 .slider-container {
     width: 100%;
@@ -1012,7 +1044,8 @@ body {
     bottom: 1.25rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 99 !important;
+    pointer-events: auto !important;
 }
 
 .slider-nav a {
@@ -1022,6 +1055,8 @@ body {
     background-color: #fff;
     opacity: 0.3;              /* Dimmed down slightly more so the active one POPS */
     transition: all ease 250ms;
+    cursor: pointer !important;
+    pointer-events: auto !important;
 }
 
 .slider-nav a:hover {
@@ -1102,6 +1137,53 @@ body {
     text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
 }
 
+/* --- DROP-DOWN SPOT SELECTION PICKER --- */
+.seat-picker-container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    font-family: "Google Sans Flex", sans-serif;
+}
+
+.picker-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #253e68;
+    letter-spacing: 0.5px;
+}
+
+.picker-select {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+    font-size: 15px;
+    font-family: "Google Sans Flex", sans-serif;
+    font-weight: 500;
+    color: #253e68;
+    background-color: #fcfbf6;
+    border: 2px solid rgba(59, 113, 202, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    
+    /* Clean appearance adjustments */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23253e68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+}
+
+.picker-select:focus {
+    border-color: #3b71ca;
+    box-shadow: 0 0 0 4px rgba(59, 113, 202, 0.15);
+    background-color: #fff;
+}
+
 /* TABLETS (Screens smaller than 1024px) */
 @media (max-width: 1024px) {
     html, body, .container {
@@ -1123,6 +1205,12 @@ body {
         letter-spacing: 3px;
         padding: 0 20px;
     }
+
+    .process-booking-button {
+        /* Slightly reduces margins to adapt to the compressed layout cards */
+        margin: 25px auto 5px auto !important;
+        transform: none;
+    }
 }
 
 /* MOBILE PHONES (Screens smaller than 768px) */
@@ -1130,7 +1218,7 @@ body {
 
     html, body, .container {
         scrollbar-width: none !important; 
-        overflow-y: hidden !important;   
+        overflow-y: auto !important;   
     }
     html::-webkit-scrollbar, 
     body::-webkit-scrollbar,
@@ -1156,7 +1244,6 @@ body {
         height: 60px; 
         width: 100% !important;
         overflow: hidden; /* This is what hides the links! */
-
     }
 
     .menu-icon {
@@ -1176,10 +1263,17 @@ body {
         width: 90%;
         border-radius: 10px; /* Removes the side-tab curves */
         align-items: center; /* Centers the text inside the button */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: background-color 0.3s ease, color 0.3 ease, transform 0.3 ease !important;
     }
 
     .nav-links li a:hover {
-        margin-left: 0; /* Stops the button from shifting sideways when tapped */
+        margin-left: 0 !important; /* Stops the button from shifting sideways when tapped */
+        background-color: #fcfbf6 !important; /* Adds a nice highlight on tap */
+        color: #3b71ca !important;
+        transform: scale(1.02) !important; /* Slightly enlarges the button on tap for a premium feel */
     }
 
     /* Hide the fancy side-curve decorations on mobile */
@@ -1204,7 +1298,7 @@ body {
 
     /* 1. Scale the text dynamically and lock it to two lines */
     .tagline {
-        font-size: 8vw;     /* Dynamically shrinks based on screen width! */
+        font-size: 10vw;     /* Dynamically shrinks based on screen width! */
         white-space: nowrap; /* FORBIDS the browser from adding extra line breaks */
         line-height: 0.85 !important; 
         text-shadow: 2px 2px 20px rgba(0,0,0,0.8); 
@@ -1212,12 +1306,32 @@ body {
     
     .location {
         font-family: "Google Sans Flex";
-        font-size: 1.5vw;      /* Dynamically shrinks */
+        font-size: 1.8vw;      /* Dynamically shrinks */
         letter-spacing: 1px;
         margin-top: 15px;
         line-height: 1.5;
         padding: 0 10px;
     }
+
+    /* .info-card-book-now {
+        position: absolute !important;
+        left: 51.5% !important;
+        top: 55% !important;
+        width: 40% !important;
+        height: 20% !important;
+        min-height: 0 !important;
+        border-radius: 12px !important;
+        z-index: 100 !important;
+        margin: 0 !important; 
+    }
+
+    .info-card-book-now .book-now-text {
+        position: static !important;
+        font-family: "Google Sans Flex";
+        font-weight: 600;
+        color: #0c1018c2 !important;
+        font-size: 14px !important;
+    } */
 
     /* 2. Allow the cards to shrink and fit the phone screen */
     .focus-pod-card,
@@ -1229,9 +1343,11 @@ body {
     .sky-pod-card,
     .sky-circle-card {
         width: 100%;       /* Tells the card to fill the available space */
+        height: 200px !important;      /* Lets the height adjust naturally to the content */
         min-width: 0;      /* THE MAGIC FIX: Overrides the 500px lock! */
         max-width: 400px;  /* Keeps them looking nice if the phone is turned sideways */
         margin: 0 auto;    /* Centers the card perfectly */
+        position: relative !important; /* Allows for absolute positioning of text inside the card */
     }
 
     /* 1. Stop the 'X' button from shrinking on mobile */
@@ -1243,6 +1359,8 @@ body {
 
     /* 2. Give the modal a bit more breathing room on small screens */
     .modal-box {
+        height: auto !important; 
+        max-height: 75vh !important;        
         width: 90%; 
         padding: 25px; 
     }
@@ -1266,34 +1384,35 @@ body {
     .skycircle-booking-spaces-title {
         font-size: 22px;       /* Shrink the title font */
         line-height: 1.1;      /* Keeps the two lines closer together */
-        top: 30%;              /* Nudges the title up slightly */
+        top: 24%;              /* Nudges the title up slightly */
         left: 56%;             /* Aligns it neatly next to the desk image */
     }
 
     /* 2. Shrink the price and push it safely below the title */
     .booking-space-price {
         font-size: 18px;       
-        top: 38%;              /* Pushes it down so the title has room to breathe */
+        top: 36%;              /* Pushes it down so the title has room to breathe */
         left: 62%;             
     }
 
     /* 3. Align the buttons and read more text to match */
     .book-now-card {
-        left: 48%;
-        width: 45%;
+        left: 51%;
+        width: 40%;
+        height: 20%;
     }
 
     .book-now-text {
         font-family: "Google Sans Flex";
-        top: 31%;
-        left: 30%;
-        font-weight: 650;
+        top: 25%;
+        left: 26%;
+        font-weight: 600;
         color: #0c1018c2;
     }   
 
     .collabnook-booking-spaces-title{
         position: absolute;
-        top: 30%;         
+        top: 24%;         
         left: 53%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
@@ -1307,7 +1426,7 @@ body {
 
     .designdock-booking-spaces-title{
         position: absolute;
-        top: 30%;         
+        top: 24%;         
         left: 53%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
@@ -1321,7 +1440,7 @@ body {
 
     .skypod-booking-spaces-title{
         position: absolute;
-        top: 30%;         
+        top: 24%;         
         left: 59%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
@@ -1335,7 +1454,7 @@ body {
 
     .skycircle-booking-spaces-title{
         position: absolute;
-        top: 30%;         
+        top: 24%;         
         left: 56%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
@@ -1361,7 +1480,9 @@ body {
 
     
     .learn-more-text {
-        left: 62.5%;
+        top: 80%;
+        left: 63.5%;
+        font-size: 12px;
     }
 
     .booking-wrapper {
@@ -1377,43 +1498,85 @@ body {
         overflow-y: auto !important; 
     }
 
-    .booking-calendar,
-    .floor-plan-container {
+    .booking-calendar {
         width: 100% !important;
-        max-width: 450px !important;
+        max-width: 500px !important;
         margin: 0 auto !important; 
+        
+        /* THE TALLER FIX: Increased from 25px to 45px to expand the bottom area safely */
+        padding-bottom: 60px !important; 
+        
+        /* Keeps the automatic sizing structure clean */
+        height: auto !important; 
     }
+    
+    .pantry { width: 60px; height: 80px; }
+    .cr { width: 190px; height: 80px; }
+    .sky-line-room { width: 170px; height: 80px; border-radius: 12px; }
+    .focus-pod-seat { width: 35px; height: 35px; border-radius: 12px; }
+    .think-spot-seat { width: 40px; height: 40px; border-radius: 50%; }
+    .design-dock-seat { width: 55px; height: 40px; border-radius: 12%; }
+    .flow-row-seat { width: 30px; height: 38px; border-radius: 12%; }
+    .collab-nook-seat { width: 40px; height: 40px; border-radius: 12%; }
+    .sky-pod-room { width: 45px; height: 37px; border-radius: 12px; }
+    .sky.circle-room { width: 40px; height: 40px; border-radius: 50%; }
+    .sky-den-room { width: 30px; height: 38px; border-radius: 12%; } /* NEW SEAT -- PENDING */
+    .sky-booth-room { width: 30px; height: 38px; border-radius: 12%; }/* NEW SEAT -- PENDING */
+    
+    /* .floor-plan-container {
+        width: 100% !important;
+        max-width: 500px !important;
+        margin: 0 auto !important; 
+        height: auto !important;
+        overflow: hidden !important;
+    } */
 
     #back-arrow {
         top: 20px;
         right: 30px;
         z-index: 1000;      /* Guarantees it is on top of everything */
         position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
+        left: auto;
     }
 
     /* 1. Remove the fixed height to unlock the container */
     .floor-plan-container {
+        width: 100% !important;
+        max-width: 500px !important;
+        margin: 0 auto !important; 
         height: auto !important;
+        overflow: hidden !important;
     }
 
     /* 2. Force the map to keep its wide Desktop proportions */
     .floor-plan-map {
-        height: auto !important;
-        aspect-ratio: 7 / 6 !important; /* Locks it to the exact desktop rectangle shape */
-        padding: 10px !important;       /* Slightly smaller padding for mobile */
+        display: block !important;
+        transform: scale(0.78) !important;           /* Scales down matching percentages perfectly */
+        transform-origin: top center !important;      /* Anchors the frame smoothly for symmetry */
+        margin-top: 40px !important; 
+        margin-bottom: -230px !important;            /* Removes massive trailing blank empty boxes */
+        margin-left: -368px!important;              /* Centers the map perfectly within the container */
+        left: 50% !important;
+        height: 700px !important;
+    }
+
+    .seat{
+        position: absolute !important; /* Ensures the seats stay exactly where they are on the map */
     }
 
     /* 3. Magically shrink ALL seats, rooms, and text by 45% */
-    .seat, .pantry, .cr, .sky-line-room {
-        transform: scale(0.70) !important; 
-        transform-origin: top left !important; /* Keeps them anchored to their exact coordinates */
+    .pantry, .cr, .sky-line-room {
+        transform: none !important; 
+        transform-origin: initial !important; /* Keeps them anchored to their exact coordinates */
     }
     
     .home-content-stack {
-        height: calc(100vh - 60px) !important; /* Locks height to perfectly match the remaining screen view */
+        height: auto !important; 
+        min-height: calc(100vh - 60px) !important; 
+        overflow-y: auto !important;       /* Allows cards to scroll natively down the screen */
         justify-content: flex-start !important;
-        overflow-y: hidden !important;    /* Removes any internal scroll wrapper lines */
-        padding-bottom: 10px !important;
+        padding-top: 20px !important;
+        padding-bottom: 40px !important;    /* Adds cushion below the very last card */
     }
 
     .slider-nav a {
@@ -1447,9 +1610,33 @@ body {
         align-items: center !important;
 
         width: 130px !important;        
-        height: 43px !important;       
+        height: 38px !important;       
         min-height: 48px !important;    
-        font-size: 15px !important;     
+        font-size: 13px !important;     
         margin:50px 25px 0 25px !important; 
+    }
+
+    .btn-arrow {
+    margin-left: 6px;
+    font-weight: bold; 
+    }
+
+    .process-booking-button {
+        width: 60% !important; 
+        height: 50px !important; /* Slightly lowered height for better mobile finger tap proportions */
+        min-height: 50px !important;
+        
+        font-size: 15px; /* Subtle text downscale to look sharp on mobile screens */
+        border-radius: 12px; /* Matches the rounded box style of your calendar card dropdown dropdown */
+        margin: 25px auto 10px auto !important;
+        
+        /* Disables desktop lift transform which can feel clunky on mobile touch screens */
+        transform: none !important; 
+    }
+    
+    .process-booking-button:hover {
+        color: #1b1b1b !important; /* Keeps text white on hover action states */
+        background-color: #f9eb85 !important; /* Elegant deeper blue shift on hover */
+        transform: translateY(-3px); 
     }
 }

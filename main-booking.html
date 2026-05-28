@@ -43,16 +43,20 @@
                     <div id="calendar-days" class="calendar-days"></div>
                 </div>
                 <p id="selected-date-text">Selected Date: None</p>
+                <div class="seat-picker-container">
+                    <label for="seat-dropdown" class="picker-label">Choose an Available Spot:</label>
+                    <select id="seat-dropdown" class="picker-select">
+                        <option value="" disabled selected>Select a Seat</option>
+                    </select>
+                </div>
+            <a href="#" class="process-booking-button">Process  Booking</a>
+
             </div>
 
             <div class="floor-plan-container">
-                <div class="floor-plan-header">Pick Your Spot:</div>
-                
+                <div class="floor-plan-header">Choose Your Spot</div>
                 <div class="floor-plan-map" id="floor-map">
-                    
                 </div>
-                
-                <p id="selected-seat-text">Selected Seat: None</p>
             </div>
         </div>
     </div>
@@ -141,95 +145,113 @@
             renderCalendar();
         }
 
-        const floorMap = document.getElementById('floor-map');
+const floorMap = document.getElementById('floor-map');
+        const seatDropdown = document.getElementById('seat-dropdown');
 
         if (floorMap) {
+            // 1. READ USER CHOICES FROM THE URL (e.g., ?type=focus-pod-seat)
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedTypeFilter = urlParams.get('type'); // Contains 'focus-pod-seat'
+
+            // 2. THE DROPDOWN RESET: Clear out all options so they don't stack up,
+            // leaving only the initial default placeholder.
+            seatDropdown.innerHTML = '<option value="" disabled selected>-- Select a Seat --</option>';
+
             const seatDatabase = [
+                // --- SPECIAL ROOMS & UTILITIES ---
+                { id: 'Comfort Room', type: 'cr', top: '-5%', left: '8%' }, 
+                { id: 'Pantry', type: 'pantry', top: '-5%', left: '32%' }, 
+                { id: 'Reception', type: 'cr', top: '63%', left: '8%' }, 
 
-                // OTHERS
-                { id: 'Pantry', type: 'pantry', top: '1%', left: '28%'},
-                { id: 'Comfort Room', type: 'cr', top: '1%', left: '2%'}, 
+                // --- ROOM SECTIONS ---
+                { id: 'SL1', type: 'sky-line-room', top: '15%', left: '8%' },
+                { id: 'SD1', type: 'sky-den-room', top: '22%', left: '30%' },
+                { id: 'SB1', type: 'sky-booth-room', top: '15%', left: '30%' },
 
-                // SKYLINE
-                { id: 'SL1', type: 'sky-line-room', top: '27%', left: '2%' },
-
-                // Top Booths
-                { id: 'B1', type: 'power-bar-seat', top: '10%', left: '35%', status: 'available' },
-                { id: 'B2', type: 'power-bar-seat', top: '10%', left: '45%', status: 'available' },
+                // SKY CIRCLE 
+                { id: 'SC1', type: 'sky-circle-room', top: '62.1%', left: '74%', status: 'available' },
+                { id: 'SC2', type: 'sky-circle-room', top: '69%', left: '74%', status: 'available' },
+                { id: 'CN1', type: 'sky-booth-room', top: '-5%', left: '40%' },
                 
-                // Think Spot
-                { id: 'TS1', type: 'think-spot-seat', top: '49%', left: '26%', status: 'available' },
-                { id: 'TS2', type: 'think-spot-seat', top: '55%', left: '21%', status: 'available' },
-                { id: 'TS3', type: 'think-spot-seat', top: '58%', left: '28%', status: 'available' },
+                // --- THINK SPOT SEATS ---
+                { id: 'TS1', type: 'think-spot-seat', top: '33%', left: '24%', status: 'available' }, 
+                { id: 'TS2', type: 'think-spot-seat', top: '40%', left: '22%', status: 'available' }, 
+                { id: 'TS3', type: 'think-spot-seat', top: '39%', left: '27%', status: 'available' }, 
 
-                // Design Dock
+                // --- DESIGN DOCK SEATS ---
+                { id: 'DD1', type: 'design-dock-seat', top: '52%', left: '18%', status: 'available'}, 
+                { id: 'DD2', type: 'design-dock-seat', top: '35%', left: '10%', status: 'available'},
+                { id: 'DD3', type: 'design-dock-seat', top: '45%', left: '10%', status: 'available'},
 
-                { id: 'DD1', type: 'design-dock-seat', top: '68%', left: '13%', status: 'available'},
-                { id: 'DD2', type: 'design-dock-seat', top: '58%', left: '2%', status: 'available'},
-                { id: 'DD3', type: 'design-dock-seat', top: '48%', left: '2%', status: 'available'},
-
-                // Sky Pod
-                { id: 'SP1', type: 'sky-pod-seat', top: '465px', left: '90%', status: 'available' },
-                { id: 'SP2', type: 'sky-pod-seat', top: '385px', left: '90%', status: 'available' },
+                // --- SKY POD BOOTHS ---
+                { id: 'SP1', type: 'sky-pod-room', top: '-3%', left: '74%', status: 'available' },
+                { id: 'SP2', type: 'sky-pod-room', top: '4%', left: '74%', status: 'available' },
                 
-                // Focus Pods
-                { id: 'FP1', type: 'focus-pod-seat', top: '335px', left: '48%', status: 'available' },
-                { id: 'FP2', type: 'focus-pod-seat', top: '370px', left: '48%', status: 'available' },
-                { id: 'FP3', type: 'focus-pod-seat', top: '405px', left: '48%', status: 'available' },
-                { id: 'FP4', type: 'focus-pod-seat', top: '475px', left: '48%', status: 'available' },
-                { id: 'FP5', type: 'focus-pod-seat', top: '365px', left: '56%', status: 'available' },
-                { id: 'FP6', type: 'focus-pod-seat', top: '402px', left: '56%', status: 'available' },
-                { id: 'FP7', type: 'focus-pod-seat', top: '438px', left: '56%', status: 'available' },
-                { id: 'FP8', type: 'focus-pod-seat', top: '475px', left: '56%', status: 'available' },
-                { id: 'FP9', type: 'focus-pod-seat', top: '402px', left: '64%', status: 'available' },
-                { id: 'FP10', type: 'focus-pod-seat', top: '438px', left: '64%', status: 'available' },
-                { id: 'FP11', type: 'focus-pod-seat', top: '475px', left: '64%', status: 'available' },
+                // --- FOCUS POD SEATS ---
+                { id: 'FP1', type: 'focus-pod-seat', top: '52.8%', left: '46%', status: 'available' },
+                { id: 'FP2', type: 'focus-pod-seat', top: '59.1%', left: '46%', status: 'available' },
+                { id: 'FP3', type: 'focus-pod-seat', top: '65.5%', left: '46%', status: 'available' },
+                { id: 'FP4', type: 'focus-pod-seat', top: '71.7%', left: '46%', status: 'available' },
+                { id: 'FP5', type: 'focus-pod-seat', top: '52.8%', left: '52%', status: 'available' },
+                { id: 'FP6', type: 'focus-pod-seat', top: '59.1%', left: '52%', status: 'available' },
+                { id: 'FP7', type: 'focus-pod-seat', top: '65.5%', left: '52%', status: 'available' },
+                { id: 'FP8', type: 'focus-pod-seat', top: '71.7%', left: '52%', status: 'available' },
+                { id: 'FP9', type: 'focus-pod-seat', top: '59.1%', left: '58%', status: 'available' },
+                { id: 'FP10', type: 'focus-pod-seat', top: '65.6%', left: '58%', status: 'available' },
+                { id: 'FP11', type: 'focus-pod-seat', top: '71.7%', left: '58%', status: 'available' },
 
-                { id: 'FP12', type: 'focus-pod-seat', top: '315px', left: '93%', status: 'available' },
-                { id: 'FP13', type: 'focus-pod-seat', top: '315px', left: '86.8%', status: 'available' },
-                { id: 'FP14', type: 'focus-pod-seat', top: '315px', left: '80.6%', status: 'available' },
+                { id: 'FP12', type: 'focus-pod-seat', top: '50%', left: '77.5%', status: 'available' },
+                { id: 'FP13', type: 'focus-pod-seat', top: '50%', left: '73.2%', status: 'available' },
+                { id: 'FP14', type: 'focus-pod-seat', top: '50%', left: '69%', status: 'available' },
+                { id: 'FP15', type: 'focus-pod-seat', top: '40.8%', left: '77.5%', status: 'available' },
+                { id: 'FP16', type: 'focus-pod-seat', top: '40.8%', left: '73.2%', status: 'available' },
+                { id: 'FP17', type: 'focus-pod-seat', top: '40.8%', left: '69%', status: 'available' },
+                { id: 'FP18', type: 'focus-pod-seat', top: '40.8%', left: '64.8%', status: 'available' },
+                { id: 'FP19', type: 'focus-pod-seat', top: '40.8%', left: '60.5%', status: 'unavailable' },
 
-                { id: 'FP15', type: 'focus-pod-seat', top: '245px', left: '93%', status: 'available' },
-                { id: 'FP16', type: 'focus-pod-seat', top: '245px', left: '86.8%', status: 'available' },
-                { id: 'FP17', type: 'focus-pod-seat', top: '245px', left: '80.6%', status: 'available' },
-                { id: 'FP18', type: 'focus-pod-seat', top: '245px', left: '74.4%', status: 'available' },
-                { id: 'FP19', type: 'focus-pod-seat', top: '245px', left: '68.3%', status: 'available' },
+                { id: 'FP20', type: 'focus-pod-seat', top: '34.1%', left: '77.5%', status: 'available' },
+                { id: 'FP21', type: 'focus-pod-seat', top: '34.1%', left: '73.2%', status: 'available' },
+                { id: 'FP22', type: 'focus-pod-seat', top: '34.1%', left: '64.8%', status: 'available' },
+                { id: 'FP23', type: 'focus-pod-seat', top: '34.1%', left: '60.5%', status: 'available' },
+                { id: 'FP24', type: 'focus-pod-seat', top: '34.1%', left: '56.3%', status: 'available' },
 
-                { id: 'FP20', type: 'focus-pod-seat', top: '205px', left: '93%', status: 'available' },
-                { id: 'FP21', type: 'focus-pod-seat', top: '205px', left: '86.8%', status: 'available' },
-                { id: 'FP22', type: 'focus-pod-seat', top: '205px', left: '74.4%', status: 'available' },
-                { id: 'FP23', type: 'focus-pod-seat', top: '205px', left: '68.3%', status: 'available' },
-                { id: 'FP24', type: 'focus-pod-seat', top: '205px', left: '62.3%', status: 'available' },
+                { id: 'FP25', type: 'focus-pod-seat', top: '20%', left: '77.1%', status: 'available' },
+                { id: 'FP26', type: 'focus-pod-seat', top: '20%', left: '72.9%', status: 'available' },
+                { id: 'FP27', type: 'focus-pod-seat', top: '20%', left: '68.6%', status: 'available' },
+                { id: 'FP28', type: 'focus-pod-seat', top: '20%', left: '64.4%', status: 'available' },
+                { id: 'FP29', type: 'focus-pod-seat', top: '20%', left: '60.1%', status: 'available' },
 
-                { id: 'FP25', type: 'focus-pod-seat', top: '150px', left: '93%', status: 'available' },
-                { id: 'FP26', type: 'focus-pod-seat', top: '150px', left: '86.8%', status: 'available' },
-                { id: 'FP27', type: 'focus-pod-seat', top: '150px', left: '80.6%', status: 'available' },
-                { id: 'FP28', type: 'focus-pod-seat', top: '150px', left: '74.4%', status: 'available' },
-                { id: 'FP29', type: 'focus-pod-seat', top: '150px', left: '68.3%', status: 'available' },
+                { id: 'FP30', type: 'focus-pod-seat', top: '13%', left: '77.1%', status: 'available' },
+                { id: 'FP31', type: 'focus-pod-seat', top: '13%', left: '72.9%', status: 'available' },
+                { id: 'FP32', type: 'focus-pod-seat', top: '13%', left: '68.6%', status: 'available' },
+                { id: 'FP33', type: 'focus-pod-seat', top: '13%', left: '64.4%', status: 'available' },
+                { id: 'FP34', type: 'focus-pod-seat', top: '13%', left: '60.1%', status: 'available' },
+                { id: 'FP35', type: 'focus-pod-seat', top: '2%', left: '40%', status: 'available' },
 
-                { id: 'FP30', type: 'focus-pod-seat', top: '110px', left: '93%', status: 'available' },
-                { id: 'FP31', type: 'focus-pod-seat', top: '110px', left: '86.8%', status: 'available' },
-                { id: 'FP32', type: 'focus-pod-seat', top: '110px', left: '80.6%', status: 'available' },
-                { id: 'FP33', type: 'focus-pod-seat', top: '110px', left: '74.4%', status: 'available' },
-                { id: 'FP34', type: 'focus-pod-seat', top: '110px', left: '68.3%', status: 'available' },
+                // --- FLOW ROW SEATS ---
+                { id: 'FR1', type: 'flow-row-seat', top: '34%', left: '43.5%', status: 'available'},
+                { id: 'FR2', type: 'flow-row-seat', top: '40.5%', left: '43.5%', status: 'available'},
+                { id: 'FR3', type: 'flow-row-seat', top: '34%', left: '47.3%', status: 'available'},
+                { id: 'FR4', type: 'flow-row-seat', top: '40.5%', left: '47.3%', status: 'available'},
+                { id: 'FR5', type: 'flow-row-seat', top: '15%', left: '45%', status: 'available'},
+                { id: 'FR6', type: 'flow-row-seat', top: '22%', left: '45%', status: 'available'},
+                { id: 'FR7', type: 'flow-row-seat', top: '15%', left: '48.7%', status: 'available'},
+                { id: 'FR8', type: 'flow-row-seat', top: '22%', left: '48.7%', status: 'available'},
 
-                // FLOW ROW
-                { id: 'FR1', type: 'flow-row-seat', top: '232px', left: '48.5%', status: 'available'},
-                { id: 'FR2', type: 'flow-row-seat', top: '270px', left: '48.5%', status: 'available'},
-                { id: 'FR3', type: 'flow-row-seat', top: '232px', left: '53%', status: 'available'},
-                { id: 'FR4', type: 'flow-row-seat', top: '270px', left: '53%', status: 'available'},
-
-                { id: 'FR5', type: 'flow-row-seat', top: '127px', left: '52%', status: 'available'},
-                { id: 'FR6', type: 'flow-row-seat', top: '165px', left: '52%', status: 'available'},
-                { id: 'FR7', type: 'flow-row-seat', top: '127px', left: '56.5%', status: 'available'},
-                { id: 'FR8', type: 'flow-row-seat', top: '165px', left: '56.5%', status: 'available'},
-
+                // POWER BAR 
+                { id: 'PB1', type: 'power-bar-seat', top: '-5%', left: '48%', status: 'available' },
+                { id: 'PB2', type: 'power-bar-seat', top: '-5%', left: '54%', status: 'available' },
+                { id: 'PB3', type: 'power-bar-seat', top: '-5%', left: '60%', status: 'available' },
+                { id: 'PB4', type: 'power-bar-seat', top: '2%', left: '48%', status: 'available' },
+                { id: 'PB5', type: 'power-bar-seat', top: '2%', left: '54%', status: 'available' },
+                { id: 'PB6', type: 'power-bar-seat', top: '2%', left: '60%', status: 'available' }
             ];
 
             seatDatabase.forEach(seatData => {
                 const seatElement = document.createElement('div');
-                
                 seatElement.className = `seat ${seatData.type}`;
+                seatElement.id = `map-seat-${seatData.id}`; 
+                
                 if (seatData.status === 'unavailable') {
                     seatElement.classList.add('unavailable');
                 }
@@ -238,21 +260,53 @@
                 seatElement.style.left = seatData.left;
                 seatElement.textContent = seatData.id;
 
+                // THE OMNI-DIMMING FIX: Move the filter check out here so it scans EVERY room and seat
+                const matchesFilter = !selectedTypeFilter || seatData.type === selectedTypeFilter;
+
+                if (matchesFilter) {
+                    // If it matches the zone (like focus-pod-seat), keep it fully visible
+                    seatElement.style.opacity = '1'; 
+                    if (seatData.status === 'available') {
+                        seatElement.classList.add('zone-highlight');
+                    }
+                } else {
+                    // If it doesn't match, drop its opacity regardless of whether it's a seat or a room!
+                    seatElement.style.opacity = '0.15'; 
+                }
+
+                // Handle interactive click events only for available seats within the filter matching zone
                 if (seatData.status === 'available') {
+                    // Populating the select element options dropdown
+                    if (matchesFilter) {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = seatData.id;
+                        optionElement.textContent = `${seatData.id} (${seatData.type.replace(/-/g, ' ')})`;
+                        seatDropdown.appendChild(optionElement);
+                    }
+
                     seatElement.addEventListener('click', () => {
-                        // Find all seats and remove the blue color
-                        // document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
-                        
-                        // Make this specific seat blue
-                        // seatElement.classList.add('selected');
-                        
-                        // Update the text at the bottom to say "Selected Seat: B1"
-                        // selectedSeatText.textContent = `Selected Seat: ${seatData.id}`;
+                        if (matchesFilter) {
+                            document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+                            seatElement.classList.add('selected');
+                            seatDropdown.value = seatData.id;
+                        }
                     });
                 }
 
-                // Put the finished seat onto the map!
                 floorMap.appendChild(seatElement);
+            });
+
+            seatDropdown.addEventListener('change', (e) => {
+                const selectedSeatId = e.target.value;
+                document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+                
+                const targetMapNode = document.getElementById(`map-seat-${selectedSeatId}`);
+                if (targetMapNode) {
+                    targetMapNode.classList.add('selected');
+                    if (window.innerWidth <= 768) {
+                        targetMapNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
             });
         }
     </script>
