@@ -1216,9 +1216,10 @@ body {
 /* MOBILE PHONES (Screens smaller than 768px) */
 @media (max-width: 768px) {
 
-    html, body, .container {
-        scrollbar-width: none !important; 
-        overflow-y: auto !important;   
+    html, body {
+        overflow: hidden !important;
+        height: 100% !important;
+        width: 100% !important;
     }
     html::-webkit-scrollbar, 
     body::-webkit-scrollbar,
@@ -1551,13 +1552,13 @@ body {
     /* 2. Force the map to keep its wide Desktop proportions */
     .floor-plan-map {
         display: block !important;
-        transform: scale(0.78) !important;           /* Scales down matching percentages perfectly */
+        transform: scale(0.58) !important;           /* Scales down matching percentages perfectly */
         transform-origin: top center !important;      /* Anchors the frame smoothly for symmetry */
-        margin-top: 40px !important; 
-        margin-bottom: -230px !important;            /* Removes massive trailing blank empty boxes */
-        margin-left: -368px!important;              /* Centers the map perfectly within the container */
+        margin-top: 10px !important; 
+        margin-bottom: -320px !important;            /* Removes massive trailing blank empty boxes */
+        margin-left: -375px!important;              /* Centers the map perfectly within the container */
         left: 50% !important;
-        height: 700px !important;
+        height: 600px !important;
     }
 
     .seat{
