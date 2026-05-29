@@ -433,7 +433,7 @@ body {
     top: 55%;  
     left: 51%;   
     background-color: #5586dbc2;
-    border-radius: 20px;
+    border-radius: 12px;
     overflow: hidden;
     border: none;
     transition: all 0.3s ease;
@@ -1398,7 +1398,7 @@ body {
 
     /* 3. Align the buttons and read more text to match */
     .book-now-card {
-        left: 51%;
+        left: 53%;
         width: 40%;
         height: 20%;
     }
@@ -1406,7 +1406,7 @@ body {
     .book-now-text {
         font-family: "Google Sans Flex";
         top: 25%;
-        left: 26%;
+        left: 23%;
         font-weight: 600;
         color: #0c1018c2;
     }   
@@ -1482,7 +1482,7 @@ body {
     
     .learn-more-text {
         top: 80%;
-        left: 63.5%;
+        left: 65%;
         font-size: 12px;
     }
 
@@ -1503,11 +1503,7 @@ body {
         width: 100% !important;
         max-width: 500px !important;
         margin: 0 auto !important; 
-        
-        /* THE TALLER FIX: Increased from 25px to 45px to expand the bottom area safely */
-        padding-bottom: 60px !important; 
-        
-        /* Keeps the automatic sizing structure clean */
+        padding-bottom: 20px !important; 
         height: auto !important; 
     }
     
@@ -1552,9 +1548,9 @@ body {
     /* 2. Force the map to keep its wide Desktop proportions */
     .floor-plan-map {
         display: block !important;
-        transform: scale(0.58) !important;           /* Scales down matching percentages perfectly */
+        transform: scale(0.55) !important;           /* Scales down matching percentages perfectly */
         transform-origin: top center !important;      /* Anchors the frame smoothly for symmetry */
-        margin-top: 10px !important; 
+        margin-top: 13px !important; 
         margin-bottom: -320px !important;            /* Removes massive trailing blank empty boxes */
         margin-left: -375px!important;              /* Centers the map perfectly within the container */
         left: 50% !important;
