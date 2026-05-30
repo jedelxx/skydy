@@ -1289,7 +1289,7 @@ body {
     /* 6. Center the main text/content safely below the new top bar */
     .hero-section {
         width: 100%;
-        padding-top: 3rem;       /* Adds just a tiny bit of breathing room */
+        padding-top: 5rem;       /* Adds just a tiny bit of breathing room */
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -1623,7 +1623,7 @@ body {
         height: 38px !important;       
         min-height: 48px !important;    
         font-size: 13px !important;     
-        margin:50px 25px 0 25px !important; 
+        margin: 30px 25px 0 25px !important; 
     }
 
     .btn-arrow {
