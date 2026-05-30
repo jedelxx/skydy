@@ -1502,9 +1502,17 @@ body {
         flex-direction: column !important; /* The !important tag FORCES them to stack */
         justify-content: flex-start !important; 
         height: auto !important;                
-        padding-top: 100px !important;     /* Keeps it below the back arrow */
+        padding-top: 100px !important;    
         padding-bottom: 50px;
         gap: 20px;                         /* Brings the map a little closer to the calendar */
+    }
+
+    .main-content:has(.booking-wrapper) {
+        height: calc(100vh - 60px) !important;
+        overflow-y: auto !important; /* Enables independent momentum scrolling */
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-bottom: 120px !important; /* Absolute structural buffer clearing browser bottom bars */
     }
 
     .container {
@@ -1517,6 +1525,7 @@ body {
         margin: 0 auto !important; 
         padding-bottom: 20px !important; 
         height: auto !important; 
+        flex-shrink: 0 !important; /* Prevents the calendar from shrinking too much on small screens */
     }
     
     .pantry { width: 60px; height: 80px; }
