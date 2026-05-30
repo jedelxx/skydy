@@ -1219,8 +1219,8 @@ body {
     html, body, .container {
         scrollbar-width: none !important;
         overflow: auto !important;
-        /* height: 100% !important;
-        width: 100% !important; */
+        height: 100% !important;
+        width: 100% !important;
     }
     html::-webkit-scrollbar, 
     body::-webkit-scrollbar,
