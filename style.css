@@ -433,7 +433,7 @@ body {
     top: 55%;  
     left: 51%;   
     background-color: #5586dbc2;
-    border-radius: 20px;
+    border-radius: 12px;
     overflow: hidden;
     border: none;
     transition: all 0.3s ease;
@@ -1217,8 +1217,10 @@ body {
 @media (max-width: 768px) {
 
     html, body, .container {
-        scrollbar-width: none !important; 
-        overflow-y: auto !important;   
+        scrollbar-width: none !important;
+        overflow: auto !important;
+        /* height: 100% !important;
+        width: 100% !important; */
     }
     html::-webkit-scrollbar, 
     body::-webkit-scrollbar,
@@ -1385,7 +1387,7 @@ body {
         font-size: 22px;       /* Shrink the title font */
         line-height: 1.1;      /* Keeps the two lines closer together */
         top: 24%;              /* Nudges the title up slightly */
-        left: 56%;             /* Aligns it neatly next to the desk image */
+        left: 57.5%;             /* Aligns it neatly next to the desk image */
     }
 
     /* 2. Shrink the price and push it safely below the title */
@@ -1397,7 +1399,7 @@ body {
 
     /* 3. Align the buttons and read more text to match */
     .book-now-card {
-        left: 51%;
+        left: 53%;
         width: 40%;
         height: 20%;
     }
@@ -1405,7 +1407,7 @@ body {
     .book-now-text {
         font-family: "Google Sans Flex";
         top: 25%;
-        left: 26%;
+        left: 25.5%;
         font-weight: 600;
         color: #0c1018c2;
     }   
@@ -1427,7 +1429,7 @@ body {
     .designdock-booking-spaces-title{
         position: absolute;
         top: 24%;         
-        left: 53%; 
+        left: 54%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1441,7 +1443,7 @@ body {
     .skypod-booking-spaces-title{
         position: absolute;
         top: 24%;         
-        left: 59%; 
+        left: 62%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1455,7 +1457,7 @@ body {
     .skycircle-booking-spaces-title{
         position: absolute;
         top: 24%;         
-        left: 56%; 
+        left: 59%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1469,19 +1471,19 @@ body {
     .skypod-booking-spaces-price {
         font-size: 18px;       
         top: 38%;             
-        left: 59%; 
+        left: 62%; 
     }
 
     .skycircle-booking-spaces-price {
         font-size: 18px;       
         top: 38%;             
-        left: 59%; 
+        left: 62%; 
     }
 
     
     .learn-more-text {
         top: 80%;
-        left: 63.5%;
+        left: 65%;
         font-size: 12px;
     }
 
@@ -1502,11 +1504,7 @@ body {
         width: 100% !important;
         max-width: 500px !important;
         margin: 0 auto !important; 
-        
-        /* THE TALLER FIX: Increased from 25px to 45px to expand the bottom area safely */
-        padding-bottom: 60px !important; 
-        
-        /* Keeps the automatic sizing structure clean */
+        padding-bottom: 20px !important; 
         height: auto !important; 
     }
     
@@ -1533,7 +1531,7 @@ body {
 
     #back-arrow {
         top: 20px;
-        right: 30px;
+        right: 20px;
         z-index: 1000;      /* Guarantees it is on top of everything */
         position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
         left: auto;
@@ -1551,13 +1549,13 @@ body {
     /* 2. Force the map to keep its wide Desktop proportions */
     .floor-plan-map {
         display: block !important;
-        transform: scale(0.78) !important;           /* Scales down matching percentages perfectly */
+        transform: scale(0.58) !important;           /* Scales down matching percentages perfectly */
         transform-origin: top center !important;      /* Anchors the frame smoothly for symmetry */
-        margin-top: 40px !important; 
-        margin-bottom: -230px !important;            /* Removes massive trailing blank empty boxes */
-        margin-left: -368px!important;              /* Centers the map perfectly within the container */
+        margin-top: 13px !important; 
+        margin-bottom: -320px !important;            /* Removes massive trailing blank empty boxes */
+        margin-left: -375px!important;              /* Centers the map perfectly within the container */
         left: 50% !important;
-        height: 700px !important;
+        height: 600px !important;
     }
 
     .seat{
