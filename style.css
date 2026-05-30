@@ -1216,9 +1216,9 @@ body {
 /* MOBILE PHONES (Screens smaller than 768px) */
 @media (max-width: 768px) {
 
-    html, body, .container {
-        scrollbar-width: none !important;
-        overflow: auto !important;
+    html, body {
+        /* scrollbar-width: none !important; */
+        overflow: hidden !important;
         height: 100% !important;
         width: 100% !important;
     }
@@ -1230,6 +1230,8 @@ body {
 
     .container {
         flex-direction: column;
+        height: 100vh !important;
+        overflow: hidden !important; /* Prevents double scrollbars */
     }
 
     /* 2. Turn the sidebar into a Top Navigation Bar */
@@ -1238,7 +1240,7 @@ body {
         height: auto; 
         position: relative; /* Sit normally at the very top of the page */
         padding: 10px 0;
-        z-index: 999; /* Keep it above your space cards */
+        z-index: 1000; /* Keep it above your space cards */
     }
 
     /* 3. When collapsed, shrink to just the hamburger menu height */
@@ -1293,9 +1295,14 @@ body {
         align-items: center;    
     }
     /* 1. Fix the main background area padding for mobile */
-    .main-content {
-        padding: 100px 15px 40px 15px; /* Shrinks the massive desktop padding */
-        gap: 20px; /* Reduces the huge gap between cards */
+    .main-content,
+    .home-content-stack {
+        padding: 30px 15px 120px 15px !important; /* 120px bottom padding protects your bottom cards from getting cut off */
+        gap: 20px; 
+        overflow-y: auto !important; /* Allows smooth native mobile scrolling */
+        overflow-x: hidden !important;
+        height: calc(100vh - 60px) !important; /* Subtracts the top header bar size dynamically */
+        scrollbar-width: none !important;
     }
 
     /* 1. Scale the text dynamically and lock it to two lines */
@@ -1350,6 +1357,7 @@ body {
         max-width: 400px;  /* Keeps them looking nice if the phone is turned sideways */
         margin: 0 auto;    /* Centers the card perfectly */
         position: relative !important; /* Allows for absolute positioning of text inside the card */
+        flex-shrink: 0 !important;
     }
 
     /* 1. Stop the 'X' button from shrinking on mobile */
