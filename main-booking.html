@@ -155,7 +155,7 @@ const floorMap = document.getElementById('floor-map');
 
             // 2. THE DROPDOWN RESET: Clear out all options so they don't stack up,
             // leaving only the initial default placeholder.
-            seatDropdown.innerHTML = '<option value="" disabled selected> Select a Seat </option>';
+            seatDropdown.innerHTML = '<option value="" disabled selected>-- Select a Seat --</option>';
 
             const seatDatabase = [
                 // --- SPECIAL ROOMS & UTILITIES ---
@@ -183,9 +183,9 @@ const floorMap = document.getElementById('floor-map');
                 { id: 'DD2', type: 'design-dock-seat', top: '35%', left: '10%', status: 'available'},
                 { id: 'DD3', type: 'design-dock-seat', top: '45%', left: '10%', status: 'available'},
 
-                // --- SKY POD ---
-                { id: 'SP1', type: 'sky-pod-room', top: '-5%', left: '74%', status: 'available' },
-                { id: 'SP2', type: 'sky-pod-room', top: '1%', left: '74%', status: 'available' },
+                // --- SKY POD BOOTHS ---
+                { id: 'SP1', type: 'sky-pod-room', top: '-3%', left: '74%', status: 'available' },
+                { id: 'SP2', type: 'sky-pod-room', top: '4%', left: '74%', status: 'available' },
                 
                 // --- FOCUS POD SEATS ---
                 { id: 'FP1', type: 'focus-pod-seat', top: '52.8%', left: '46%', status: 'available' },
