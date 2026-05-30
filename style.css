@@ -865,7 +865,7 @@ body {
 .calendar-day:hover { background-color: #f9eb85; }
 
 .calendar-day.selected {
-    background-color: #3b72ca7a;
+    background-color: #6c93db;
     color: white;
     font-weight: bold;
 }
@@ -1405,7 +1405,7 @@ body {
     .booking-space-price {
         font-size: 18px;       
         top: 36%;              /* Pushes it down so the title has room to breathe */
-        left: 62%;             
+        left: 63.5%;             
     }
 
     /* 3. Align the buttons and read more text to match */
@@ -1418,7 +1418,7 @@ body {
     .book-now-text {
         font-family: "Google Sans Flex";
         top: 25%;
-        left: 25.5%;
+        left: 25%;
         font-weight: 600;
         color: #0c1018c2;
     }   
@@ -1454,7 +1454,7 @@ body {
     .skypod-booking-spaces-title{
         position: absolute;
         top: 24%;         
-        left: 62%; 
+        left: 60.5%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1468,7 +1468,7 @@ body {
     .skycircle-booking-spaces-title{
         position: absolute;
         top: 24%;         
-        left: 59%; 
+        left: 57%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1482,13 +1482,13 @@ body {
     .skypod-booking-spaces-price {
         font-size: 18px;       
         top: 38%;             
-        left: 62%; 
+        left: 60.5%; 
     }
 
     .skycircle-booking-spaces-price {
         font-size: 18px;       
         top: 38%;             
-        left: 62%; 
+        left: 60.5%; 
     }
 
     
@@ -1580,7 +1580,17 @@ body {
 
     .seat{
         position: absolute !important; /* Ensures the seats stay exactly where they are on the map */
+        cursor: pointer !important; /* Keeps the interactive feel of the seats */
     }
+
+    .seat.selected {
+        background-color: #6c93db !important; /* Premium brand sky blue fill color */
+        border-color: #253e68 !important;     /* Deep navy perimeter contrast ring border */
+        color: #ffffff !important;            /* Crisp white text number label color */
+        transform: scale(1.1) !important;     /* Subtle micro-pop enlargement effect for active items */
+        z-index: 500 !important;              /* Brings selected item explicitly over layout frames */
+    }
+
 
     /* 3. Magically shrink ALL seats, rooms, and text by 45% */
     .pantry, .cr, .sky-line-room {
@@ -1644,12 +1654,9 @@ body {
         width: 60% !important; 
         height: 50px !important; /* Slightly lowered height for better mobile finger tap proportions */
         min-height: 50px !important;
-        
         font-size: 15px; /* Subtle text downscale to look sharp on mobile screens */
         border-radius: 12px; /* Matches the rounded box style of your calendar card dropdown dropdown */
         margin: 25px auto 10px auto !important;
-        
-        /* Disables desktop lift transform which can feel clunky on mobile touch screens */
         transform: none !important; 
     }
     

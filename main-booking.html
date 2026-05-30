@@ -46,10 +46,10 @@
                 <div class="seat-picker-container">
                     <label for="seat-dropdown" class="picker-label">Choose an Available Spot:</label>
                     <select id="seat-dropdown" class="picker-select">
-                        <option value="" disabled selected>Select a Seat</option>
+                        <option value="" disabled selected> Select a Seat </option>
                     </select>
                 </div>
-            <a href="#" class="process-booking-button">Process  Booking</a>
+            <a href="#" class="process-booking-button">Process Booking</a>
 
             </div>
 
@@ -155,7 +155,7 @@ const floorMap = document.getElementById('floor-map');
 
             // 2. THE DROPDOWN RESET: Clear out all options so they don't stack up,
             // leaving only the initial default placeholder.
-            seatDropdown.innerHTML = '<option value="" disabled selected>-- Select a Seat --</option>';
+            seatDropdown.innerHTML = '<option value="" disabled selected> Select a Seat </option>';
 
             const seatDatabase = [
                 // --- SPECIAL ROOMS & UTILITIES ---
@@ -171,7 +171,9 @@ const floorMap = document.getElementById('floor-map');
                 // SKY CIRCLE 
                 { id: 'SC1', type: 'sky-circle-room', top: '62.1%', left: '74%', status: 'available' },
                 { id: 'SC2', type: 'sky-circle-room', top: '69%', left: '74%', status: 'available' },
-                { id: 'CN1', type: 'sky-booth-room', top: '-5%', left: '40%' },
+
+                //COLLAB NOOK
+                { id: 'CN1', type: 'collab-nook-seat', top: '-5%', left: '40%', status: 'available' },
                 
                 // --- THINK SPOT SEATS ---
                 { id: 'TS1', type: 'think-spot-seat', top: '33%', left: '24%', status: 'available' }, 
@@ -247,6 +249,8 @@ const floorMap = document.getElementById('floor-map');
                 { id: 'PB6', type: 'power-bar-seat', top: '2%', left: '60%', status: 'available' }
             ];
 
+// --- UPDATE THIS SECTION INSIDE YOUR SCRIPT TAG ---
+
             seatDatabase.forEach(seatData => {
                 const seatElement = document.createElement('div');
                 seatElement.className = `seat ${seatData.type}`;
@@ -260,23 +264,18 @@ const floorMap = document.getElementById('floor-map');
                 seatElement.style.left = seatData.left;
                 seatElement.textContent = seatData.id;
 
-                // THE OMNI-DIMMING FIX: Move the filter check out here so it scans EVERY room and seat
                 const matchesFilter = !selectedTypeFilter || seatData.type === selectedTypeFilter;
 
                 if (matchesFilter) {
-                    // If it matches the zone (like focus-pod-seat), keep it fully visible
                     seatElement.style.opacity = '1'; 
                     if (seatData.status === 'available') {
                         seatElement.classList.add('zone-highlight');
                     }
                 } else {
-                    // If it doesn't match, drop its opacity regardless of whether it's a seat or a room!
                     seatElement.style.opacity = '0.15'; 
                 }
 
-                // Handle interactive click events only for available seats within the filter matching zone
                 if (seatData.status === 'available') {
-                    // Populating the select element options dropdown
                     if (matchesFilter) {
                         const optionElement = document.createElement('option');
                         optionElement.value = seatData.id;
@@ -284,9 +283,13 @@ const floorMap = document.getElementById('floor-map');
                         seatDropdown.appendChild(optionElement);
                     }
 
+                    // SEAT CLICK LISTENER UPDATED FOR DYNAMIC STATE HIGHLIGHTS
                     seatElement.addEventListener('click', () => {
                         if (matchesFilter) {
+                            // Remove the 'selected' class from EVERY single seat element on the map canvas
                             document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+                            
+                            // Assign the active selection state class to this specific node element
                             seatElement.classList.add('selected');
                             seatDropdown.value = seatData.id;
                         }
@@ -296,16 +299,17 @@ const floorMap = document.getElementById('floor-map');
                 floorMap.appendChild(seatElement);
             });
 
+            // DROPDOWN CHANGE LISTENER UPDATED FOR DYNAMIC STATE HIGHLIGHTS
             seatDropdown.addEventListener('change', (e) => {
                 const selectedSeatId = e.target.value;
+                
+                // Clear out any old selected states from previous selections
                 document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
                 
+                // Target the specific dynamic map node element matches the unique selection identifier
                 const targetMapNode = document.getElementById(`map-seat-${selectedSeatId}`);
                 if (targetMapNode) {
-                    targetMapNode.classList.add('selected');
-                    if (window.innerWidth <= 768) {
-                        targetMapNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
+                    targetMapNode.classList.add('selected'); // Turns the targeted map seat element blue instantly!
                 }
             });
         }
