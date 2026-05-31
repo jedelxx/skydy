@@ -479,6 +479,16 @@ body {
     margin-top: 30px; 
 }
 
+/* GLOBAL INTERCEPTOR INJECTIONS: Stops invisible container nodes absorbing click frames */
+.card-carousel-container {
+    position: relative !important;
+    z-index: 5 !important; 
+    pointer-events: none !important; 
+}
+
+.card-nav-dot {
+    pointer-events: auto !important; 
+}
 
 /* ==========================================================================
    GLOBAL / DESKTOP RESPONSIVE MODAL OVERLAY & CAROUSEL
@@ -502,7 +512,7 @@ body {
     height: auto !important;
     max-height: 85vh !important;
     border-radius: 24px !important;
-    padding: 30px 40px !important; /* Wide padding for desktop */
+    padding: 30px 40px !important; 
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
@@ -533,7 +543,7 @@ body {
 .card-carousel-track {
     display: flex !important;
     width: 100% !important;
-    height: 350px !important; /* Desktop presentation height */
+    height: 350px !important; 
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
@@ -592,7 +602,7 @@ body {
 
 #modal-title {
     font-family: 'Google Sans Flex', sans-serif !important; 
-    font-size: 36px !important; /* Larger for Desktop */
+    font-size: 36px !important; 
     font-weight: 800 !important;
     color: #0c1324 !important; 
     margin: 0 !important;
@@ -601,7 +611,7 @@ body {
 
 #modal-price {
     font-family: 'Roboto', sans-serif !important; 
-    font-size: 22px !important; /* Larger for Desktop */
+    font-size: 22px !important; 
     font-weight: bold !important;
     color: #3b71ca !important; 
     margin: 0 0 5px 0 !important;
@@ -615,11 +625,9 @@ body {
     margin: 0 !important;
 }
 
-
 /* ==========================================================================
    GLOBAL PAGES & BOOKING LAYOUT
    ========================================================================== */
-
 .bg-contact-container {
     width: 100%;           
     height: 100%; 
@@ -757,7 +765,7 @@ body {
     font-size: 16px; 
     font-weight: 650;
     text-decoration: none !important; 
-    word-spacing: normal !important; /* FIX FOR WORD SPACING */
+    word-spacing: normal !important; 
     border-radius: 20px; 
     box-shadow: 0 6px 20px rgba(108, 147, 219, 0.3);
     transition: all 0.3s ease;
@@ -991,12 +999,10 @@ body {
     background-color: #fff;
 }
 
-
 /* ==========================================================================
    TABLETS (Screens smaller than 1024px and wider than 768px)
    ========================================================================== */
 @media (max-width: 1024px) and (min-width: 768px) {
-
     html, body {
         overflow: hidden !important;
         height: 100% !important;
@@ -1012,6 +1018,35 @@ body {
     .sidebar {
         width: 180px !important; 
         flex-shrink: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        align-items: center !important; /* Forces layout assets down the center line */
+    }
+
+    .logo-container {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 20px !important; /* Cuisines a clean gap away from the tablet floor edge */
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+
+    /* Rescales the inner yellow logo gracefully so it never breaks layout boundaries */
+    .footer-logo {
+        width: 70px !important; /* Scaled down slightly from 80px to look premium inside 180px tracks */
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 0 auto !important; /* Perfect balance symmetry alignment */
+        display: block !important;
+    }
+
+    /* Safely handles layer visibility state triggers if the user collapses the tablet bar */
+    .sidebar.collapsed .logo-container {
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
     .sidebar.collapsed { width: 60px !important; }
@@ -1124,11 +1159,10 @@ body {
     }
 }
 
-
-   /* MOBILE PHONES (Screens smaller than 768px) */
-
+/* ==========================================================================
+   MOBILE PHONES (Screens smaller than 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
-
     html, body {
         overflow: hidden !important;
         height: 100dvh !important;
@@ -1232,6 +1266,7 @@ body {
         padding: 0 10px;
     }
 
+    /* MOBILE CARDS RECOVERY: Restores stacking indicators missing from mobile compilation tracks */
     .focus-pod-card,
     .power-bar-card,
     .design-dock-card,
@@ -1245,8 +1280,12 @@ body {
         min-width: 0;      
         max-width: 400px;  
         margin: 0 auto;    
-        position: relative !important; 
         flex-shrink: 0 !important;
+        
+        /* THE FIX: Re-injects coordinate boundaries on mobile touch screens */
+        position: relative !important; 
+        z-index: 1 !important;
+        cursor: pointer;
     }
 
     .booking-spaces-title,
@@ -1270,6 +1309,7 @@ body {
         left: 53%;
         width: 40%;
         height: 20%;
+        z-index: 50 !important; /* Forces link weight over carousels on mobile */
     }
 
     .book-now-text {
@@ -1278,6 +1318,7 @@ body {
         left: 25%;
         font-weight: 600;
         color: #0c1018c2;
+        z-index: 51;
     }   
 
     .collabnook-booking-spaces-title {
@@ -1311,7 +1352,7 @@ body {
     .skypod-booking-spaces-title {
         position: absolute;
         top: 24%;         
-        left: 62%; 
+        left: 61.5%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1325,7 +1366,7 @@ body {
     .skycircle-booking-spaces-title {
         position: absolute;
         top: 24%;         
-        left: 58.5%; 
+        left: 57.5%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1350,7 +1391,7 @@ body {
 
     .learn-more-text {
         top: 80%;
-        left: 66%;
+        left: 65%;
         font-size: 12px;
     }
 
@@ -1360,25 +1401,17 @@ body {
     }
 
     .card-carousel-track {
-        height: 260px !important; /* Smaller height for phones */
+        height: 260px !important; 
     }
 
-    #modal-title {
-        font-size: 32px !important;
-    }
-
-    #modal-price {
-        font-size: 20px !important;
-    }
-
-    #modal-desc {
-        font-size: 15px !important;
-    }
+    #modal-title { font-size: 32px !important; }
+    #modal-price { font-size: 20px !important; }
+    #modal-desc { font-size: 15px !important; }
 
     .booking-wrapper {
         flex-direction: column !important; 
         justify-content: flex-start !important; 
-        height: auto !important;                
+        height: auto !important;                                
         padding-top: 100px !important;    
         padding-bottom: 50px;
         gap: 20px;                          
