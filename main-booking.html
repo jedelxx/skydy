@@ -49,19 +49,19 @@
                         <option value="" disabled selected> Select a Seat </option>
                     </select>
                 </div>
-            <a href="#" class="process-booking-button">Process Booking</a>
-
+                
+                <a href="#" id="process-booking-btn" class="process-booking-button disabled">Process Booking</a>
             </div>
 
             <div class="floor-plan-container">
                 <div class="floor-plan-header">Choose Your Spot</div>
-                <div class="floor-plan-map" id="floor-map">
-                </div>
+                <div class="floor-plan-map" id="floor-map"></div>
             </div>
         </div>
     </div>
 
     <script>
+        // --- PRELOADER ANIMATION CYCLE ---
         setTimeout(() => {
             const loader = document.getElementById('loading-screen');
             if (loader) {
@@ -70,6 +70,7 @@
             }
         }, 2000);
 
+        // --- BACKGROUND WALLPAPER TRANSITION SLIDER ---
         const bgImages = [
             'url("images/wp.jpg")',
             'url("images/wp1.jpg")', 
@@ -93,6 +94,7 @@
             }, 6000);
         }
 
+        // --- CALENDAR MANAGEMENT CORE ---
         const monthYearText = document.getElementById('month-year');
         const calendarDays = document.getElementById('calendar-days');
         const selectedDateText = document.getElementById('selected-date-text');
@@ -145,16 +147,24 @@
             renderCalendar();
         }
 
-const floorMap = document.getElementById('floor-map');
+        // --- GLOBAL INTERACTIVE LAYOUT STATE ENGINE ---
+        const floorMap = document.getElementById('floor-map');
         const seatDropdown = document.getElementById('seat-dropdown');
+        const processBookingBtn = document.getElementById('process-booking-btn');
+
+        // VALIDIATION CONTROLLER STATE MACHINE
+        function validateFormState() {
+            const selectedValue = seatDropdown.value;
+            if (selectedValue === "" || selectedValue === null) {
+                processBookingBtn.classList.add('disabled');
+            } else {
+                processBookingBtn.classList.remove('disabled');
+            }
+        }
 
         if (floorMap) {
-            // 1. READ USER CHOICES FROM THE URL (e.g., ?type=focus-pod-seat)
             const urlParams = new URLSearchParams(window.location.search);
-            const selectedTypeFilter = urlParams.get('type'); // Contains 'focus-pod-seat'
-
-            // 2. THE DROPDOWN RESET: Clear out all options so they don't stack up,
-            // leaving only the initial default placeholder.
+            const selectedTypeFilter = urlParams.get('type'); 
             seatDropdown.innerHTML = '<option value="" disabled selected> Select a Seat </option>';
 
             const seatDatabase = [
@@ -168,11 +178,11 @@ const floorMap = document.getElementById('floor-map');
                 { id: 'SD1', type: 'sky-den-room', top: '22%', left: '30%' },
                 { id: 'SB1', type: 'sky-booth-room', top: '15%', left: '30%' },
 
-                // SKY CIRCLE 
+                // --- SKY CIRCLE ---
                 { id: 'SC1', type: 'sky-circle-room', top: '62.1%', left: '74%', status: 'available' },
                 { id: 'SC2', type: 'sky-circle-room', top: '69%', left: '74%', status: 'available' },
 
-                //COLLAB NOOK
+                // --- COLLAB NOOK ---
                 { id: 'CN1', type: 'collab-nook-seat', top: '-5%', left: '40%', status: 'available' },
                 
                 // --- THINK SPOT SEATS ---
@@ -240,7 +250,7 @@ const floorMap = document.getElementById('floor-map');
                 { id: 'FR7', type: 'flow-row-seat', top: '15%', left: '48.7%', status: 'available'},
                 { id: 'FR8', type: 'flow-row-seat', top: '22%', left: '48.7%', status: 'available'},
 
-                // POWER BAR 
+                // --- POWER BAR ---
                 { id: 'PB1', type: 'power-bar-seat', top: '-5%', left: '48%', status: 'available' },
                 { id: 'PB2', type: 'power-bar-seat', top: '-5%', left: '54%', status: 'available' },
                 { id: 'PB3', type: 'power-bar-seat', top: '-5%', left: '60%', status: 'available' },
@@ -248,8 +258,6 @@ const floorMap = document.getElementById('floor-map');
                 { id: 'PB5', type: 'power-bar-seat', top: '2%', left: '54%', status: 'available' },
                 { id: 'PB6', type: 'power-bar-seat', top: '2%', left: '60%', status: 'available' }
             ];
-
-// --- UPDATE THIS SECTION INSIDE YOUR SCRIPT TAG ---
 
             seatDatabase.forEach(seatData => {
                 const seatElement = document.createElement('div');
@@ -283,15 +291,15 @@ const floorMap = document.getElementById('floor-map');
                         seatDropdown.appendChild(optionElement);
                     }
 
-                    // SEAT CLICK LISTENER UPDATED FOR DYNAMIC STATE HIGHLIGHTS
+                    // BIDIRECTIONAL MAPPING CLICK LISTENER
                     seatElement.addEventListener('click', () => {
                         if (matchesFilter) {
-                            // Remove the 'selected' class from EVERY single seat element on the map canvas
                             document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
-                            
-                            // Assign the active selection state class to this specific node element
                             seatElement.classList.add('selected');
                             seatDropdown.value = seatData.id;
+                            
+                            // Immediately unlocks button on vector map tab select actions
+                            validateFormState();
                         }
                     });
                 }
@@ -299,18 +307,17 @@ const floorMap = document.getElementById('floor-map');
                 floorMap.appendChild(seatElement);
             });
 
-            // DROPDOWN CHANGE LISTENER UPDATED FOR DYNAMIC STATE HIGHLIGHTS
             seatDropdown.addEventListener('change', (e) => {
                 const selectedSeatId = e.target.value;
-                
-                // Clear out any old selected states from previous selections
                 document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
                 
-                // Target the specific dynamic map node element matches the unique selection identifier
                 const targetMapNode = document.getElementById(`map-seat-${selectedSeatId}`);
                 if (targetMapNode) {
-                    targetMapNode.classList.add('selected'); // Turns the targeted map seat element blue instantly!
+                    targetMapNode.classList.add('selected');
                 }
+
+                // Immediately evaluates if submission criteria targets meet safety guidelines
+                validateFormState();
             });
         }
     </script>

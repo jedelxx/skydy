@@ -1255,13 +1255,16 @@ body {
         margin-top: 0 !important; 
         margin-bottom: 0 !important;
         padding-top: 5px !important; 
-        padding-right: 25px !important; 
+        /* padding-right: 25px !important;  */
         padding-left: 15px !important;
     }
     /* 5. Center the links nicely for a dropdown menu */
     .nav-links {
         padding-top: 10px;
-        align-items: center; /* Centers the buttons */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Centers the list items horizontally */
+        width: 100% !important;
     }
 
     .nav-links li a {
@@ -1454,7 +1457,7 @@ body {
     .skypod-booking-spaces-title{
         position: absolute;
         top: 24%;         
-        left: 60.5%; 
+        left: 62%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1482,7 +1485,7 @@ body {
     .skypod-booking-spaces-price {
         font-size: 18px;       
         top: 38%;             
-        left: 60.5%; 
+        left: 62%; 
     }
 
     .skycircle-booking-spaces-price {
@@ -1494,7 +1497,7 @@ body {
     
     .learn-more-text {
         top: 80%;
-        left: 65%;
+        left: 66%;
         font-size: 12px;
     }
 
@@ -1664,5 +1667,14 @@ body {
         color: #1b1b1b !important; /* Keeps text white on hover action states */
         background-color: #f9eb85 !important; /* Elegant deeper blue shift on hover */
         transform: translateY(-3px); 
+    }
+
+    .process-booking-button.disabled {
+        background-color: #a1a1a1 !important; /* Flat gray color */
+        color: #e0e0e0 !important;            /* Dimmed text color */
+        cursor: not-allowed !important;       /* Shows a generic blocking symbol on hover */
+        pointer-events: none !important;      /* STOPS all click/tap events from registering */
+        box-shadow: none !important;          /* Removes the premium glow when inactive */
+        transform: none !important;            /* Disables hover lift animations */
     }
 }
