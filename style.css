@@ -4,12 +4,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #11111161; /* Matches your dark body background */
-    z-index: 99999; /* Guarantees it is on top of absolutely everything */
+    background-color: #11111161; 
+    z-index: 99999; 
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.2s ease; /* Makes it fade out smoothly */
+    transition: opacity 0.2s ease; 
 }
 
 .element {
@@ -31,10 +31,9 @@
   50% { transform: translateY(-30px); }
 }
 
-/* This class gets added by JavaScript to hide the screen */
 .fade-out-loader {
     opacity: 0;
-    pointer-events: none; /* Stops the invisible box from blocking clicks */
+    pointer-events: none; 
 }
 
 html, body {
@@ -60,18 +59,6 @@ body {
     background-position: center;
     transition: opacity 1s ease-in-out; 
 }
-
-/* .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    width: 100%;
-    height: 100vh;
-    backdrop-filter: blur(8px); 
-    -webkit-backdrop-filter: blur(8px);
-    animation: smoothLoad 0.4s;
-} */
 
  .container {
     display: flex;
@@ -216,28 +203,17 @@ body {
     cursor: pointer;
 }
 
-.main-content::-webkit-scrollbar {
+.main-content::-webkit-scrollbar,
+.modal-box::-webkit-scrollbar,
+.book-now-card::-webkit-scrollbar,
+.home-content-stack::-webkit-scrollbar {
     display: none;
 }
-
-.modal-box::-webkit-scrollbar{
-    display: none;
-}
-
-.book-now-card::-webkit-scrollbar{
-    display: none;
-}
-
-.home-content-stack::-webkit-scrollbar{
-    display: none;
-}
-
 
 .main-content {
     flex: 1;
     padding: 30px;
     display: flex;
-    /* align-items: center; */
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start; 
@@ -253,7 +229,6 @@ body {
 }
 
 /* SPACES & WORKSPACES */
-
 .focus-pod-card,
 .power-bar-card,
 .design-dock-card,
@@ -270,8 +245,9 @@ body {
     overflow: hidden;
     border: none;
     transition: all 0.3s ease;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+    position: relative !important;
+    z-index: 1 !important;
+    cursor: pointer;
 }
 
 .focus-pod-card:hover,
@@ -290,29 +266,31 @@ body {
 .table-image {
     position: absolute;
     top: 5%;
-    left: 10px;          /* Pushes it slightly off the left wall */
-    width: 45%;          /* Tells the image to strictly take up the left half of the card */
-    height: 90%;         /* Keeps it safely inside the top and bottom edges */
-    object-fit: contain; /* THE MAGIC FIX: Keeps proportions perfect without squishing! */
+    left: 10px;         
+    width: 45%;          
+    height: 90%;         
+    object-fit: contain; 
     transition: transform 0.4s ease;
     animation: imageFadeIn 1s ease-out forwards;
+    z-index: 2;          
 }
 
 @keyframes imageFadeIn {
-    0% { 
-        opacity: 0; 
-        transform: translateX(0); /* Starts slightly invisible and to the left */
-    }
-    100% { 
-        opacity: 1; 
-        transform: translateX(0);     /* Glides smoothly into its final spot */
-    }
+    0% { opacity: 0; transform: translateX(0); }
+    100% { opacity: 1; transform: translateX(0); }
 }
 
-.booking-spaces-title{
+.booking-spaces-title,
+.collabnook-booking-spaces-title,
+.focuspod-booking-spaces-title,
+.powerbar-booking-spaces-title,
+.thinkspot-booking-spaces-title,
+.flowrow-booking-spaces-title,
+.skycircle-booking-spaces-title,
+.designdock-booking-spaces-title,
+.skypod-booking-spaces-title {
     position: absolute;
     top: 20%;
-    left: 52%;
     font-family: "Google Sans Flex";
     font-size: 30px;
     font-weight: 650;
@@ -320,12 +298,24 @@ body {
     letter-spacing: -0.5px;
     color: rgb(8, 6, 4);
     text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+    z-index: 3;
 }
 
-.booking-space-price {
+.booking-spaces-title { left: 52%; }
+.collabnook-booking-spaces-title { left: 51%; }
+.focuspod-booking-spaces-title { left: 54.5%; }
+.powerbar-booking-spaces-title { left: 54.5%; }
+.thinkspot-booking-spaces-title { left: 54.5%; }
+.flowrow-booking-spaces-title { left: 55%; }
+.skycircle-booking-spaces-title { left: 56%; }
+.designdock-booking-spaces-title { left: 52%;}
+.skypod-booking-spaces-title { left: 60%; }
+
+.booking-space-price,
+.skypod-booking-spaces-price,
+.skycircle-booking-spaces-price {
     position: absolute;
     top: 33%;
-    left: 59%;
     font-family: "Google Sans Flex";
     font-size: 30px;
     font-weight: 500;
@@ -333,102 +323,15 @@ body {
     letter-spacing: 2px;
     color: rgb(8, 6, 4);
     text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+    z-index: 3;
 }
 
-.collabnook-booking-spaces-title{
-    position: absolute;
-    top: 20%;
-    left: 51%;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 650;
-    word-spacing: 0px; 
-    letter-spacing: -0.5px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);   
-}
+.booking-space-price { left: 59%; }
+.skypod-booking-spaces-price { left: 59%; }
+.skycircle-booking-spaces-price { left: 57%; }
 
-.focuspod-booking-spaces-title{
-    position: absolute;
-    top: 20%;
-    left: 54.5%;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 650;
-    word-spacing: 0px; 
-    letter-spacing: -0.5px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
-}
-
-.powerbar-booking-spaces-title{
-    position: absolute;
-    top: 20%;
-    left: 54.5%;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 650;
-    word-spacing: 0px; 
-    letter-spacing: -0.5px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
-}
-
-.thinkspot-booking-spaces-title{
-    position: absolute;
-    top: 20%;
-    left: 54.5%;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 650;
-    word-spacing: 0px; 
-    letter-spacing: -0.5px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
-}
-
-.flowrow-booking-spaces-title{
-    position: absolute;
-    top: 20%;
-    left: 55%;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 650;
-    word-spacing: 0px; 
-    letter-spacing: -0.5px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);  
-}
-
-.skycircle-booking-spaces-title{
-    position: absolute;
-    top: 20%;
-    left: 56%;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 650;
-    word-spacing: 0px; 
-    letter-spacing: -0.5px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
-}
-
-.skypod-booking-spaces-title{
-    position: absolute;
-    top: 20%;
-    left: 60%;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 650;
-    word-spacing: 0px; 
-    letter-spacing: -0.5px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
-
-}
-
-.book-now-card{   
-    width: 40%;           
+.book-now-card {   
+    width: 40%;          
     height: 50px; 
     top: 55%;  
     left: 51%;   
@@ -440,9 +343,10 @@ body {
     position: absolute;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.078); 
     cursor: pointer;
+    z-index: 50 !important;
 }
 
-.book-now-text{
+.book-now-text {
     position: absolute;
     font-family: "Google Sans Flex";
     top: 31%;
@@ -450,16 +354,20 @@ body {
     font-weight: 650;
     color: #0c1018;
     text-decoration: none !important;
+    z-index: 51;
 }
+
+.book-now-card:hover { background-color: #253e68; }
+.book-now-card:hover .book-now-text { color: #b3ccf6; }
 
 .hero-btn-group {
     display: flex !important;
-    flex-direction: row !important;       /* STRICTLY forces side-by-side alignment */
-    justify-content: center !important;   /* Centers the pair under the tagline */
+    flex-direction: row !important;       
+    justify-content: center !important;   
     align-items: center !important;
-    gap: 20px !important;                 /* The gap between the buttons */
+    gap: 20px !important;                 
     width: 100% !important;
-    margin-top: 30px !important;          /* Breathing room below location text */
+    margin-top: 30px !important;          
     margin-bottom: 10px !important;
 }
 
@@ -468,13 +376,11 @@ body {
     display: inline-flex !important;      
     justify-content: center !important;
     align-items: center !important;
-    
     width: 190px !important;
     height: 55px !important;
     min-height: 55px !important;
     padding: 0 !important;
-    margin: 100px 30px 0 30px;               
-    
+    margin: 100px 30px 0 30px;              
     background-color: #c4eeff2d;
     border: 2px solid #feffed;
     color: #fffeec !important;
@@ -496,75 +402,12 @@ body {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); 
 }
 
-.book-now-card:hover{
-    background-color: #253e68;
-}
-
-.book-now-card:hover .book-now-text {
-    color: #b3ccf6; 
-}
-
 .btn-arrow {
     margin-left: 14px;
-    font-weight: bold; /* Keeps the arrow matching the thick text font weight */
+    font-weight: bold; 
 }
 
-/* .info-card-book-now {
-    width: 200px !important;
-    max-width: 100%;
-    height: 55px !important; 
-    background-color: #5586dbc2;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.098); 
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: absolute !important;
-    top: 55%; 
-    left: 49%;
-    z-index: 100 !important;
-    
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-decoration: none !important;
-} */
-
-/* .info-card-book-now .book-now-text {
-    position: static !important;
-    font-family: "Google Sans Flex", sans-serif;
-    font-weight: 650;
-    color: #0c1018 !important;
-    margin: 0 !important;
-} */
-
-/* .info-card-book-now-text{
-    font-family: "Google Sans Flex";
-    top: 35%;
-    left: 30%;
-    font-weight: 600;   
-    color: #ddd;
-    margin: 0;
-    text-decoration: none;
-} */
-
-/* .info-card-book-now:hover {
-    background-color: #f9eb85;
-} */
-
-/* .info-card-book-now:hover {
-    background-color: #f9eb85;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-.info-card-book-now:hover p,
-.info-card-book-now:hover a,
-.info-card-book-now:hover .book-now-text {
-    color: rgb(8, 6, 4);
-    transition: 12ms ease-in-out;
-} */
-
-.learn-more-text{
+.learn-more-text {
     position: absolute;
     font-family: "roboto";
     top: 77%;
@@ -572,8 +415,8 @@ body {
     font-size: 14px;
     font-weight: 500;
     color: #4d4d4d;
+    z-index: 3;
 }
-
 
 .header {
     font-family: "Roboto", sans-serif;
@@ -594,37 +437,16 @@ body {
 }
 
 /* Collapsed state */
-.sidebar.collapsed {
-    width: 60px;
-    background-color: rgba(59, 114, 202, 0.333);
-}
-
-.sidebar.collapsed .nav-links {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.sidebar.collapsed .logo-container {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Smooth transition for everything */
-.sidebar {
-    transition: width 0.3s ease;
-}
-
-.nav-links {
-    transition: opacity 0.05s ease;
-}
-
-.logo-container {
-    transition: opacity 0.3s ease;
-}
+.sidebar.collapsed { width: 60px; background-color: rgba(59, 114, 202, 0.333); }
+.sidebar.collapsed .nav-links { opacity: 0; pointer-events: none; }
+.sidebar.collapsed .logo-container { opacity: 0; pointer-events: none; }
+.sidebar { transition: width 0.3s ease; }
+.nav-links { transition: opacity 0.05s ease; }
+.logo-container { transition: opacity 0.3s ease; }
 
 .hero-section {
     width: 100%;
-    padding-top: 5rem;       /* Adds just a tiny bit of breathing room */
+    padding-top: 5rem;       
     padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
@@ -632,9 +454,7 @@ body {
     align-items: center;    
 }
 
-.text-group {
-    text-align: center; 
-}
+.text-group { text-align: center; }
 
 .tagline {
     font-family: "Sour Gummy";
@@ -646,7 +466,6 @@ body {
     line-height: 0.8;
     text-align: center;
     text-shadow: 2px 4px 45px rgba(0,0,0,0.4);
-    /* transition: all 0.3s ease; */
 }
 
 .location {
@@ -658,9 +477,12 @@ body {
     font-weight: normal;
     font-variant: normal;
     margin-top: 30px; 
-    /* transition: all 0.3s ease; */
 }
 
+
+/* ==========================================================================
+   GLOBAL / DESKTOP RESPONSIVE MODAL OVERLAY & CAROUSEL
+   ========================================================================== */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -674,16 +496,20 @@ body {
 }
 
 .modal-box {
-    background-color: #fffffbf4;
-    width: 80%;
-    max-width: 1000px;
-    height: 90%;
-    border-radius: 20px;
-    padding: 40px;
-    position: relative;
+    background-color: #fffffbf4 !important;
+    width: 90% !important;
+    max-width: 650px !important; 
+    height: auto !important;
+    max-height: 85vh !important;
+    border-radius: 24px !important;
+    padding: 30px 40px !important; /* Wide padding for desktop */
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    overflow-y: auto !important; 
+    overflow-x: hidden !important;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    max-height: 80vh;
-    overflow-y: auto;
 }
 
 .close-btn {
@@ -692,63 +518,116 @@ body {
     font-size: 30px;
     font-weight: bold ;
     cursor: pointer;
+    z-index: 999;
 }
-
 .close-btn:hover { color: #e22232; }
 
+/* Structural Carousel Wrapper */
+.modal-carousel-container {
+    width: 100% !important;
+    margin: 30px 0 0 0 !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+}
+
+.card-carousel-track {
+    display: flex !important;
+    width: 100% !important;
+    height: 350px !important; /* Desktop presentation height */
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    border-radius: 16px !important;
+    scrollbar-width: none !important;
+}
+
+.card-carousel-track::-webkit-scrollbar {
+    display: none !important;
+}
+
+.card-carousel-track img {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    scroll-snap-align: start !important;
+    object-fit: cover !important; 
+}
+
+/* Navigation Indicator Rails */
+.card-carousel-nav {
+    display: flex !important;
+    column-gap: 0.6rem !important;
+    position: absolute !important;
+    bottom: 15px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 100 !important;
+}
+
+.card-nav-dot {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    background-color: #ffffff !important;
+    opacity: 0.4 !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+    cursor: pointer !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    pointer-events: auto !important;
+}
+
+.card-nav-dot.active {
+    opacity: 1 !important;
+    background-color: #3b71ca !important; 
+    transform: scale(1.25) !important;
+}
+
+/* Text Context Group Spacing Adjustments */
 .modal-content-group {
-    margin-top: 40%; 
+    margin-top: 20px !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
 }
 
 #modal-title {
-    font-family: 'Google Sans Flex'; /* Your custom font! */
-    font-size: 45px;
-    color: #111;
-    margin-bottom: 1px;
-    letter-spacing: 1px;
+    font-family: 'Google Sans Flex', sans-serif !important; 
+    font-size: 36px !important; /* Larger for Desktop */
+    font-weight: 800 !important;
+    color: #0c1324 !important; 
+    margin: 0 !important;
+    letter-spacing: 1px !important;
 }
 
 #modal-price {
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    color: #3b71ca; /* Skydy Blue */
-    margin-bottom: 20px;
-}
-
-.modal-divider {
-    border: 0;
-    border-top: 2px solid #ddd;
-    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif !important; 
+    font-size: 22px !important; /* Larger for Desktop */
+    font-weight: bold !important;
+    color: #3b71ca !important; 
+    margin: 0 0 5px 0 !important;
 }
 
 #modal-desc {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    color: #444;
-    line-height: 1.6; /* Makes paragraphs easier to read */
+    font-family: 'Roboto', sans-serif !important; 
+    font-size: 16px !important;
+    color: #444 !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
 }
 
-#modal-desc ul {
-    margin-top: 10px;
-    margin-bottom: 15px;
-    padding-left: 20px; /* Pushes the bullets inward */
-}
 
-#modal-desc li {
-    margin-bottom: 8px; /* Spaces out the list items */
-}
+/* ==========================================================================
+   GLOBAL PAGES & BOOKING LAYOUT
+   ========================================================================== */
 
-.bg-contact-container{
+.bg-contact-container {
     width: 100%;           
     height: 100%; 
     top: 40%; 
     background: #ccccccbe;
-    /* transition: all 0.1s ease; */
     position: absolute;
-    
 }
-.main-contact-container{
+.main-contact-container {
     flex-shrink: 0; 
     position: relative;
     width: calc(300vh - 40vh); 
@@ -763,7 +642,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
 }
 
-.contact-us-text{
+.contact-us-text {
     font-family: "Google Sans Flex";
     color: white;
     font-size: 40px;
@@ -772,13 +651,9 @@ body {
     text-align: center;
 }
 
-.gmaps{
-    position: absolute;
-    top: 6%;
-    left: 6%;
-}
+.gmaps { position: absolute; top: 6%; left: 6%; }
 
-#contact-location-text{
+#contact-location-text {
     font-family: "Google Sans Flex";
     font-size: 20px;
     position: absolute;
@@ -786,7 +661,7 @@ body {
     left:50%;
 }
 
-#find-us-text{
+#find-us-text {
     font-family: "Google Sans Flex";
     font-size: 35px;
     font-weight: 500;
@@ -795,29 +670,22 @@ body {
     left:50%; 
 }
 
-/* .contact-divider{
-    border: 0;
-    border-top: 2px solid #0000005b;
-    margin-bottom: 10px;    
-} */
-
 #back-arrow {
-    position: absolute; /* Takes the arrow out of the layout flow */
+    position: absolute; 
     top: 27px;
     right: 30px;
     width: 55px;
     height: auto;     
     transition: transform 0.2s ease;
-    z-index: 100; /* Keeps it clickable above everything */
+    z-index: 100; 
 }
 
-#back-arrow:hover{
+#back-arrow:hover {
     cursor: pointer;
     transform: translateY(-5px);
 }
 
 .booking-calendar {
-    /* Notice there is NO position: absolute, top, or left here! */
     width: 450px;
     max-width: 100%; 
     background: #f1eee5;
@@ -826,8 +694,8 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     font-family: "Google Sans Flex";
-    position: relative; /* Safe to use relative! */
-    height: auto !important; /* Lets the box grow perfectly to envelope the dropdown picker */
+    position: relative; 
+    height: auto !important; 
     min-height: 520px;
     padding-bottom: 40px !important;
 }
@@ -844,16 +712,13 @@ body {
 
 .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Creates 7 equal columns */
+    grid-template-columns: repeat(7, 1fr); 
     gap: 5px;
     text-align: center;
 }
 
 .day-name { font-weight: bold; color: #666; font-size: 14px; margin-bottom: 10px; }
-
-.calendar-days {
-    display: contents;
-}
+.calendar-days { display: contents; }
 
 .calendar-day {
     padding: 10px;
@@ -863,47 +728,36 @@ body {
 }
 
 .calendar-day:hover { background-color: #f9eb85; }
-
-.calendar-day.selected {
-    background-color: #6c93db;
-    color: white;
-    font-weight: bold;
-}
+.calendar-day.selected { background-color: #6c93db; color: white; font-weight: bold; }
 
 .booking-wrapper {
     display: flex;
-    justify-content: center; /* This centers the calendar and map horizontally */
-    align-items: flex-start;     /* This centers them vertically */
+    justify-content: center; 
+    align-items: flex-start;     
     width: 100%;
-    height: 100%;            /* Takes up the full height of the container */
+    height: 100%;            
     gap: 40px;               
     padding: 20px;
     box-sizing: border-box;
 }
 
 .process-booking-button {
-    display: flex !important; /* Changed inline-flex to flex for reliable auto-centering */     
+    display: flex !important;     
     justify-content: center !important;
     align-items: center !important;
-    
     width: 250px !important;
     height: 55px !important;
     min-height: 55px !important;
     padding: 0 !important;
-    
-    /* THE CENTERING ENGINE: Safely centers the button within your card wrapper 
-       without needing specific pixel offsets that clip on different screen widths */
     margin: 35px auto 10px auto !important; 
-    
     background-color: #6c93db !important; 
     color: #ffffff !important; 
     border: none !important; 
-    
     font-family: "Google Sans Flex", sans-serif;
     font-size: 16px; 
     font-weight: 650;
     text-decoration: none !important; 
-    word-spacing: 3px;
+    word-spacing: normal !important; /* FIX FOR WORD SPACING */
     border-radius: 20px; 
     box-shadow: 0 6px 20px rgba(108, 147, 219, 0.3);
     transition: all 0.3s ease;
@@ -911,14 +765,19 @@ body {
 }
 
 .process-booking-button:hover {
-    color: #1b1b1b !important; /* Keeps text white on hover action states */
-    background-color: #f9eb85 !important; /* Elegant deeper blue shift on hover */
+    color: #1b1b1b !important; 
+    background-color: #f9eb85 !important; 
     transform: translateY(-3px); 
-    /* box-shadow: 0 10px 25px rgba(74, 114, 184, 0.45);  */
 }
 
-
-/* FLOOR MAP */
+.process-booking-button.disabled {
+    background-color: #a1a1a1 !important; 
+    color: #e0e0e0 !important;            
+    cursor: not-allowed !important;       
+    pointer-events: none !important;      
+    box-shadow: none !important;          
+    transform: none !important;            
+}
 
 .floor-plan-container {
     width: 100%;
@@ -931,7 +790,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    position: relative; /* Safe to use relative! */
+    position: relative; 
 }
 
 .floor-plan-header {
@@ -945,12 +804,10 @@ body {
 }
 
 .floor-plan-map {
-    position: relative; /* Allows us to place seats exactly where we want them */
+    position: relative; 
     width: 800px !important;
-    height: 550px !important; /* Adjust if you need a taller map */
+    height: 550px !important; 
     background-color: #f1eee5; 
-    /* padding: 20px;
-    box-sizing: border-box; */
     border-radius: 8px;
     margin-top: 70px;
 }
@@ -960,28 +817,36 @@ body {
     background-color: #eab308; 
     border: 2px solid #a16207; 
     transition: all 0.2ms ease;
-    
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 11px;
     font-weight: bold;
     color: #4a3304; 
+    cursor: pointer !important;
+}
+
+.seat.selected {
+    background-color: #6c93db !important; 
+    border-color: #253e68 !important;     
+    color: #ffffff !important;            
+    transform: scale(1.1) !important;     
+    z-index: 500 !important;              
 }
 
 .seat.unavailable {
-    background-color: #f3f4f6 !important; /* Base clean light-gray backdrop */
-    border-color: #9ca3af !important;      /* Clear visible container boundaries */
-    color: #6b7280 !important;             /* Keeps seat numbers readable but dimmed */
-    cursor: not-allowed;
+    background-color: #f3f4f6 !important; 
+    border-color: #9ca3af !important;      
+    color: #6b7280 !important;             
+    cursor: not-allowed !important;
     position: relative;
     overflow: hidden;
     background-image: repeating-linear-gradient(
         45deg,
         transparent,
         transparent 6px,
-        rgba(17, 17, 17, 0.15) 6px,   /* Soft, subtle dark line tint */
-        rgba(17, 17, 17, 0.15) 8px    /* Controls line thickness (2px wide lines) */
+        rgba(17, 17, 17, 0.15) 6px,   
+        rgba(17, 17, 17, 0.15) 8px    
     ) !important;
 }
 
@@ -993,16 +858,15 @@ body {
 .design-dock-seat { width: 55px; height: 40px; border-radius: 12%; }
 .flow-row-seat { width: 30px; height: 38px; border-radius: 12%; }
 .power-bar-seat { width: 45px; height: 37px; border-radius: 12px; }
-.collab-nook-seat { width: 30px; height: 38px; border-radius: 12%; } /* bug */
+.collab-nook-seat { width: 30px; height: 38px; border-radius: 12%; }
 .sky-pod-room { width: 45px; height: 37px; border-radius: 12px; }
 .sky-circle-room { width: 40px; height: 40px; border-radius: 12px; }
-.sky-den-room { width: 30px; height: 38px; border-radius: 12%; } /* NEW SEAT -- PENDING */
-.sky-booth-room { width: 30px; height: 38px; border-radius: 12%; }/* NEW SEAT -- PENDING */
+.sky-den-room { width: 30px; height: 38px; border-radius: 12%; } 
+.sky-booth-room { width: 30px; height: 38px; border-radius: 12%; }
 
 .slider-container {
     width: 100%;
-    /* The first number is Top/Bottom padding, the second is Left/Right padding */
-    padding: 4rem 2rem 0 2rem; /* The "3rem" adds a nice cushion to the top! */
+    padding: 4rem 2rem 0 2rem; 
     display: flex;
     justify-content: center;
 }
@@ -1011,9 +875,9 @@ body {
     position: relative;
     width: 100%;
     max-width: 60rem;
-    margin-left: auto;       /* Centers the slider container horizontally */
+    margin-left: auto;       
     margin-right: auto;      
-    margin-bottom: 60px;     /* Adds a solid, clean 60px gap right below the image slider */
+    margin-bottom: 60px;     
 }
 
 .slider {
@@ -1025,9 +889,7 @@ body {
     border-radius: 15px;
     scrollbar-width: none; 
 }
-.slider::-webkit-scrollbar {
-    display: none; 
-}
+.slider::-webkit-scrollbar { display: none; }
 
 .slider img {
     flex: 0 0 100%; 
@@ -1053,26 +915,19 @@ body {
     height: 0.75rem;
     border-radius: 50%;
     background-color: #fff;
-    opacity: 0.3;              /* Dimmed down slightly more so the active one POPS */
+    opacity: 0.3;              
     transition: all ease 250ms;
     cursor: pointer !important;
     pointer-events: auto !important;
 }
 
-.slider-nav a:hover {
-    opacity: 0.7;
-}
-
-.slider-nav a.active {
-    opacity: 1 !important;
-    transform: scale(1.2);    /* Optional: slightly enlarges the active dot for a premium UI feel! */
-    background-color: #fff !important;
-}
+.slider-nav a:hover { opacity: 0.7; }
+.slider-nav a.active { opacity: 1 !important; transform: scale(1.2); background-color: #fff !important; }
 
 .home-content-stack {
-    flex: 1;                 /* Takes up the remaining space next to the sidebar */
+    flex: 1;                 
     display: flex;
-    flex-direction: column;  /* FORCES the vertical stack! */
+    flex-direction: column;  
     justify-content: flex-start;
     align-items: center;
     width: 100%;
@@ -1087,54 +942,8 @@ body {
 }
 
 @keyframes smoothLoad {
-    0% {
-        opacity: 0;
-        transform: scale(0.98) translateY(0px) 10ms ease;
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0) 10ms ease;
-    }
-}
-
-/* --- DESKTOP PRICES --- */
-.skypod-booking-spaces-price {
-    position: absolute;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 500;
-    word-spacing: 1px; 
-    letter-spacing: 2px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
-    top: 33%;             /* Desktop height */
-    left: 59%;            /* Desktop horizontal position */
-}
-
-.skycircle-booking-spaces-price {
-    position: absolute;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 500;
-    word-spacing: 1px; 
-    letter-spacing: 2px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
-    top: 33%;             /* Desktop height */
-    left: 57%;            /* Desktop horizontal position */
-}
-
-.designdock-booking-spaces-title{
-    position: absolute;
-    top: 20%;
-    left: 53%;
-    font-family: "Google Sans Flex";
-    font-size: 30px;
-    font-weight: 650;
-    word-spacing: 0px; 
-    letter-spacing: -0.5px;
-    color: rgb(8, 6, 4);
-    text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282);
+    0% { opacity: 0; transform: scale(0.98) translateY(0px) 10ms ease; }
+    100% { opacity: 1; transform: scale(1) translateY(0) 10ms ease; }
 }
 
 /* --- DROP-DOWN SPOT SELECTION PICKER --- */
@@ -1168,8 +977,6 @@ body {
     cursor: pointer;
     outline: none;
     transition: all 0.2s ease;
-    
-    /* Clean appearance adjustments */
     appearance: none;
     -webkit-appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23253e68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -1184,171 +991,69 @@ body {
     background-color: #fff;
 }
 
-/* TABLETS (Screens smaller than 1024px) */
-@media (max-width: 1024px) {
-    html, body, .container {
-        scrollbar-width: none !important; 
-        overflow-y: hidden !important;  
-    }
-    html::-webkit-scrollbar, 
-    body::-webkit-scrollbar,
-    .container::-webkit-scrollbar {
-        display: none !important;       
-    }
 
-    .tagline {
-        font-size: 80px;  /* Shrink the massive text */
-        word-spacing: 0px; 
-    }
-    .location {
-        font-size: 14px;
-        letter-spacing: 3px;
-        padding: 0 20px;
-    }
-
-    .process-booking-button {
-        /* Slightly reduces margins to adapt to the compressed layout cards */
-        margin: 25px auto 5px auto !important;
-        transform: none;
-    }
-}
-
-/* MOBILE PHONES (Screens smaller than 768px) */
-@media (max-width: 768px) {
+/* ==========================================================================
+   TABLETS (Screens smaller than 1024px and wider than 768px)
+   ========================================================================== */
+@media (max-width: 1024px) and (min-width: 768px) {
 
     html, body {
-        /* scrollbar-width: none !important; */
         overflow: hidden !important;
-        height: 100dvh !important;
-        width: 100% !important;
-    }
-    html::-webkit-scrollbar, 
-    body::-webkit-scrollbar,
-    .container::-webkit-scrollbar {
-        display: none !important;         /* Chrome, Safari, and Edge */
+        height: 100% !important;
     }
 
     .container {
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: row !important; 
         height: 100vh !important;
-        overflow: hidden !important; /* Prevents double scrollbars */
+        overflow: hidden !important;
     }
 
-    /* 2. Turn the sidebar into a Top Navigation Bar */
     .sidebar {
-        width: 100% !important; /* Force it to stretch across the top */
-        height: auto; 
-        position: relative; /* Sit normally at the very top of the page */
-        padding: 10px 0;
-        z-index: 1000; /* Keep it above your space cards */
+        width: 180px !important; 
         flex-shrink: 0 !important;
     }
 
-    /* 3. When collapsed, shrink to just the hamburger menu height */
-    .sidebar.collapsed {
-        height: 60px; 
-        width: 100% !important;
-        overflow: hidden; /* This is what hides the links! */
-    }
-
-    .menu-icon {
-        margin-top: 0 !important; 
-        margin-bottom: 0 !important;
-        padding-top: 5px !important; 
-        /* padding-right: 25px !important;  */
-        padding-left: 15px !important;
-    }
-    /* 5. Center the links nicely for a dropdown menu */
-    .nav-links {
-        padding-top: 10px;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important; /* Centers the list items horizontally */
-        width: 100% !important;
-    }
+    .sidebar.collapsed { width: 60px !important; }
 
     .nav-links li a {
-        width: 90%;
-        border-radius: 10px; /* Removes the side-tab curves */
-        align-items: center; /* Centers the text inside the button */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        transition: background-color 0.3s ease, color 0.3 ease, transform 0.3 ease !important;
+        width: 180px !important;
+        font-size: 14px !important;
+        padding: 12px 15px !important;
     }
 
-    .nav-links li a:hover {
-        margin-left: 0 !important; /* Stops the button from shifting sideways when tapped */
-        background-color: #fcfbf6 !important; /* Adds a nice highlight on tap */
-        color: #3b71ca !important;
-        transform: scale(1.02) !important; /* Slightly enlarges the button on tap for a premium feel */
-    }
-
-    /* Hide the fancy side-curve decorations on mobile */
-    .curve-top, .curve-bottom {
-        display: none; 
-    }
-
-    /* 6. Center the main text/content safely below the new top bar */
-    .hero-section {
-        width: 100%;
-        padding-top: 5rem;       /* Adds just a tiny bit of breathing room */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;    
-    }
-    /* 1. Fix the main background area padding for mobile */
     .main-content,
     .home-content-stack {
-        padding: 30px 15px 120px 15px !important;      /*120px bottom padding protects your bottom cards from getting cut off */
-        gap: 20px; 
-        overflow-y: auto !important; /* Allows smooth native mobile scrolling */
+        flex: 1 !important;
+        height: 100vh !important;
+        overflow-y: auto !important; 
         overflow-x: hidden !important;
-        height: calc(100vh - 60px) !important; /* Subtracts the top header bar size dynamically */
-        scrollbar-width: none !important;
-        min-height: 0 !important;
         -webkit-overflow-scrolling: touch !important;
+        padding: 40px 24px 120px 24px !important; 
+        gap: 40px !important;
+        display: flex !important;
+        flex-direction: column !important; 
+        justify-content: flex-start !important;
+        align-items: center !important;
+        scrollbar-width: none !important;
     }
 
-    /* 1. Scale the text dynamically and lock it to two lines */
+    .main-content::-webkit-scrollbar,
+    .home-content-stack::-webkit-scrollbar {
+        display: none !important;
+    }
+
     .tagline {
-        font-size: 10vw;     /* Dynamically shrinks based on screen width! */
-        white-space: nowrap; /* FORBIDS the browser from adding extra line breaks */
-        line-height: 0.85 !important; 
-        text-shadow: 2px 2px 20px rgba(0,0,0,0.8); 
+        font-size: 76px !important;
+        word-spacing: -4px !important;
+        line-height: 0.9 !important;
     }
-    
+
     .location {
-        font-family: "Google Sans Flex";
-        font-size: 1.8vw;      /* Dynamically shrinks */
-        letter-spacing: 1px;
-        margin-top: 15px;
-        line-height: 1.5;
-        padding: 0 10px;
+        font-size: 15px !important;
+        margin-top: 20px !important;
     }
 
-    /* .info-card-book-now {
-        position: absolute !important;
-        left: 51.5% !important;
-        top: 55% !important;
-        width: 40% !important;
-        height: 20% !important;
-        min-height: 0 !important;
-        border-radius: 12px !important;
-        z-index: 100 !important;
-        margin: 0 !important; 
-    }
-
-    .info-card-book-now .book-now-text {
-        position: static !important;
-        font-family: "Google Sans Flex";
-        font-weight: 600;
-        color: #0c1018c2 !important;
-        font-size: 14px !important;
-    } */
-
-    /* 2. Allow the cards to shrink and fit the phone screen */
     .focus-pod-card,
     .power-bar-card,
     .design-dock-card,
@@ -1357,61 +1062,210 @@ body {
     .flow-row-card,
     .sky-pod-card,
     .sky-circle-card {
-        width: 100%;       /* Tells the card to fill the available space */
-        height: 200px !important;      /* Lets the height adjust naturally to the content */
-        min-width: 0;      /* THE MAGIC FIX: Overrides the 500px lock! */
-        max-width: 400px;  /* Keeps them looking nice if the phone is turned sideways */
-        margin: 0 auto;    /* Centers the card perfectly */
-        position: relative !important; /* Allows for absolute positioning of text inside the card */
+        width: 100% !important;
+        max-width: 580px !important; 
+        height: 240px !important;
+        min-width: 0 !important;
         flex-shrink: 0 !important;
     }
 
-    /* 1. Stop the 'X' button from shrinking on mobile */
-    .close-btn {
-        font-size: 40px !important; /* Forces it to stay large and tappable */
-        top: 10px;
-        right: 20px;
+    .booking-wrapper {
+        display: flex !important;
+        flex-direction: column !important; 
+        justify-content: flex-start !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: auto !important;
+        gap: 40px !important;
+        padding: 0 !important;
     }
 
-    /* 2. Give the modal a bit more breathing room on small screens */
-    .modal-box {
-        height: auto !important; 
-        max-height: 75vh !important;        
-        width: 90%; 
-        padding: 25px; 
+    .booking-calendar {
+        width: 100% !important;
+        max-width: 500px !important;
+        height: auto !important;
+        padding-bottom: 25px !important;
+        flex-shrink: 0 !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
     }
 
-    /* 3. Reserve the top half of the modal for your future images */
-    .modal-content-group {
-        margin-top: 250px; /* Use a strict pixel size instead of percentages! */
+    .floor-plan-container {
+        width: 100% !important;
+        max-width: 680px !important; 
+        height: auto !important;
+        margin: 0 auto !important;
+        overflow: hidden !important;
+        flex-shrink: 0 !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+    }
+
+    .floor-plan-map {
+        display: block !important;
+        transform: scale(0.72) !important; 
+        transform-origin: top center !important;
+        margin-top: -10px !important; 
+        margin-bottom: -130px !important; 
+        margin-left: -400px !important;
+        left: 50% !important;
+        height: 600px !important;
+    }
+
+    .seat { position: absolute !important; }
+    .pantry, .cr, .sky-line-room { transform: none !important; transform-origin: initial !important; }
+
+    .process-booking-button {
+        width: 60% !important; 
+        height: 50px !important; 
+        min-height: 50px !important;
+        font-size: 15px; 
+        border-radius: 12px; 
+        margin: 25px auto 10px auto !important;
+        transform: none !important; 
+    }
+}
+
+
+   /* MOBILE PHONES (Screens smaller than 768px) */
+
+@media (max-width: 768px) {
+
+    html, body {
+        overflow: hidden !important;
+        height: 100dvh !important;
+        width: 100% !important;
+    }
+    html::-webkit-scrollbar, 
+    body::-webkit-scrollbar,
+    .container::-webkit-scrollbar {
+        display: none !important;         
+    }
+
+    .container {
+        flex-direction: column;
+        height: 100vh !important;
+        overflow: hidden !important; 
+    }
+
+    .sidebar {
+        width: 100% !important; 
+        height: auto; 
+        position: relative; 
+        padding: 10px 0;
+        z-index: 1000; 
+        flex-shrink: 0 !important;
+    }
+
+    .sidebar.collapsed {
+        height: 60px; 
+        width: 100% !important;
+        overflow: hidden; 
+    }
+
+    .menu-icon {
+        margin-top: 0 !important; 
+        margin-bottom: 0 !important;
+        padding-top: 5px !important; 
+        padding-left: 15px !important;
     }
     
-    /* Optional: Scale the modal title down slightly so it doesn't wrap awkwardly */
-    #modal-title {
-        font-size: 35px;
+    .nav-links {
+        padding-top: 10px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        width: 100% !important;
+    }
+
+    .nav-links li a {
+        width: 90%;
+        border-radius: 10px; 
+        align-items: center; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease !important;
+    }
+
+    .nav-links li a:hover {
+        margin-left: 0 !important; 
+        background-color: #fcfbf6 !important; 
+        color: #3b71ca !important;
+        transform: scale(1.02) !important; 
+    }
+
+    .curve-top, .curve-bottom { display: none; }
+
+    .hero-section {
+        width: 100%;
+        padding-top: 5rem;       
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;    
     }
     
-    /* 1. Group ALL title classes together to shrink them at once */
+    .main-content,
+    .home-content-stack {
+        padding: 30px 15px 120px 15px !important;      
+        gap: 20px; 
+        overflow-y: auto !important; 
+        overflow-x: hidden !important;
+        height: calc(100vh - 60px) !important; 
+        scrollbar-width: none !important;
+        min-height: 0 !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .tagline {
+        font-size: 10vw;     
+        white-space: nowrap; 
+        line-height: 0.85 !important; 
+        text-shadow: 2px 2px 20px rgba(0,0,0,0.8); 
+    }
+    
+    .location {
+        font-family: "Google Sans Flex";
+        font-size: 1.8vw;      
+        letter-spacing: 1px;
+        margin-top: 15px;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+
+    .focus-pod-card,
+    .power-bar-card,
+    .design-dock-card,
+    .think-spot-card,
+    .collab-nook-card,
+    .flow-row-card,
+    .sky-pod-card,
+    .sky-circle-card {
+        width: 100%;       
+        height: 200px !important;      
+        min-width: 0;      
+        max-width: 400px;  
+        margin: 0 auto;    
+        position: relative !important; 
+        flex-shrink: 0 !important;
+    }
+
     .booking-spaces-title,
     .focuspod-booking-spaces-title,
     .powerbar-booking-spaces-title,
     .thinkspot-booking-spaces-title,
-    .flowrow-booking-spaces-title,
-    .skycircle-booking-spaces-title {
-        font-size: 22px;       /* Shrink the title font */
-        line-height: 1.1;      /* Keeps the two lines closer together */
-        top: 24%;              /* Nudges the title up slightly */
-        left: 57.5%;             /* Aligns it neatly next to the desk image */
+    .flowrow-booking-spaces-title {
+        font-size: 22px;       
+        line-height: 1.1;      
+        top: 24%;              
+        left: 57.5%;             
     }
 
-    /* 2. Shrink the price and push it safely below the title */
     .booking-space-price {
         font-size: 18px;       
-        top: 36%;              /* Pushes it down so the title has room to breathe */
+        top: 36%;              
         left: 63.5%;             
     }
 
-    /* 3. Align the buttons and read more text to match */
     .book-now-card {
         left: 53%;
         width: 40%;
@@ -1426,7 +1280,7 @@ body {
         color: #0c1018c2;
     }   
 
-    .collabnook-booking-spaces-title{
+    .collabnook-booking-spaces-title {
         position: absolute;
         top: 24%;         
         left: 53%; 
@@ -1440,7 +1294,7 @@ body {
         line-height: 1.1;  
     }
 
-    .designdock-booking-spaces-title{
+    .designdock-booking-spaces-title {
         position: absolute;
         top: 24%;         
         left: 54%; 
@@ -1454,7 +1308,7 @@ body {
         line-height: 1.1;     
     }
 
-    .skypod-booking-spaces-title{
+    .skypod-booking-spaces-title {
         position: absolute;
         top: 24%;         
         left: 62%; 
@@ -1468,10 +1322,10 @@ body {
         line-height: 1.1;   
     }
 
-    .skycircle-booking-spaces-title{
+    .skycircle-booking-spaces-title {
         position: absolute;
         top: 24%;         
-        left: 57%; 
+        left: 58.5%; 
         font-family: "Google Sans Flex";
         font-size: 22px;
         font-weight: 650;
@@ -1494,33 +1348,51 @@ body {
         left: 60.5%; 
     }
 
-    
     .learn-more-text {
         top: 80%;
         left: 66%;
         font-size: 12px;
     }
 
+    /* Mobile Modal Overrides */
+    .modal-box {
+        padding: 24px 20px 20px 20px !important;
+    }
+
+    .card-carousel-track {
+        height: 260px !important; /* Smaller height for phones */
+    }
+
+    #modal-title {
+        font-size: 32px !important;
+    }
+
+    #modal-price {
+        font-size: 20px !important;
+    }
+
+    #modal-desc {
+        font-size: 15px !important;
+    }
+
     .booking-wrapper {
-        flex-direction: column !important; /* The !important tag FORCES them to stack */
+        flex-direction: column !important; 
         justify-content: flex-start !important; 
         height: auto !important;                
         padding-top: 100px !important;    
         padding-bottom: 50px;
-        gap: 20px;                         /* Brings the map a little closer to the calendar */
+        gap: 20px;                          
     }
 
     .main-content:has(.booking-wrapper) {
         height: calc(100vh - 60px) !important;
-        overflow-y: auto !important; /* Enables independent momentum scrolling */
+        overflow-y: auto !important; 
         overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch !important;
-        padding-bottom: 120px !important; /* Absolute structural buffer clearing browser bottom bars */
+        padding-bottom: 120px !important; 
     }
 
-    .container {
-        overflow-y: auto !important; 
-    }
+    .container { overflow-y: auto !important; }
 
     .booking-calendar {
         width: 100% !important;
@@ -1528,39 +1400,17 @@ body {
         margin: 0 auto !important; 
         padding-bottom: 20px !important; 
         height: auto !important; 
-        flex-shrink: 0 !important; /* Prevents the calendar from shrinking too much on small screens */
+        flex-shrink: 0 !important; 
     }
     
-    .pantry { width: 60px; height: 80px; }
-    .cr { width: 190px; height: 80px; }
-    .sky-line-room { width: 170px; height: 80px; border-radius: 12px; }
-    .focus-pod-seat { width: 35px; height: 35px; border-radius: 12px; }
-    .think-spot-seat { width: 40px; height: 40px; border-radius: 50%; }
-    .design-dock-seat { width: 55px; height: 40px; border-radius: 12%; }
-    .flow-row-seat { width: 30px; height: 38px; border-radius: 12%; }
-    .collab-nook-seat { width: 40px; height: 40px; border-radius: 12%; }
-    .sky-pod-room { width: 45px; height: 37px; border-radius: 12px; }
-    .sky.circle-room { width: 40px; height: 40px; border-radius: 50%; }
-    .sky-den-room { width: 30px; height: 38px; border-radius: 12%; } /* NEW SEAT -- PENDING */
-    .sky-booth-room { width: 30px; height: 38px; border-radius: 12%; }/* NEW SEAT -- PENDING */
-    
-    /* .floor-plan-container {
-        width: 100% !important;
-        max-width: 500px !important;
-        margin: 0 auto !important; 
-        height: auto !important;
-        overflow: hidden !important;
-    } */
-
     #back-arrow {
         top: 20px;
         right: 20px;
-        z-index: 1000;      /* Guarantees it is on top of everything */
-        position: fixed;    /* THE MAGIC TRICK: Keeps it in the corner even when you scroll down to the map! */
+        z-index: 1000;      
+        position: fixed;    
         left: auto;
     }
 
-    /* 1. Remove the fixed height to unlock the container */
     .floor-plan-container {
         width: 100% !important;
         max-width: 500px !important;
@@ -1569,78 +1419,36 @@ body {
         overflow: hidden !important;
     }
 
-    /* 2. Force the map to keep its wide Desktop proportions */
     .floor-plan-map {
         display: block !important;
-        transform: scale(0.58) !important;           /* Scales down matching percentages perfectly */
-        transform-origin: top center !important;      /* Anchors the frame smoothly for symmetry */
+        transform: scale(0.58) !important;           
+        transform-origin: top center !important;      
         margin-top: 13px !important; 
-        margin-bottom: -320px !important;            /* Removes massive trailing blank empty boxes */
-        margin-left: -375px!important;              /* Centers the map perfectly within the container */
+        margin-bottom: -320px !important;            
+        margin-left: -375px!important;              
         left: 50% !important;
         height: 600px !important;
     }
 
-    .seat{
-        position: absolute !important; /* Ensures the seats stay exactly where they are on the map */
-        cursor: pointer !important; /* Keeps the interactive feel of the seats */
-    }
-
-    .seat.selected {
-        background-color: #6c93db !important; /* Premium brand sky blue fill color */
-        border-color: #253e68 !important;     /* Deep navy perimeter contrast ring border */
-        color: #ffffff !important;            /* Crisp white text number label color */
-        transform: scale(1.1) !important;     /* Subtle micro-pop enlargement effect for active items */
-        z-index: 500 !important;              /* Brings selected item explicitly over layout frames */
-    }
-
-
-    /* 3. Magically shrink ALL seats, rooms, and text by 45% */
-    .pantry, .cr, .sky-line-room {
-        transform: none !important; 
-        transform-origin: initial !important; /* Keeps them anchored to their exact coordinates */
-    }
-    
     .home-content-stack {
         height: auto !important; 
         min-height: calc(100vh - 60px) !important; 
-        overflow-y: auto !important;       /* Allows cards to scroll natively down the screen */
+        overflow-y: auto !important;       
         justify-content: flex-start !important;
         padding-top: 10px !important;
-        padding-bottom: 40px !important;    /* Adds cushion below the very last card */
+        padding-bottom: 40px !important;    
     }
 
-    .slider-nav a {
-        width: 8px !important;  /* Standard mobile dot size */
-        height: 8px !important;
-    }
-
-    .slider-container {
-        padding-top: 15px !important;
-        padding-bottom: 30px !important;
-    }
-
-    .slider {
-        display: flex;
-        aspect-ratio: 4/3;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        border-radius: 8px;
-        scrollbar-width: none; 
-    }
-
-    .hero-btn-group {
-        margin-top: 25px !important; 
-        margin-bottom: 20px !important;    
-    }
+    .slider-nav a { width: 8px !important; height: 8px !important; }
+    .slider-container { padding-top: 15px !important; padding-bottom: 30px !important; }
+    .slider { display: flex; aspect-ratio: 4/3; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 8px; scrollbar-width: none; }
+    .hero-btn-group { margin-top: 25px !important; margin-bottom: 20px !important; }
 
     .homepage-contact-now-card,
     .homepage-book-now-card {
         display: inline-flex !important;
         justify-content: center !important;
         align-items: center !important;
-
         width: 130px !important;        
         height: 38px !important;       
         min-height: 48px !important;    
@@ -1648,33 +1456,13 @@ body {
         margin: 30px 25px 0 25px !important; 
     }
 
-    .btn-arrow {
-    margin-left: 6px;
-    font-weight: bold; 
-    }
-
     .process-booking-button {
         width: 60% !important; 
-        height: 50px !important; /* Slightly lowered height for better mobile finger tap proportions */
+        height: 50px !important; 
         min-height: 50px !important;
-        font-size: 15px; /* Subtle text downscale to look sharp on mobile screens */
-        border-radius: 12px; /* Matches the rounded box style of your calendar card dropdown dropdown */
+        font-size: 15px; 
+        border-radius: 12px; 
         margin: 25px auto 10px auto !important;
         transform: none !important; 
-    }
-    
-    .process-booking-button:hover {
-        color: #1b1b1b !important; /* Keeps text white on hover action states */
-        background-color: #f9eb85 !important; /* Elegant deeper blue shift on hover */
-        transform: translateY(-3px); 
-    }
-
-    .process-booking-button.disabled {
-        background-color: #a1a1a1 !important; /* Flat gray color */
-        color: #e0e0e0 !important;            /* Dimmed text color */
-        cursor: not-allowed !important;       /* Shows a generic blocking symbol on hover */
-        pointer-events: none !important;      /* STOPS all click/tap events from registering */
-        box-shadow: none !important;          /* Removes the premium glow when inactive */
-        transform: none !important;            /* Disables hover lift animations */
     }
 }

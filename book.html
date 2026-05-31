@@ -175,14 +175,26 @@
         </main>
     </div>
 
-    <div id="space-modal" class="modal-overlay">
+    <div class="modal-overlay" id="global-modal-overlay">
         <div class="modal-box">
-            <span class="close-btn" id="close-modal">&times;</span>
-                <div class="modal-content-group">
-                    <h1 id="modal-title">TITLE</h1>
-                    <p id="modal-price">PRICE</p>
-                    <hr class="modal-divider">
-                <div id="modal-desc">DESCRIPTION</div>
+            <span class="close-btn" id="modal-close-trigger">&times;</span>
+            
+            <div class="modal-carousel-container" id="modal-carousel-holder">
+                <div class="card-carousel-wrapper">
+                    <div class="card-carousel-track" id="popup-slider-track">
+                        </div>
+                    <div class="card-carousel-nav" id="popup-slider-navigation-dots">
+                        </div>
+                </div>
+            </div>
+
+            <div class="modal-content-group">
+                <h1 id="modal-title">FOCUS POD</h1>
+                <p id="modal-price">₱299/day</p>
+                <hr class="modal-divider">
+                <p id="modal-desc">This is a quiet, distraction-free pod perfect for deep work...</p>
+                
+                <a href="main-booking.html?type=focus-pod-seat" id="modal-action-btn" class="process-booking-button">Book This Space</a>
             </div>
         </div>
     </div>
