@@ -50,6 +50,45 @@ body {
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* Ensure the parent container can hold absolute positioned items */
+.your-carousel-container-class { /* Replace with your actual container class */
+    position: relative; 
+}
+
+/* Floating Arrow Buttons */
+.popup-nav-arrow {
+    position: absolute;
+    top: 50%; /* Pushes to the middle */
+    font-family: sans-serif !important; 
+    font-weight: bold !important;
+    transform: translateY(-50%); /* Centers perfectly */
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.popup-nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev-arrow {
+    left: 10px; /* Floats on the left edge */
+}
+
+.next-arrow {
+    right: 10px; /* Floats on the right edge */
+}
+
 #bg-slider {
     position: absolute;
     top: 0; left: 0;

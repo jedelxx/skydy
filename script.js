@@ -55,9 +55,6 @@ if (slider) {
     }, 6000);
 }
 
-/* ==========================================================================
-   4. SPACES CARD MODAL OVERLAY & INTEGRATED SLIDESHOW CAROUSEL
-   ========================================================================== */
 // FIXED: These IDs now perfectly match your HTML elements!
 const modal = document.getElementById('global-modal-overlay');
 const closeBtn = document.getElementById('modal-close-trigger');
@@ -68,14 +65,14 @@ const allCards = document.querySelectorAll('.space-card');
 
 // Dynamic image portfolio database maps to your clicked card title names
 const workspaceImageDatabase = {
-    "FOCUS POD": ["images/skydy-cover.jpg", "images/SC0.5.jpeg", "images/TS2.jpeg"],
-    "POWER BAR": ["images/Pantry1.jpeg", "images/Pantry2.jpeg", "images/wp1.jpg"],
-    "DESIGN DOCK": ["images/DDCloseUp.jpeg", "images/wp2.jpg", "images/wp3.jpg"],
-    "THINK SPOT": ["images/TS2.jpeg", "images/wp4.jpg", "images/skydy-cover.jpg"],
-    "COLLAB NOOK": ["images/temp-table.png", "images/wp1.jpg", "images/wp2.jpg"],
-    "FLOW ROW": ["images/temp-table.png", "images/wp4.jpg", "images/SC0.5.jpeg"],
-    "SKY POD": ["images/sky_pod.png", "images/wp2.jpg", "images/wp1.jpg"],
-    "SKY CIRCLE": ["images/temp-table.png", "images/wp4.jpg", "images/wp3.jpg"]
+    "FOCUS POD": ["images/FP2.jpeg", "images/FP1.jpeg", "images/FPLocker.jpeg", "images/skydy-cover.jpg"],
+    "POWER BAR": [ "images/PB1.jpeg", "images/skydy-cover.jpg"],
+    "DESIGN DOCK": ["images/DDRightAngle.jpeg", "images/DDLeftAngle.jpeg", "images/DDCloseUp.jpeg", "images/DDStorage.jpeg", "images/skydy-cover.jpg"],
+    "THINK SPOT": ["images/TS2.jpeg", "images/TS3.jpeg", "images/skydy-cover.jpg"],
+    "COLLAB NOOK": ["images/CB1.jpeg", "images/CB2.jpeg", "images/skydy-cover.jpg"],
+    "FLOW ROW": ["images/FR1.jpeg", "images/skydy-cover.jpg"],
+    "SKY POD": ["images/SP1.jpeg", "images/SP2.jpeg", "images/skydy-cover.jpg"],
+    "SKY CIRCLE": ["images/SCTable.jpeg", "images/SCCloseUp.jpeg", "images/SCPartition.jpeg", "images/skydy-cover.jpg"]
 };
 
 if (modal && allCards.length > 0) {
@@ -156,6 +153,37 @@ if (modal && allCards.length > 0) {
                         }
                     });
                 });
+
+                // --- NEW: ARROW BUTTON LOGIC ---
+            const prevBtn = document.getElementById('popup-slider-prev');
+            const nextBtn = document.getElementById('popup-slider-next');
+
+            if (prevBtn && nextBtn) {
+                // Using .onclick instead of addEventListener prevents duplicate clicks stacking up every time the modal is opened
+                prevBtn.onclick = (e) => {
+                    e.preventDefault();
+                    const trackingWidthMetric = carouselTrack.offsetWidth;
+                    const currentIndex = Math.round(carouselTrack.scrollLeft / trackingWidthMetric);
+                    
+                    // Grab the previous image node and scroll to it
+                    const targetImage = document.getElementById(`modal-img-node-${currentIndex - 1}`);
+                    if (targetImage) {
+                        targetImage.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                    }
+                };
+
+                nextBtn.onclick = (e) => {
+                    e.preventDefault();
+                    const trackingWidthMetric = carouselTrack.offsetWidth;
+                    const currentIndex = Math.round(carouselTrack.scrollLeft / trackingWidthMetric);
+                    
+                    // Grab the next image node and scroll to it
+                    const targetImage = document.getElementById(`modal-img-node-${currentIndex + 1}`);
+                    if (targetImage) {
+                        targetImage.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                    }
+                };
+            }
             }
 
             modal.style.display = 'flex';
