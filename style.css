@@ -1081,13 +1081,13 @@ body {
     }
 
     .tagline {
-        font-size: 76px !important;
+        font-size: 8vh !important;
         word-spacing: normal !important;
         line-height: 0.9 !important;
     }
 
     .location {
-        font-size: 15px !important;
+        font-size: 1vh !important;
         margin-top: 20px !important;
     }
 
@@ -1193,15 +1193,47 @@ body {
    TABLET PORTRAIT EXPLICIT FIX
    ========================================================================== */
 @media (max-width: 1024px) and (min-width: 768px) and (orientation: portrait) {
+
+    /* html, body {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        position: static !important; 
+        -webkit-overflow-scrolling: touch !important;
+    }
+/*  */
+    html, body {
+        -ms-overflow-style: none !important;  
+        scrollbar-width: none !important; 
+        -webkit-overflow-scrolling: touch !important; 
+    } */
+
+    .container {
+        display: block !important; 
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow: visible !important; 
+    }
+
     .main-content,
     .home-content-stack {
         display: block !important; 
-        padding-top: 120px !important;
-        overflow-y: visible !important; 
+        padding-top: 100px !important;
         height: auto !important;
+        overflow-y: auto !important; 
+        overflow-x: hidden !important;    
     }
 
-    
+    /* .main-content,
+    .home-content-stack {
+        display: block !important; 
+        padding-top: 100px !important;
+        height: 100vh !important; 
+        overflow-y: auto !important; 
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+    } */
 
     .booking-spaces-title,
     .focuspod-booking-spaces-title,
@@ -1367,7 +1399,7 @@ body {
     /* 2. THE TRIGGER: When sidebar is CLOSED, force it to 80px! */
     .sidebar.collapsed ~ .main-content .tagline,
     .sidebar.collapsed ~ .home-content-stack .tagline {
-        font-size: 80px !important; 
+        font-size: 7vh !important; 
     }
     
     .location {
@@ -1377,11 +1409,15 @@ body {
     }
 
     .booking-wrapper {
-        /* THE FIX: Adds safe space at the top so it doesn't bump the header */
-        padding-top: 120px !important; 
-        
-        /* (This is your existing bottom space fix, left unchanged) */
-        padding-bottom: 150px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        padding-top: 120px !important;
+        padding-bottom: 20px !important; /* Massive padding to ensure scroll room */
+        overflow: visible !important;
+        overflow-y: auto !important; 
+        overflow-x: hidden !important;
     }
 
     /* THE FIX: Forces both white boxes to be exactly the same size and perfectly centered */
@@ -1394,6 +1430,31 @@ body {
         width: 100% !important;
         max-width: 550px !important; /* Locks them to the same width */
         margin: 0 auto 30px auto !important; /* Centers them and adds space between */
+    }
+
+    .floor-plan-map {
+        margin-top: 20px !important; 
+        margin-bottom: -200px !important; 
+        margin-left: -365px !important;
+        transform: scale(0.86) !important; 
+    }
+
+    /* 2. Anchors the background to the camera, so it NEVER scrolls away */
+    #bg-slider {
+        position: fixed !important; 
+        height: 100vh !important;
+        width: 100vw !important;
+    }
+
+    /* 3. Completely hides the scrollbar on Chrome, Safari, and iOS */
+    ::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    /* Hides the scrollbar on literally everything for Firefox and Edge */
+    * {
+        -ms-overflow-style: none !important;  
+        scrollbar-width: none !important;  
     }
 }
 
