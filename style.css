@@ -1196,7 +1196,204 @@ body {
     .main-content,
     .home-content-stack {
         display: block !important; 
-        padding-top: 100px !important;
+        padding-top: 120px !important;
+        overflow-y: visible !important; 
+        height: auto !important;
+    }
+
+    
+
+    .booking-spaces-title,
+    .focuspod-booking-spaces-title,
+    .powerbar-booking-spaces-title,
+    .thinkspot-booking-spaces-title,
+    .flowrow-booking-spaces-title {
+        font-size: 24px;       
+        line-height: 1.1;      
+        top: 24% !important;              
+        left: 58% !important;             
+    }
+
+    .booking-space-price {
+        font-size: 18px;       
+        top: 36%;              
+        left: 62% !important;             
+    }
+
+    .book-now-card {
+        left: 50% !important;
+        width: 40% !important;
+        height: 20% !important;
+        z-index: 50 !important; 
+        text-decoration: none !important;
+    }
+
+    .book-now-text {
+        font-family: "Google Sans Flex" !important;
+        font-weight: 600 !important;
+        position: relative !important; /* Removes absolute positioning inside button */
+        top: 14px !important;
+        left:73px !important;
+    }
+
+    .collabnook-booking-spaces-title {
+        position: absolute;
+        top: 24%;         
+        left: 55% !important; 
+        font-family: "Google Sans Flex";
+        font-size: 22px;
+        font-weight: 650;
+        word-spacing: 0px; 
+        letter-spacing: -0.5px;
+        color: rgb(8, 6, 4);
+        text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282); 
+        line-height: 1.1;  
+    }
+
+    .designdock-booking-spaces-title {
+        position: absolute;
+        top: 24%;         
+        left: 56% !important; 
+        font-family: "Google Sans Flex";
+        font-size: 22px;
+        font-weight: 650;
+        word-spacing: 0px; 
+        letter-spacing: -0.5px;
+        color: rgb(8, 6, 4);
+        text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282); 
+        line-height: 1.1;     
+    }
+
+    .skypod-booking-spaces-title {
+        position: absolute;
+        top: 24%;         
+        left: 61% !important; 
+        font-family: "Google Sans Flex";
+        font-size: 22px;
+        font-weight: 650;
+        word-spacing: 0px; 
+        letter-spacing: -0.5px;
+        color: rgb(8, 6, 4);
+        text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282); 
+        line-height: 1.1;   
+    }
+
+    .skycircle-booking-spaces-title {
+        position: absolute;
+        top: 24%;         
+        left: 59% !important; 
+        font-family: "Google Sans Flex";
+        font-size: 22px;
+        font-weight: 650;
+        word-spacing: 0px; 
+        letter-spacing: -0.5px;
+        color: rgb(8, 6, 4);
+        text-shadow: 2px 4px 45px rgba(0, 0, 0, 0.282); 
+        line-height: 1.1;     
+    }
+
+    .skypod-booking-spaces-price {
+        font-size: 18px;       
+        top: 38%;             
+        left: 60.5% !important; 
+    }
+
+    .skycircle-booking-spaces-price {
+        font-size: 18px;       
+        top: 38%;             
+        left: 60.5% !important; 
+    }
+
+    .learn-more-text {
+        top: 80%;
+        left: 65% !important;
+        font-size: 12px;
+    }
+
+    .homepage-contact-now-card,
+    .homepage-book-now-card {
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 135px !important;        
+        height: 38px !important;       
+        min-height: 48px !important;    
+        font-size: 13px !important;     
+        margin: 30px 0 0 0 !important;    
+    }
+
+    .hero-homepage-buttons {
+        display: flex !important;
+        flex-direction: row !important;       
+        justify-content: center !important;   /* The magic centering rule */
+        align-items: center !important;
+        gap: 20px !important;                 /* Creates perfect space between buttons */
+        width: 100% !important;
+        margin-top: 40px !important;          
+        margin-bottom: 10px !important;
+    }
+
+/* Ensure your buttons still look like this (with margin: 0) */
+    .homepage-book-now-card {
+        display: inline-flex !important;      
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 12px !important; 
+        width: 190px !important;
+        height: 55px !important;
+        
+        /* Zero out the margins so Flexbox can do its job! */
+        margin: 0 !important;              
+        
+        background-color: #c4eeff2d;
+        border: 2px solid #feffed;
+        color: #fffeec !important;
+        font-family: "Google Sans Flex", sans-serif;
+        font-size: 18px;
+        font-weight: 650;
+        text-decoration: none !important; 
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.267);
+        transition: all 0.3s ease;
+    }
+    .tagline {
+        font-size: 60px !important; 
+        line-height: 1.1 !important;
+        word-break: normal !important;
+        transition: font-size 0.3s ease !important; /* Smoothly shrinks/grows */
+    }
+
+    /* 2. THE TRIGGER: When sidebar is CLOSED, force it to 80px! */
+    .sidebar.collapsed ~ .main-content .tagline,
+    .sidebar.collapsed ~ .home-content-stack .tagline {
+        font-size: 80px !important; 
+    }
+    
+    .location {
+        font-size: 13px !important; 
+        padding: 0 20px !important; 
+        line-height: 1.5 !important;
+    }
+
+    .booking-wrapper {
+        /* THE FIX: Adds safe space at the top so it doesn't bump the header */
+        padding-top: 120px !important; 
+        
+        /* (This is your existing bottom space fix, left unchanged) */
+        padding-bottom: 150px !important; 
+    }
+
+    /* THE FIX: Forces both white boxes to be exactly the same size and perfectly centered */
+    .booking-calendar{
+        width: 100% !important;
+        max-width: 550px !important; /* Locks them to the same width */
+        margin: 0 auto 5px auto !important; /* Centers them and adds space between */
+    }
+    .floor-plan-container {
+        width: 100% !important;
+        max-width: 550px !important; /* Locks them to the same width */
+        margin: 0 auto 30px auto !important; /* Centers them and adds space between */
     }
 }
 
@@ -1292,7 +1489,7 @@ body {
     }
 
     .tagline {
-        font-size: 10vw;     
+        font-size: 9vw;     
         word-spacing: normal !important;
         white-space: normal !important; 
         line-height: 0.85 !important; 
