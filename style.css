@@ -1670,6 +1670,23 @@ body {
 }
 
 /* ==========================================================================
+    ADJUSTMENTS
+   ========================================================================== */
+
+    /* Styles for dates that have already passed */
+.calendar-day.disabled-date {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: transparent;
+}
+
+/* Ensures hover effects don't play on disabled dates */
+.calendar-day.disabled-date:hover {
+    background: transparent;
+    transform: none;
+}
+
+/* ==========================================================================
    TABLETS LANDSCAPE (Screens smaller than 1024px and wider than 768px)
    ========================================================================== */
 @media (max-width: 1024px) and (min-width: 768px) {

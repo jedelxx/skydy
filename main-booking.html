@@ -119,16 +119,37 @@
                     calendarDays.appendChild(emptyDiv);
                 }
                 
+// --- ADDED: Get exact midnight today for accurate comparison ---
+                const actualToday = new Date();
+                actualToday.setHours(0, 0, 0, 0); 
+                
                 for (let i = 1; i <= daysInMonth; i++) {
                     const dayDiv = document.createElement('div');
                     dayDiv.classList.add('calendar-day');
                     dayDiv.textContent = i;
                     
-                    dayDiv.addEventListener('click', () => {
-                        document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
-                        dayDiv.classList.add('selected');
-                        selectedDateText.textContent = `Selected Date: ${monthNames[month]} ${i}, ${year}`;
-                    });
+                    // Creates a real Date object for the specific day being generated
+                    const cellDate = new Date(year, month, i);
+                    
+                    // --- THE CHECK: Is this day in the past? ---
+                    if (cellDate < actualToday) {
+                        
+                        // If it's in the past, add the disabled class and skip the click listener
+                        dayDiv.classList.add('disabled-date');
+                        
+                    } else {
+                        
+                        // If it's today or in the future, make it clickable as usual!
+                        dayDiv.addEventListener('click', () => {
+                            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                            dayDiv.classList.add('selected');
+                            selectedDateText.textContent = `Selected Date: ${monthNames[month]} ${i}, ${year}`;
+                            
+                            hasSelectedDate = true;
+                            validateFormState();
+                        });
+                        
+                    }
                     
                     calendarDays.appendChild(dayDiv);
                 }
@@ -147,18 +168,24 @@
             renderCalendar();
         }
 
-        // --- GLOBAL INTERACTIVE LAYOUT STATE ENGINE ---
+// --- GLOBAL INTERACTIVE LAYOUT STATE ENGINE ---
         const floorMap = document.getElementById('floor-map');
         const seatDropdown = document.getElementById('seat-dropdown');
         const processBookingBtn = document.getElementById('process-booking-btn');
 
-        // VALIDIATION CONTROLLER STATE MACHINE
+        // 1. ADDED: A variable to track if a date has been clicked
+        let hasSelectedDate = false;
+
+        // 2. UPDATED: The State Machine now checks BOTH conditions
         function validateFormState() {
-            const selectedValue = seatDropdown.value;
-            if (selectedValue === "" || selectedValue === null) {
-                processBookingBtn.classList.add('disabled');
-            } else {
+            const selectedSeat = seatDropdown.value;
+            const isSeatSelected = selectedSeat !== "" && selectedSeat !== null;
+            
+            // The button only unlocks if BOTH a seat AND a date are selected
+            if (isSeatSelected && hasSelectedDate) {
                 processBookingBtn.classList.remove('disabled');
+            } else {
+                processBookingBtn.classList.add('disabled');
             }
         }
 
