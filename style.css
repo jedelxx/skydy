@@ -2158,6 +2158,12 @@ body {
         display: none !important;         
     }
 
+    #bg-slider {
+        position: fixed !important; 
+        height: 100vh !important;
+        width: 100vw !important;
+    }
+
     .container {
         flex-direction: column;
         height: 100vh !important;
@@ -2486,9 +2492,11 @@ body {
        MOBILE RESPONSIVE BOOKING PROCESS MODAL
        ========================================================================== */
     .booking-modal-overlay {
-        align-items: flex-start !important; /* Prevents top cutoff so users can scroll */
+        align-items: flex-start !important; 
         overflow-y: auto !important;
-        padding: 40px 0 !important;
+        /* THE FIX: Added 120px of invisible space to the bottom so the buttons clear the browser menu! */
+        padding: 40px 0 120px 0 !important; 
+        
         -webkit-overflow-scrolling: touch !important;
         scrollbar-width: none !important; 
         -ms-overflow-style: none !important;
