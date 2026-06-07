@@ -295,7 +295,7 @@ body {
     gap: 60px;
     background: transparent;
     position: relative;
-    height: 100vh;           
+    height: 100vh;            
     overflow-y: auto; 
     overflow-x: hidden;
     scrollbar-width: none;
@@ -311,7 +311,7 @@ body {
 .flow-row-card,
 .sky-pod-card,
 .sky-circle-card {
-    width: 450px;           
+    width: 450px;            
     height: 280px;      
     min-width: 500px;     
     background-color: #fffffbe7;
@@ -340,7 +340,7 @@ body {
 .table-image {
     position: absolute;
     top: 5%;
-    left: 10px;         
+    left: 10px;          
     width: 45%;          
     height: 90%;         
     object-fit: contain; 
@@ -436,7 +436,7 @@ body {
 
 .hero-btn-group {
     display: flex !important;
-    flex-direction: row !important;       
+    flex-direction: row !important;        
     justify-content: center !important;   
     align-items: center !important;
     gap: 20px !important;                 
@@ -1028,7 +1028,7 @@ body {
     position: relative;
     width: 100%;
     max-width: 60rem;
-    margin-left: auto;       
+    margin-left: auto;        
     margin-right: auto;      
     margin-bottom: 60px;     
 }
@@ -1657,7 +1657,7 @@ body {
     background: #4a7cce;
     border: none;
     color: white;
-    padding: 12px 30px;
+    padding: 12px 10px;
     border-radius: 25px;
     font-size: 15px;
     font-family: "Google Sans Flex", sans-serif;
@@ -1887,7 +1887,7 @@ body {
         position: static !important; 
         -webkit-overflow-scrolling: touch !important;
     }
-/*  */
+/* */
     html, body {
         -ms-overflow-style: none !important;  
         scrollbar-width: none !important; 
@@ -2011,13 +2011,13 @@ body {
 
     .skypod-booking-spaces-price {
         font-size: 18px;       
-        top: 38%;             
+        top: 38%;              
         left: 60.5% !important; 
     }
 
     .skycircle-booking-spaces-price {
         font-size: 18px;       
-        top: 38%;             
+        top: 38%;              
         left: 60.5% !important; 
     }
 
@@ -2042,7 +2042,7 @@ body {
 
     .hero-homepage-buttons {
         display: flex !important;
-        flex-direction: row !important;       
+        flex-direction: row !important;        
         justify-content: center !important;   /* The magic centering rule */
         align-items: center !important;
         gap: 20px !important;                 /* Creates perfect space between buttons */
@@ -2224,7 +2224,7 @@ body {
     
     .main-content,
     .home-content-stack {
-        padding: 30px 15px 120px 15px !important;      
+        padding: 30px 15px 120px 15px !important;       
         gap: 20px; 
         overflow-y: auto !important; 
         overflow-x: hidden !important;
@@ -2361,13 +2361,13 @@ body {
 
     .skypod-booking-spaces-price {
         font-size: 18px;       
-        top: 38%;             
+        top: 38%;              
         left: 62%; 
     }
 
     .skycircle-booking-spaces-price {
         font-size: 18px;       
-        top: 38%;             
+        top: 38%;              
         left: 60.5%; 
     }
 
@@ -2393,7 +2393,7 @@ body {
     .booking-wrapper {
         flex-direction: column !important; 
         justify-content: flex-start !important; 
-        height: auto !important;                                
+        height: auto !important;                               
         padding-top: 100px !important;    
         padding-bottom: 50px;
         gap: 20px;                          
@@ -2436,7 +2436,7 @@ body {
 
     .floor-plan-map {
         display: block !important;
-        transform: scale(0.58) !important;           
+        transform: scale(0.58) !important;            
         transform-origin: top center !important;      
         margin-top: 13px !important; 
         margin-bottom: -320px !important;            
@@ -2448,7 +2448,7 @@ body {
     .home-content-stack {
         height: auto !important; 
         min-height: calc(100vh - 60px) !important; 
-        overflow-y: auto !important;       
+        overflow-y: auto !important;        
         justify-content: flex-start !important;
         padding-top: 10px !important;
         padding-bottom: 40px !important;    
@@ -2480,5 +2480,64 @@ body {
         border-radius: 12px; 
         margin: 25px auto 10px auto !important;
         transform: none !important; 
+    }
+
+    /* ==========================================================================
+       MOBILE RESPONSIVE BOOKING PROCESS MODAL
+       ========================================================================== */
+    .booking-modal-overlay {
+        align-items: flex-start !important; /* Prevents top cutoff so users can scroll */
+        overflow-y: auto !important;
+        padding: 40px 0 !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important; 
+        -ms-overflow-style: none !important;
+    }
+
+    .booking-modal-overlay::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .booking-modal-wrapper {
+        margin: auto !important;
+        width: 92% !important;
+    }
+
+    .booking-modal {
+        flex-direction: column !important; /* Stacks General Info & Contact Details */
+        border-radius: 20px !important;
+    }
+
+    .modal-left, .modal-right {
+        padding: 30px 20px !important; /* Reduces huge desktop padding */
+    }
+
+    .modal-left h2, .modal-right h2 {
+        font-size: 24px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .modal-right h3 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .phone-input span {
+        padding: 10px !important;
+    }
+
+    .payment-options button, .sex-toggle button {
+        font-size: 14px !important;
+        padding: 10px 15px !important;
+    }
+
+    .btn-proceed {
+        width: auto !important;
+        padding: 12px 25px !important;
+        margin: 0 !important; /* Overrides the previous desktop centering trick */
+    }
+
+    .btn-cancel {
+        padding: 10px 0 !important;
     }
 }
